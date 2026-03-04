@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>School Fundraiser Profit Calculator</title>
+</head>
+
+<body style="font-family: Arial; text-align:center; padding:40px;">
+
+<h1>School Fundraiser Profit Calculator</h1>
+
+<p>Estimate how much money your school fundraiser could make.</p>
+
+<label>Number of Students:</label>
+<input id="students" type="number" value="400"><br><br>
+
+<label>Participation Rate (%):</label>
+<input id="participation" type="number" value="60"><br><br>
+
+<label>Average Donation ($):</label>
+<input id="donation" type="number" value="45"><br><br>
+
+<button onclick="calculate()">Calculate Profit</button>
+
+<h2 id="result"></h2>
+
+<script>
+function calculate() {
+  let students = document.getElementById("students").value;
+  let participation = document.getElementById("participation").value / 100;
+  let donation = document.getElementById("donation").value;
+
+  let participants = students * participation;
+  let total = participants * donation;
+
+  document.getElementById("result").innerText =
+    "Estimated Funds Raised: $" + total.toLocaleString();
+}
+</script>
+
+</body>
+</html>
