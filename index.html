@@ -220,6 +220,16 @@ The PTO Playbook helps schools choose fundraisers that maximize participation wh
   
 <div id="result">
 Enter your numbers and click Calculate.
+<div style="margin-top:12px;display:grid;gap:8px;">
+
+<button class="btn btn-secondary" onclick="shareResult()">
+Share This Result
+</button>
+
+<button class="btn btn-secondary" onclick="shareFacebook()" style="background:#4267B2;">
+Share on Facebook
+</button>
+
 </div>
 
 <div class="contact">
@@ -363,6 +373,42 @@ Estimates based on typical fundraising models. Actual results vary by school.
 
 document.getElementById("comparisonContent").innerHTML=html;
 document.getElementById("comparison").style.display="block";
+
+}
+
+function shareResult(){
+
+const resultText=document.getElementById("result").innerText;
+
+const message=
+`${resultText}
+
+I found this free School Fundraiser Profit Calculator from The PTO Playbook.
+
+https://school-fundraiser-calculator.pages.dev`;
+
+navigator.clipboard.writeText(message);
+
+alert("Your result has been copied. Paste it into Facebook or email!");
+
+}
+
+function shareFacebook(){
+
+const resultText=document.getElementById("result").innerText;
+
+const shareText=encodeURIComponent(
+`${resultText}
+
+Free School Fundraiser Profit Calculator from The PTO Playbook`
+);
+
+const url=encodeURIComponent("https://school-fundraiser-calculator.pages.dev");
+
+window.open(
+`https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${shareText}`,
+"_blank"
+);
 
 }
 
