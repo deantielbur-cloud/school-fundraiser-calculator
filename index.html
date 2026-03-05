@@ -1,167 +1,322 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>School Fundraiser Profit Calculator</title>
 
-  <style>
-    body{
-      font-family: Arial, sans-serif;
-      background:#f5f7fb;
-      margin:0;
-      padding:40px 16px;
-    }
-    .container{
-      max-width:600px;
-      margin:0 auto;
-      background:white;
-      padding:32px;
-      border-radius:12px;
-      box-shadow:0 10px 30px rgba(0,0,0,.1);
-      text-align:center;
-    }
-    h1{ margin-top:0; font-size:28px; }
-    p{ color:#444; line-height:1.4; margin-bottom:18px; }
-    .form{
-      text-align:left;
-      margin-top:18px;
-    }
-    label{
-      display:block;
-      margin-top:14px;
-      font-weight:600;
-      font-size:14px;
-    }
-    input{
-      padding:10px;
-      margin-top:6px;
-      width:100%;
-      border:1px solid #ccc;
-      border-radius:8px;
-      font-size:16px;
-      box-sizing:border-box;
-    }
-    button{
-      background:#2d7ef7;
-      color:white;
-      border:none;
-      padding:12px 18px;
-      font-size:16px;
-      border-radius:10px;
-      cursor:pointer;
-      margin-top:18px;
-      width:100%;
-      font-weight:700;
-    }
-    button:hover{ background:#1c63cc; }
-    #result{
-      margin-top:18px;
-      padding:14px;
-      background:#f0f6ff;
-      border:1px solid #d6e6ff;
-      border-radius:10px;
-      font-size:16px;
-      font-weight:700;
-    }
-    .small-note{
-      margin-top:12px;
-      font-size:12px;
-      color:#666;
-      font-weight:400;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>School Fundraiser Profit Calculator</title>
+
+<style>
+
+body{
+font-family:Arial, sans-serif;
+background:#f5f7fb;
+margin:0;
+padding:40px 16px;
+}
+
+.container{
+max-width:600px;
+margin:auto;
+background:white;
+padding:32px;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,.1);
+text-align:center;
+}
+
+h1{
+margin-top:0;
+font-size:28px;
+}
+
+p{
+color:#444;
+line-height:1.4;
+}
+
+.form{
+text-align:left;
+margin-top:18px;
+}
+
+label{
+display:block;
+margin-top:14px;
+font-weight:600;
+font-size:14px;
+}
+
+input{
+padding:10px;
+margin-top:6px;
+width:100%;
+border:1px solid #ccc;
+border-radius:8px;
+font-size:16px;
+box-sizing:border-box;
+}
+
+.button-row{
+margin-top:20px;
+display:grid;
+gap:10px;
+}
+
+.btn{
+padding:12px;
+font-size:16px;
+border-radius:10px;
+border:none;
+cursor:pointer;
+font-weight:bold;
+}
+
+.btn-primary{
+background:#2d7ef7;
+color:white;
+}
+
+.btn-primary:hover{
+background:#1c63cc;
+}
+
+.btn-secondary{
+background:#18a957;
+color:white;
+}
+
+.btn-secondary:hover{
+background:#128446;
+}
+
+#result{
+margin-top:20px;
+padding:16px;
+background:#f0f6ff;
+border-radius:10px;
+font-size:18px;
+font-weight:bold;
+}
+
+#comparison{
+display:none;
+margin-top:24px;
+text-align:left;
+background:#f7f7f7;
+padding:16px;
+border-radius:10px;
+border:1px solid #e3e3e3;
+}
+
+#comparison table{
+width:100%;
+border-collapse:collapse;
+}
+
+#comparison th,
+#comparison td{
+padding:10px 6px;
+border-bottom:1px solid #ddd;
+}
+
+#comparison th:last-child,
+#comparison td:last-child{
+text-align:right;
+}
+
+.contact{
+margin-top:16px;
+font-size:14px;
+}
+
+</style>
+
 </head>
 
 <body>
-  <div class="container">
 
-    <h1>How Much Money Could Your School Fundraiser Raise?</h1>
-    <p>Use this free calculator to estimate how much your school could raise based on student participation.</p>
+<div class="container">
 
-    <div class="form">
-      <label>Number of Students</label>
-      <input id="students" type="number" value="400" min="0" />
+<h1>How Much Money Could Your School Fundraiser Raise?</h1>
 
-      <label>Participation Rate (%)</label>
-      <input id="participation" type="number" value="60" min="0" max="100" />
+<p>Use this free calculator to estimate how much your school could raise based on student participation.</p>
 
-      <label>Average Donation per Participating Student ($)</label>
-      <input id="donation" type="number" value="45" min="0" />
-    </div>
+<div class="form">
 
-    <button onclick="calculate()">Calculate</button>
-    <button onclick="showComparison()" style="background:#4CAF50;">
+<label>Number of Students</label>
+<input id="students" type="number" value="400">
+
+<label>Participation Rate (%)</label>
+<input id="participation" type="number" value="60">
+
+<label>Average Donation per Participating Student ($)</label>
+<input id="donation" type="number" value="45">
+
+</div>
+
+<div class="button-row">
+
+<button class="btn btn-primary" onclick="calculate()">
+Calculate
+</button>
+
+<button class="btn btn-secondary" onclick="showComparison()">
 Compare Other Fundraisers
 </button>
 
-    <div id="result">Enter your numbers and click Calculate.</div>
-    <div id="comparison" style="display:none; margin-top:20px; text-align:left;">
+</div>
+
+<div id="result">
+Enter your numbers and click Calculate.
+</div>
+
+<div class="contact">
+Want help running a fundraiser like this?
+<a href="mailto:Dean.Tielbur@ApexLeadershipCo.com" style="color:#2d7ef7;font-weight:bold;">
+Contact us
+</a>
+</div>
+
+<div id="comparison">
 
 <h3>Estimated Fundraiser Comparison</h3>
 
-<table style="width:100%; border-collapse:collapse;">
-<tr>
-<th style="text-align:left; border-bottom:1px solid #ccc;">Fundraiser</th>
-<th style="text-align:right; border-bottom:1px solid #ccc;">Typical Profit</th>
-</tr>
+<div id="comparisonContent"></div>
+
+</div>
+
+</div>
+
+<script>
+
+function money(n){
+return n.toLocaleString(undefined,{style:"currency",currency:"USD"});
+}
+
+function getInputs(){
+
+const students=parseFloat(document.getElementById("students").value||"0");
+const participationPct=parseFloat(document.getElementById("participation").value||"0");
+const donation=parseFloat(document.getElementById("donation").value||"0");
+
+const participation=Math.max(0,Math.min(1,participationPct/100));
+const participants=students*participation;
+const gross=participants*donation;
+
+return{students,participation,participants,donation,gross};
+
+}
+
+function calculate(){
+
+const{gross}=getInputs();
+
+document.getElementById("result").innerText=
+`This fundraiser could raise approximately ${money(gross)}.`;
+
+}
+
+function computeModels(){
+
+const{participants,gross}=getInputs();
+
+const models=[
+
+{
+name:"Fun Run (Managed Program)",
+platformFeePct:0.035,
+programFeePct:0.50,
+fixedCost:0,
+variable:0,
+gross:gross
+},
+
+{
+name:"Read-a-thon",
+platformFeePct:0.035,
+programFeePct:0.10,
+fixedCost:100,
+variable:participants*0.5,
+gross:gross
+},
+
+{
+name:"Product Sale",
+platformFeePct:0.02,
+programFeePct:0.55,
+fixedCost:0,
+variable:0,
+gross:gross
+},
+
+{
+name:"Restaurant Night",
+platformFeePct:0,
+programFeePct:0,
+fixedCost:50,
+variable:0,
+gross:(participants*0.25)*18*0.20
+}
+
+];
+
+return models.map(m=>{
+
+const fees=m.gross*(m.platformFeePct+m.programFeePct);
+const net=m.gross-fees-m.fixedCost-m.variable;
+
+return{
+name:m.name,
+gross:m.gross,
+net:net
+};
+
+}).sort((a,b)=>b.net-a.net);
+
+}
+
+function showComparison(){
+
+const rows=computeModels();
+
+const tableRows=rows.map(r=>`
 
 <tr>
-<td>Fun Run</td>
-<td style="text-align:right;">$18,000 – $40,000</td>
+<td>${r.name}</td>
+<td>${money(Math.max(0,r.gross))}</td>
+<td><strong>${money(Math.max(0,r.net))}</strong></td>
 </tr>
 
-<tr>
-<td>Read-a-thon</td>
-<td style="text-align:right;">$10,000 – $25,000</td>
-</tr>
+`).join("");
+
+const html=`
+
+<table>
 
 <tr>
-<td>Restaurant Night</td>
-<td style="text-align:right;">$1,000 – $5,000</td>
+<th>Fundraiser</th>
+<th>Gross</th>
+<th>Estimated Net</th>
 </tr>
 
-<tr>
-<td>Product Sale</td>
-<td style="text-align:right;">$5,000 – $15,000</td>
-</tr>
+${tableRows}
 
 </table>
 
+<div style="margin-top:10px;font-size:12px;color:#666;">
+Estimates based on typical fundraising models. Actual results vary by school.
 </div>
-    <div style="margin-top:16px; font-size:14px;">
-  Want help running a fundraiser like this? 
-  <a href="mailto:Dean.Tielbur@ApexLeadershipCo.com" style="color:#2d7ef7; font-weight:bold;">
-    Contact us
-  </a>
-</div>
-    <div class="small-note">
-      Estimates vary by school. This tool is meant for quick planning.
-    </div>
 
-   <script>
+`;
 
-function calculate() {
-  let students = parseFloat(document.getElementById("students").value || "0");
-  let participation = parseFloat(document.getElementById("participation").value || "0") / 100;
-  let donation = parseFloat(document.getElementById("donation").value || "0");
+document.getElementById("comparisonContent").innerHTML=html;
+document.getElementById("comparison").style.display="block";
 
-  let participants = students * participation;
-  let total = participants * donation;
-
-  const formatted = total.toLocaleString(undefined, { style: "currency", currency: "USD" });
-
-  document.getElementById("result").innerText =
-    `This fundraiser could raise approximately ${formatted}.`;
-}
-
-function showComparison() {
-  document.getElementById("comparison").style.display = "block";
 }
 
 </script>
 
-  </div>
 </body>
 </html>
-
