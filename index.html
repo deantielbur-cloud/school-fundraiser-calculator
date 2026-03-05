@@ -49,6 +49,7 @@ details.accordion{margin-top:14px;background:#ffffff;border:1px solid #eee;borde
 details.accordion summary{cursor:pointer;font-weight:900;font-size:14px;color:#222;list-style:none;}
 details.accordion summary::-webkit-details-marker{display:none;}
 .acc-body{margin-top:10px;color:#444;font-size:13px;line-height:1.5;}
+.acc-body code{background:#f3f3f3;padding:2px 6px;border-radius:6px;}
 .acc-grid{display:grid;gap:10px;margin-top:10px;}
 .acc-card{background:#f7f7f7;border:1px solid #e6e6e6;border-radius:10px;padding:10px 12px;}
 .acc-title{font-weight:900;margin-bottom:6px;}
@@ -72,6 +73,15 @@ details.accordion summary::-webkit-details-marker{display:none;}
   <p class="subhead">
     A free planning tool to help PTO leaders estimate fundraising profit, set a goal, get a recommendation, and compare popular school fundraisers.
   </p>
+
+  <label>Fundraiser Style</label>
+  <select id="fundraiserStyle" onchange="applyStyleDefaults()">
+    <option value="event">Event Fundraiser (Fun Run / Dance / Big Event)</option>
+    <option value="typical" selected>Typical PTO Fundraiser (Conservative Estimate)</option>
+  </select>
+  <div class="small-note">
+    This sets realistic starting assumptions. You can still change participation and average donation below.
+  </div>
 
   <label>Number of Students</label>
   <input id="students" type="number" value="400" min="0">
@@ -158,10 +168,11 @@ details.accordion summary::-webkit-details-marker{display:none;}
     <summary>How to use this calculator (click to expand)</summary>
     <div class="acc-body">
       <ol style="margin:6px 0 0 18px;">
+        <li>Pick a <b>Fundraiser Style</b> for a realistic starting point.</li>
         <li>Enter your <b>student count</b>.</li>
         <li>Estimate your <b>participation rate</b>.</li>
-        <li>Enter an <b>average donation per participating student</b> (start conservative).</li>
-        <li>Optional: enter a <b>fundraising goal</b> to see the donation needed per participating student.</li>
+        <li>Enter an <b>average donation per participating student</b>.</li>
+        <li>Optional: enter a <b>fundraising goal</b>.</li>
         <li>Click <b>Compare Other Fundraisers</b> for directional comparisons.</li>
       </ol>
       <div class="small-note" style="margin-top:10px;">
@@ -174,36 +185,47 @@ details.accordion summary::-webkit-details-marker{display:none;}
   <details class="accordion">
     <summary>Assumptions used for comparisons (click to expand)</summary>
     <div class="acc-body">
-      The “Compare Other Fundraisers” table uses simple planning assumptions to estimate <b>net</b> results.
+      The comparison table uses your estimate as a <b>Fun Run baseline</b> and applies typical gross differences by fundraiser type.
+      These are planning assumptions you can tune later.
 
       <div class="acc-grid">
 
         <div class="acc-card">
-          <div class="acc-title">Fun Run (Managed Program)</div>
-          Uses your calculated <b>gross</b> estimate, then subtracts:
+          <div class="acc-title">Gross multipliers (relative to Fun Run)</div>
           <ul style="margin:6px 0 0 18px;">
-            <li><b>3.5%</b> processing estimate</li>
-            <li><b>50%</b> program split estimate</li>
+            <li><b>Fun Run:</b> <code>1.00×</code> (baseline)</li>
+            <li><b>Read-a-thon:</b> <code>0.45×</code></li>
+            <li><b>Product Sale:</b> <code>0.35×</code></li>
+            <li><b>Restaurant Night:</b> separate estimate</li>
+          </ul>
+        </div>
+
+        <div class="acc-card">
+          <div class="acc-title">Fun Run (Managed Program)</div>
+          Takes Fun Run gross, then subtracts:
+          <ul style="margin:6px 0 0 18px;">
+            <li><code>3.5%</code> payment/processing estimate</li>
+            <li><code>48%</code> program split estimate (school keeps ~52%)</li>
           </ul>
         </div>
 
         <div class="acc-card">
           <div class="acc-title">Read-a-thon</div>
-          Uses your calculated <b>gross</b> estimate, then subtracts:
+          Takes <code>0.45×</code> of Fun Run gross, then subtracts:
           <ul style="margin:6px 0 0 18px;">
-            <li><b>3.5%</b> processing estimate</li>
-            <li><b>10%</b> platform/program fee estimate</li>
-            <li><b>$100</b> fixed supplies/admin</li>
-            <li><b>$0.50</b> per participating student</li>
+            <li><code>3.5%</code> processing estimate</li>
+            <li><code>10%</code> platform/program fee estimate</li>
+            <li><code>$100</code> fixed supplies/admin</li>
+            <li><code>$0.50</code> per participating student</li>
           </ul>
         </div>
 
         <div class="acc-card">
           <div class="acc-title">Product Sale</div>
-          Uses your calculated <b>gross</b> estimate, then subtracts:
+          Takes <code>0.35×</code> of Fun Run gross, then subtracts:
           <ul style="margin:6px 0 0 18px;">
-            <li><b>2%</b> processing estimate</li>
-            <li><b>55%</b> product cost/margin estimate</li>
+            <li><code>2%</code> processing estimate</li>
+            <li><code>55%</code> product cost/margin estimate</li>
           </ul>
         </div>
 
@@ -211,10 +233,10 @@ details.accordion summary::-webkit-details-marker{display:none;}
           <div class="acc-title">Restaurant Night</div>
           Separate estimate:
           <ul style="margin:6px 0 0 18px;">
-            <li><b>25%</b> attendance of participating families</li>
-            <li><b>$18</b> average spend</li>
-            <li><b>20%</b> giveback rate</li>
-            <li><b>$50</b> fixed promo/materials</li>
+            <li><code>25%</code> of participating families attend</li>
+            <li><code>$18</code> average spend</li>
+            <li><code>20%</code> giveback rate</li>
+            <li><code>$50</code> fixed promo/materials</li>
           </ul>
         </div>
 
@@ -248,6 +270,22 @@ details.accordion summary::-webkit-details-marker{display:none;}
 <div id="toast" class="toast"></div>
 
 <script>
+/* ========= Tunable assumptions ========= */
+const ASSUMPTIONS = {
+  funRun: { grossMultiplier: 1.00, processingPct: 0.035, programFeePct: 0.48 }, // school keeps ~52%
+  readAThon: { grossMultiplier: 0.45, processingPct: 0.035, platformFeePct: 0.10, fixedCost: 100, perParticipantCost: 0.50 },
+  productSale: { grossMultiplier: 0.35, processingPct: 0.02, productCostPct: 0.55 },
+  restaurantNight: { attendancePct: 0.25, avgSpend: 18, givebackPct: 0.20, fixedCost: 50 }
+};
+
+/* ========= Style defaults (toggle) =========
+   These are intentionally conservative.
+   "Event" is a higher starting point than "Typical" but still editable by the user. */
+const STYLE_DEFAULTS = {
+  event:   { participationPct: 55, donation: 150 }, // Event baseline (adjust later if you want)
+  typical: { participationPct: 60, donation: 45 }   // Conservative baseline
+};
+
 function money(n){return n.toLocaleString(undefined,{style:"currency",currency:"USD"});}
 
 function getInputs(){
@@ -258,9 +296,26 @@ function getInputs(){
 
   const participation=Math.max(0,Math.min(1,participationPct/100));
   const participants=students*participation;
+
+  // Base gross is treated as Fun Run/event baseline for comparisons.
   const gross=participants*donation;
 
   return{students,participationPct,participation,participants,donation,goal,gross};
+}
+
+function applyStyleDefaults(){
+  const style=document.getElementById("fundraiserStyle").value;
+  const d=STYLE_DEFAULTS[style] || STYLE_DEFAULTS.typical;
+
+  // Set defaults
+  document.getElementById("participation").value = d.participationPct;
+  document.getElementById("donation").value = d.donation;
+
+  // If user has already calculated once, re-calc automatically
+  const current=document.getElementById("result").innerText;
+  if(current.includes("approximately")){
+    calculateAll();
+  }
 }
 
 function calculateAll(){
@@ -273,7 +328,7 @@ function calculateAll(){
 function calculate(){
   const{gross}=getInputs();
   document.getElementById("result").innerText=
-    `This fundraiser could raise approximately ${money(gross)}.`;
+    `This fundraiser could raise approximately ${money(gross)} (based on your inputs).`;
 }
 
 function calculateGoal(){
@@ -367,21 +422,33 @@ function calculateRecommendation(){
   recBox.innerText=rec;
 }
 
+/* ========= Comparison logic (Fun Run gross advantage) ========= */
 function computeModels(){
-  const{participants,gross}=getInputs();
+  const { participants, gross: baseGross } = getInputs();
 
-  const models=[
-    {name:"Fun Run (Managed Program)",platformFeePct:.035,programFeePct:.50,fixedCost:0,variable:0,gross:gross},
-    {name:"Read-a-thon",platformFeePct:.035,programFeePct:.10,fixedCost:100,variable:participants*.5,gross:gross},
-    {name:"Product Sale",platformFeePct:.02,programFeePct:.55,fixedCost:0,variable:0,gross:gross},
-    {name:"Restaurant Night",platformFeePct:0,programFeePct:0,fixedCost:50,variable:0,gross:(participants*.25)*18*.20}
-  ];
+  const funRunGross = baseGross * ASSUMPTIONS.funRun.grossMultiplier;
+  const funRunFees = funRunGross * (ASSUMPTIONS.funRun.processingPct + ASSUMPTIONS.funRun.programFeePct);
+  const funRunNet = funRunGross - funRunFees;
 
-  return models.map(m=>{
-    const fees=m.gross*(m.platformFeePct+m.programFeePct);
-    const net=m.gross-fees-m.fixedCost-m.variable;
-    return{name:m.name,gross:m.gross,net:net};
-  }).sort((a,b)=>b.net-a.net);
+  const readGross = baseGross * ASSUMPTIONS.readAThon.grossMultiplier;
+  const readFees = readGross * (ASSUMPTIONS.readAThon.processingPct + ASSUMPTIONS.readAThon.platformFeePct);
+  const readNet = readGross - readFees - ASSUMPTIONS.readAThon.fixedCost - (participants * ASSUMPTIONS.readAThon.perParticipantCost);
+
+  const prodGross = baseGross * ASSUMPTIONS.productSale.grossMultiplier;
+  const prodFees = prodGross * (ASSUMPTIONS.productSale.processingPct + ASSUMPTIONS.productSale.productCostPct);
+  const prodNet = prodGross - prodFees;
+
+  const restGross = (participants * ASSUMPTIONS.restaurantNight.attendancePct) *
+                    ASSUMPTIONS.restaurantNight.avgSpend *
+                    ASSUMPTIONS.restaurantNight.givebackPct;
+  const restNet = restGross - ASSUMPTIONS.restaurantNight.fixedCost;
+
+  return [
+    { name:"Fun Run (Managed Program)", gross: funRunGross, net: funRunNet },
+    { name:"Read-a-thon", gross: readGross, net: readNet },
+    { name:"Product Sale", gross: prodGross, net: prodNet },
+    { name:"Restaurant Night", gross: restGross, net: restNet }
+  ].sort((a,b)=>b.net-a.net);
 }
 
 function showComparison(){
@@ -397,13 +464,13 @@ function showComparison(){
     <table>
       <tr>
         <th>Fundraiser</th>
-        <th>Gross</th>
+        <th>Estimated Gross</th>
         <th>Estimated Net</th>
       </tr>
       ${tableRows}
     </table>
     <div style="margin-top:10px;font-size:12px;color:#666;line-height:1.4;">
-      Estimates based on typical fundraising models. Actual results vary by school.
+      Comparisons use gross multipliers (Fun Run baseline) + typical fee assumptions. Use directionally, not as guarantees.
     </div>
   `;
 
@@ -442,6 +509,7 @@ function shareFacebook(){
   window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${text}`,"_blank");
 }
 
+/* ========= Lead form ========= */
 function toggleOtherRole(){
   const sel=document.getElementById("leadRoleSelect").value;
   const wrap=document.getElementById("leadRoleOtherWrap");
@@ -477,11 +545,12 @@ function emailPlanFromForm(){
   if(name || school || role) lines.push("");
 
   lines.push("Calculator inputs:");
+  lines.push(`- Fundraiser style: ${document.getElementById("fundraiserStyle").value === "event" ? "Event Fundraiser" : "Typical PTO Fundraiser"}`);
   lines.push(`- Students: ${students}`);
   lines.push(`- Participation estimate: ${participationPct}%`);
   lines.push(`- Avg donation per participating student: $${donation}`);
   if(goal && goal > 0) lines.push(`- Fundraising goal: $${goal.toLocaleString()}`);
-  lines.push(`- Calculator gross estimate: ${money(gross)}`);
+  lines.push(`- Gross estimate: ${money(gross)}`);
   lines.push("");
   lines.push("Can you recommend the best fundraiser type and a simple timeline/checklist to hit our goal?");
   lines.push("");
@@ -492,10 +561,12 @@ function emailPlanFromForm(){
   window.location.href=`mailto:Dean.Tielbur@ApexLeadershipCo.com?subject=${subject}&body=${body}`;
 }
 
+/* ========= Misc ========= */
 function resetInputs(){
+  document.getElementById("fundraiserStyle").value="typical";
   document.getElementById("students").value=400;
-  document.getElementById("participation").value=60;
-  document.getElementById("donation").value=45;
+  document.getElementById("participation").value=STYLE_DEFAULTS.typical.participationPct;
+  document.getElementById("donation").value=STYLE_DEFAULTS.typical.donation;
   document.getElementById("goal").value="";
 
   document.getElementById("leadName").value="";
