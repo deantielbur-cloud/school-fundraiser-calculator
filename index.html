@@ -139,28 +139,29 @@ Compare Other Fundraisers
       Estimates vary by school. This tool is meant for quick planning.
     </div>
 
-    <script>
-      function calculate() {
-        let students = parseFloat(document.getElementById("students").value || "0");
-        let participation = parseFloat(document.getElementById("participation").value || "0") / 100;
-        let donation = parseFloat(document.getElementById("donation").value || "0");
+   <script>
 
-        participation = Math.max(0, Math.min(1, participation));
+function calculate() {
+  let students = parseFloat(document.getElementById("students").value || "0");
+  let participation = parseFloat(document.getElementById("participation").value || "0") / 100;
+  let donation = parseFloat(document.getElementById("donation").value || "0");
 
-        let participants = students * participation;
-        let total = participants * donation;
+  let participants = students * participation;
+  let total = participants * donation;
 
-        const formatted = total.toLocaleString(undefined, { style: "currency", currency: "USD" });
+  const formatted = total.toLocaleString(undefined, { style: "currency", currency: "USD" });
 
-        document.getElementById("result").innerText =
-          `This fundraiser could raise approximately ${formatted}.`;
-      }
-    </script>
+  document.getElementById("result").innerText =
+    `This fundraiser could raise approximately ${formatted}.`;
+}
+
+function showComparison() {
+  document.getElementById("comparison").style.display = "block";
+}
+
+</script>
 
   </div>
 </body>
 </html>
 
-function showComparison() {
-  document.getElementById("comparison").style.display = "block";
-}
