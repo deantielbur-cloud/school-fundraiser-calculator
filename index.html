@@ -7,414 +7,460 @@
 
 <title>School Fundraiser Profit Calculator | The PTO Playbook</title>
 
-<meta name="description" content="Free school fundraiser profit calculator from The PTO Playbook. Estimate how much your PTO fundraiser could raise based on participation and average donations. Compare Fun Runs, Read-a-thons, product sales, and restaurant nights.">
+<meta name="description" content="Free school fundraiser profit calculator from The PTO Playbook. Estimate how much your PTO fundraiser could raise based on participation and average donations. Set a goal, get recommendations, compare fundraisers, and share results.">
 
 <style>
-
-body{
-font-family:Arial,sans-serif;
-background:#f5f7fb;
-margin:0;
-padding:36px 16px;
-color:#222;
-}
-
-.container{
-max-width:720px;
-margin:auto;
-background:white;
-padding:28px;
-border-radius:14px;
-box-shadow:0 10px 30px rgba(0,0,0,.10);
-}
-
-.brand{
-font-size:13px;
-font-weight:800;
-letter-spacing:.08em;
-text-transform:uppercase;
-color:#1f4fbf;
-margin-bottom:10px;
-}
-
-h1{
-margin:0 0 8px 0;
-font-size:28px;
-line-height:1.15;
-}
-
-.subhead{
-margin:0 0 18px 0;
-color:#555;
-line-height:1.5;
-font-size:14px;
-}
-
-label{
-display:block;
-margin-top:12px;
-font-weight:700;
-font-size:13px;
-color:#333;
-}
-
-input{
-padding:10px;
-margin-top:6px;
-width:100%;
-border:1px solid #ccc;
-border-radius:10px;
-font-size:16px;
-box-sizing:border-box;
-}
-
-.utility-row{
-display:flex;
-justify-content:space-between;
-margin-top:8px;
-font-size:12px;
-color:#666;
-}
-
-.reset-link{
-font-weight:800;
-color:#2d7ef7;
-text-decoration:none;
-}
-
-.button-row{
-margin-top:18px;
-display:grid;
-gap:10px;
-}
-
-@media(min-width:640px){
-.button-row{grid-template-columns:1fr 1fr;}
-}
-
-.btn{
-padding:12px 14px;
-font-size:16px;
-border-radius:12px;
-border:none;
-cursor:pointer;
-font-weight:800;
-width:100%;
-}
-
+body{font-family:Arial,sans-serif;background:#f5f7fb;margin:0;padding:36px 16px;color:#222;}
+.container{max-width:720px;margin:auto;background:white;padding:28px;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.10);}
+.brand{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#1f4fbf;margin-bottom:10px;}
+h1{margin:0 0 8px 0;font-size:28px;line-height:1.15;}
+.subhead{margin:0 0 18px 0;color:#555;line-height:1.5;font-size:14px;}
+label{display:block;margin-top:12px;font-weight:700;font-size:13px;color:#333;}
+input{padding:10px;margin-top:6px;width:100%;border:1px solid #ccc;border-radius:10px;font-size:16px;box-sizing:border-box;}
+.utility-row{display:flex;justify-content:space-between;margin-top:8px;font-size:12px;color:#666;gap:10px;flex-wrap:wrap;}
+.reset-link{font-weight:800;color:#2d7ef7;text-decoration:none;}
+.button-row{margin-top:18px;display:grid;gap:10px;}
+@media(min-width:640px){.button-row{grid-template-columns:1fr 1fr;}}
+.btn{padding:12px 14px;font-size:16px;border-radius:12px;border:none;cursor:pointer;font-weight:800;width:100%;}
 .btn-primary{background:#2d7ef7;color:white;}
 .btn-primary:hover{background:#1c63cc;}
-
 .btn-secondary{background:#18a957;color:white;}
 .btn-secondary:hover{background:#128446;}
-
 .btn-facebook{background:#4267B2;color:white;}
 .btn-facebook:hover{background:#2f4f93;}
+#result{margin-top:16px;padding:14px;background:#f0f6ff;border:1px solid #d6e6ff;border-radius:12px;font-size:16px;font-weight:800;}
+#goalResult{margin-top:10px;padding:14px;background:#fff8e6;border:1px solid #ffe2a8;border-radius:12px;font-size:14px;font-weight:800;display:none;}
+#recommendation{margin-top:10px;padding:14px;background:#eefbf3;border:1px solid #ccefd8;border-radius:12px;font-size:14px;font-weight:800;display:none;}
+#confidence{margin-top:10px;padding:14px;border-radius:12px;font-size:14px;font-weight:900;display:none;}
+.help-line{margin-top:12px;font-size:14px;}
+.help-line a{color:#2d7ef7;font-weight:900;text-decoration:none;}
+.share-wrap{margin-top:16px;padding:14px;background:#f7f7f7;border:1px solid #e6e6e6;border-radius:12px;}
+.share-title{font-weight:900;margin-bottom:10px;}
+.share-buttons{display:grid;gap:10px;}
+@media(min-width:640px){.share-buttons{grid-template-columns:1fr 1fr;}}
+#comparison{display:none;margin-top:18px;background:#f7f7f7;padding:16px;border-radius:12px;border:1px solid #e3e3e3;}
+#comparison table{width:100%;border-collapse:collapse;}
+#comparison th,#comparison td{padding:10px 6px;border-bottom:1px solid #ddd;font-size:14px;}
+#comparison th:last-child,#comparison td:last-child{text-align:right;}
+.foot{margin-top:18px;font-size:12px;color:#666;}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#333;color:white;padding:10px 16px;border-radius:8px;font-size:14px;display:none;}
+.small-note{font-size:12px;color:#666;margin-top:6px;line-height:1.4;}
 
-#result{
-margin-top:16px;
-padding:14px;
-background:#f0f6ff;
-border:1px solid #d6e6ff;
-border-radius:12px;
-font-size:16px;
-font-weight:800;
+/* Assumptions accordion */
+details.assumptions{
+  margin-top:14px;
+  background:#ffffff;
+  border:1px solid #eee;
+  border-radius:12px;
+  padding:12px 14px;
 }
-
-.help-line{
-margin-top:12px;
-font-size:14px;
+details.assumptions summary{
+  cursor:pointer;
+  font-weight:900;
+  font-size:14px;
+  color:#222;
+  list-style:none;
 }
-
-.help-line a{
-color:#2d7ef7;
-font-weight:900;
-text-decoration:none;
+details.assumptions summary::-webkit-details-marker{display:none;}
+.assump-body{
+  margin-top:10px;
+  color:#444;
+  font-size:13px;
+  line-height:1.5;
 }
-
-.share-wrap{
-margin-top:16px;
-padding:14px;
-background:#f7f7f7;
-border:1px solid #e6e6e6;
-border-radius:12px;
+.assump-body code{
+  background:#f3f3f3;
+  padding:2px 6px;
+  border-radius:6px;
 }
-
-.share-title{
-font-weight:900;
-margin-bottom:10px;
+.assump-grid{
+  display:grid;
+  gap:10px;
+  margin-top:10px;
 }
-
-.share-buttons{
-display:grid;
-gap:10px;
+.assump-card{
+  background:#f7f7f7;
+  border:1px solid #e6e6e6;
+  border-radius:10px;
+  padding:10px 12px;
 }
-
-@media(min-width:640px){
-.share-buttons{grid-template-columns:1fr 1fr;}
+.assump-title{
+  font-weight:900;
+  margin-bottom:6px;
 }
-
-#comparison{
-display:none;
-margin-top:18px;
-background:#f7f7f7;
-padding:16px;
-border-radius:12px;
-border:1px solid #e3e3e3;
-}
-
-#comparison h3{margin-top:0;}
-
-#comparison table{
-width:100%;
-border-collapse:collapse;
-}
-
-#comparison th,#comparison td{
-padding:10px 6px;
-border-bottom:1px solid #ddd;
-font-size:14px;
-}
-
-#comparison th:last-child,
-#comparison td:last-child{
-text-align:right;
-}
-
-.toast{
-position:fixed;
-bottom:20px;
-left:50%;
-transform:translateX(-50%);
-background:#333;
-color:white;
-padding:10px 16px;
-border-radius:8px;
-font-size:14px;
-display:none;
-}
-
-.foot{
-margin-top:18px;
-font-size:12px;
-color:#666;
-}
-
 </style>
+
 </head>
 
 <body>
 
 <div class="container">
 
-<div class="brand">The PTO Playbook</div>
+  <div class="brand">The PTO Playbook</div>
 
-<h1>How Much Money Could Your School Fundraiser Raise?</h1>
+  <h1>How Much Money Could Your School Fundraiser Raise?</h1>
 
-<p class="subhead">
-A free planning tool to help PTO leaders estimate fundraising profit and compare popular school fundraisers.
-</p>
+  <p class="subhead">
+    A free planning tool to help PTO leaders estimate fundraising profit, set a goal, get a recommendation, and compare popular school fundraisers.
+  </p>
 
-<label>Number of Students</label>
-<input id="students" type="number" value="400">
+  <label>Number of Students</label>
+  <input id="students" type="number" value="400" min="0">
 
-<label>Participation Rate (%)</label>
-<input id="participation" type="number" value="60">
+  <label>Participation Rate (%)</label>
+  <input id="participation" type="number" value="60" min="0" max="100">
 
-<label>Average Donation per Participating Student ($)</label>
-<input id="donation" type="number" value="45">
+  <label>Average Donation per Participating Student ($)</label>
+  <input id="donation" type="number" value="45" min="0">
 
-<div class="utility-row">
-<div>Press <b>Enter</b> to calculate</div>
-<a href="#" class="reset-link" onclick="resetInputs();return false;">Reset inputs</a>
-</div>
+  <label>Fundraising Goal ($) <span style="font-weight:600;color:#666;">(optional)</span></label>
+  <input id="goal" type="number" value="" min="0" placeholder="e.g., 25000">
+  <div class="small-note">If you enter a goal, we’ll estimate the donation needed per participating student, show confidence, and suggest a fundraiser type.</div>
 
-<div class="button-row">
+  <div class="utility-row">
+    <div>Press <b>Enter</b> to calculate</div>
+    <a href="#" class="reset-link" onclick="resetInputs();return false;">Reset inputs</a>
+  </div>
 
-<button class="btn btn-primary" onclick="calculate()">Calculate</button>
+  <div class="button-row">
+    <button class="btn btn-primary" onclick="calculateAll()">Calculate</button>
+    <button class="btn btn-secondary" onclick="showComparison()">Compare Other Fundraisers</button>
+  </div>
 
-<button class="btn btn-secondary" onclick="showComparison()">Compare Other Fundraisers</button>
+  <div id="result">Enter your numbers and click Calculate.</div>
 
-</div>
+  <div id="goalResult"></div>
 
-<div id="result">Enter your numbers and click Calculate.</div>
+  <div id="confidence"></div>
 
-<div class="help-line">
-Want help running a fundraiser like this?
-<a href="mailto:Dean.Tielbur@ApexLeadershipCo.com">Contact us</a>.
-</div>
+  <div id="recommendation"></div>
 
-<div class="share-wrap">
+  <!-- Assumptions Accordion (collapsed by default) -->
+  <details class="assumptions">
+    <summary>Assumptions used for comparisons (click to expand)</summary>
+    <div class="assump-body">
+      The “Compare Other Fundraisers” table uses simple planning assumptions to estimate <b>net</b> results.
+      You can tune these later as you gather real data. Current assumptions:
 
-<div class="share-title">Share this tool with your PTO</div>
+      <div class="assump-grid">
 
-<div class="share-buttons">
+        <div class="assump-card">
+          <div class="assump-title">Fun Run (Managed Program)</div>
+          Uses your calculated <b>gross</b> estimate, then subtracts:
+          <ul style="margin:6px 0 0 18px;">
+            <li><code>3.5%</code> payment/processing estimate</li>
+            <li><code>50%</code> program split estimate</li>
+          </ul>
+        </div>
 
-<button class="btn btn-secondary" onclick="shareResult()">Copy Result to Share</button>
+        <div class="assump-card">
+          <div class="assump-title">Read-a-thon</div>
+          Uses your calculated <b>gross</b> estimate, then subtracts:
+          <ul style="margin:6px 0 0 18px;">
+            <li><code>3.5%</code> payment/processing estimate</li>
+            <li><code>10%</code> platform/program fee estimate</li>
+            <li><code>$100</code> fixed supplies/admin estimate</li>
+            <li><code>$0.50</code> per participating student (printing/admin)</li>
+          </ul>
+        </div>
 
-<button class="btn btn-facebook" onclick="shareFacebook()">Share on Facebook</button>
+        <div class="assump-card">
+          <div class="assump-title">Product Sale</div>
+          Uses your calculated <b>gross</b> estimate, then subtracts:
+          <ul style="margin:6px 0 0 18px;">
+            <li><code>2%</code> processing estimate</li>
+            <li><code>55%</code> product cost/margin estimate</li>
+          </ul>
+        </div>
 
-</div>
+        <div class="assump-card">
+          <div class="assump-title">Restaurant Night</div>
+          This row is a separate quick estimate:
+          <ul style="margin:6px 0 0 18px;">
+            <li><code>25%</code> of participating families attend</li>
+            <li><code>$18</code> average spend per attending family</li>
+            <li><code>20%</code> giveback rate</li>
+            <li><code>$50</code> fixed promo/materials estimate</li>
+          </ul>
+        </div>
 
-</div>
+      </div>
 
-<div id="comparison">
+      <div class="small-note" style="margin-top:10px;">
+        Tip: If you want this calculator to match your community more closely, adjust the input assumptions (participation and average donation),
+        then use the comparison results directionally—not as guarantees.
+      </div>
+    </div>
+  </details>
 
-<h3>Fundraiser Profit Comparison</h3>
+  <div class="help-line">
+    Want help running a fundraiser like this?
+    <a href="mailto:Dean.Tielbur@ApexLeadershipCo.com">Contact us</a>.
+  </div>
 
-<div id="comparisonContent"></div>
+  <div class="share-wrap">
+    <div class="share-title">Share this tool with your PTO</div>
+    <div class="share-buttons">
+      <button class="btn btn-secondary" onclick="shareResult()">Copy Result to Share</button>
+      <button class="btn btn-facebook" onclick="shareFacebook()">Share on Facebook</button>
+    </div>
+  </div>
 
-</div>
+  <div id="comparison">
+    <h3 style="margin-top:0;">Fundraiser Profit Comparison</h3>
+    <div id="comparisonContent"></div>
+  </div>
 
-<div class="foot">
-Built for PTO leaders by <b>The PTO Playbook</b>. Results are planning estimates.
-</div>
+  <div class="foot">
+    Built for PTO leaders by <b>The PTO Playbook</b>. Results are planning estimates—actual outcomes vary by school and community.
+  </div>
 
 </div>
 
 <div id="toast" class="toast"></div>
 
 <script>
-
-function money(n){
-return n.toLocaleString(undefined,{style:"currency",currency:"USD"});
-}
+function money(n){return n.toLocaleString(undefined,{style:"currency",currency:"USD"});}
 
 function getInputs(){
+  const students=parseFloat(document.getElementById("students").value||"0");
+  const participationPct=parseFloat(document.getElementById("participation").value||"0");
+  const donation=parseFloat(document.getElementById("donation").value||"0");
+  const goal=parseFloat(document.getElementById("goal").value||"0");
 
-const students=parseFloat(document.getElementById("students").value||"0");
-const participationPct=parseFloat(document.getElementById("participation").value||"0");
-const donation=parseFloat(document.getElementById("donation").value||"0");
+  const participation=Math.max(0,Math.min(1,participationPct/100));
+  const participants=students*participation;
+  const gross=participants*donation;
 
-const participation=Math.max(0,Math.min(1,participationPct/100));
-const participants=students*participation;
-const gross=participants*donation;
+  return{students,participationPct,participation,participants,donation,goal,gross};
+}
 
-return{participants,gross};
-
+function calculateAll(){
+  calculate();
+  calculateGoal();
+  calculateConfidence();
+  calculateRecommendation();
 }
 
 function calculate(){
+  const{gross}=getInputs();
+  document.getElementById("result").innerText=
+    `This fundraiser could raise approximately ${money(gross)}.`;
+}
 
-const{gross}=getInputs();
+function calculateGoal(){
+  const { goal, participants } = getInputs();
+  const goalBox = document.getElementById("goalResult");
 
-document.getElementById("result").innerText=
-`This fundraiser could raise approximately ${money(gross)}.`;
+  if(!goal || goal <= 0){
+    goalBox.style.display="none";
+    goalBox.innerText="";
+    return;
+  }
 
+  if(participants <= 0){
+    goalBox.style.display="block";
+    goalBox.innerText="To reach your goal, enter a student count and participation rate greater than 0.";
+    return;
+  }
+
+  const neededPerStudent = goal / participants;
+
+  goalBox.style.display="block";
+  goalBox.innerText = `To reach ${money(goal)}, you’d need about ${money(neededPerStudent)} per participating student (at your participation estimate).`;
+}
+
+function calculateConfidence(){
+  const { goal, participants, participationPct } = getInputs();
+  const box = document.getElementById("confidence");
+
+  if(!goal || goal <= 0){
+    box.style.display="none";
+    box.innerText="";
+    box.style.background="";
+    box.style.border="";
+    return;
+  }
+
+  if(participants <= 0){
+    box.style.display="none";
+    box.innerText="";
+    return;
+  }
+
+  const needed = goal / participants;
+
+  let level="Low";
+  let why=`Participation: ${participationPct.toFixed(0)}% • Needed per participating student: ${money(needed)}`;
+
+  if(participationPct >= 60 && needed <= 60){
+    level="High";
+    box.style.background="#eefbf3";
+    box.style.border="1px solid #ccefd8";
+  } else if(participationPct >= 45 && needed <= 90){
+    level="Medium";
+    box.style.background="#fff8e6";
+    box.style.border="1px solid #ffe2a8";
+  } else {
+    level="Low";
+    box.style.background="#ffecec";
+    box.style.border="1px solid #ffc9c9";
+  }
+
+  box.style.display="block";
+  box.innerText = `Confidence: ${level} — ${why}`;
+}
+
+function calculateRecommendation(){
+  const { goal, participants, students } = getInputs();
+  const recBox = document.getElementById("recommendation");
+
+  if(!goal || goal <= 0){
+    recBox.style.display="none";
+    recBox.innerText="";
+    return;
+  }
+
+  let rec="";
+  if(goal >= 20000){
+    rec="Recommendation: For a goal this size, most schools choose a participation-based main event (like a Fun Run / fitness event) rather than a restaurant night or product sale.";
+  } else if(goal >= 8000){
+    rec="Recommendation: For a mid-sized goal, a Read-a-thon or participation-based event often performs better than product sales (less volunteer workload, cleaner logistics).";
+  } else {
+    rec="Recommendation: For a smaller goal, a restaurant spirit night or simple donation drive can work well—especially if you want something quick and low effort.";
+  }
+
+  if(students > 0 && students < 300 && goal >= 20000){
+    rec += " Note: For smaller schools, hitting a large goal usually requires exceptionally strong participation + average donation, so set expectations early.";
+  }
+
+  if(participants > 0 && goal > 0){
+    const needed = goal / participants;
+    if(needed >= 100){
+      rec += " Your goal-to-participation ratio suggests you'll need a higher-than-average donation per student—focus on participation first and keep messaging simple.";
+    }
+  }
+
+  recBox.style.display="block";
+  recBox.innerText=rec;
 }
 
 function computeModels(){
+  const{participants,gross}=getInputs();
 
-const{participants,gross}=getInputs();
+  const models=[
+    {name:"Fun Run (Managed Program)",platformFeePct:.035,programFeePct:.50,fixedCost:0,variable:0,gross:gross},
+    {name:"Read-a-thon",platformFeePct:.035,programFeePct:.10,fixedCost:100,variable:participants*.5,gross:gross},
+    {name:"Product Sale",platformFeePct:.02,programFeePct:.55,fixedCost:0,variable:0,gross:gross},
+    {name:"Restaurant Night",platformFeePct:0,programFeePct:0,fixedCost:50,variable:0,gross:(participants*.25)*18*.20}
+  ];
 
-const models=[
-
-{name:"Fun Run (Managed Program)",platformFeePct:.035,programFeePct:.50,fixedCost:0,variable:0,gross:gross},
-
-{name:"Read-a-thon",platformFeePct:.035,programFeePct:.10,fixedCost:100,variable:participants*.5,gross:gross},
-
-{name:"Product Sale",platformFeePct:.02,programFeePct:.55,fixedCost:0,variable:0,gross:gross},
-
-{name:"Restaurant Night",platformFeePct:0,programFeePct:0,fixedCost:50,variable:0,gross:(participants*.25)*18*.20}
-
-];
-
-return models.map(m=>{
-
-const fees=m.gross*(m.platformFeePct+m.programFeePct);
-const net=m.gross-fees-m.fixedCost-m.variable;
-
-return{name:m.name,gross:m.gross,net:net};
-
-}).sort((a,b)=>b.net-a.net);
-
+  return models.map(m=>{
+    const fees=m.gross*(m.platformFeePct+m.programFeePct);
+    const net=m.gross-fees-m.fixedCost-m.variable;
+    return{name:m.name,gross:m.gross,net:net};
+  }).sort((a,b)=>b.net-a.net);
 }
 
 function showComparison(){
+  const rows=computeModels();
+  const tableRows=rows.map(r=>`
+    <tr>
+      <td>${r.name}</td>
+      <td>${money(Math.max(0,r.gross))}</td>
+      <td><strong>${money(Math.max(0,r.net))}</strong></td>
+    </tr>`).join("");
 
-const rows=computeModels();
+  document.getElementById("comparisonContent").innerHTML=`
+    <table>
+      <tr>
+        <th>Fundraiser</th>
+        <th>Gross</th>
+        <th>Estimated Net</th>
+      </tr>
+      ${tableRows}
+    </table>
+    <div style="margin-top:10px;font-size:12px;color:#666;line-height:1.4;">
+      Estimates based on typical fundraising models. Actual results vary by school.
+    </div>
+  `;
 
-const tableRows=rows.map(r=>`
-<tr>
-<td>${r.name}</td>
-<td>${money(Math.max(0,r.gross))}</td>
-<td><strong>${money(Math.max(0,r.net))}</strong></td>
-</tr>`).join("");
-
-document.getElementById("comparisonContent").innerHTML=`
-<table>
-<tr>
-<th>Fundraiser</th>
-<th>Gross</th>
-<th>Estimated Net</th>
-</tr>
-${tableRows}
-</table>
-`;
-
-document.getElementById("comparison").style.display="block";
-
+  document.getElementById("comparison").style.display="block";
 }
 
-function shareResult(){
+function buildShareMessage(){
+  const resultText=document.getElementById("result").innerText;
 
-const resultText=document.getElementById("result").innerText;
+  const goalBox=document.getElementById("goalResult");
+  const goalText=(goalBox.style.display==="block" && goalBox.innerText) ? ("\n\n" + goalBox.innerText) : "";
 
-const message=`${resultText}
+  const confBox=document.getElementById("confidence");
+  const confText=(confBox.style.display==="block" && confBox.innerText) ? ("\n\n" + confBox.innerText) : "";
+
+  const recBox=document.getElementById("recommendation");
+  const recText=(recBox.style.display==="block" && recBox.innerText) ? ("\n\n" + recBox.innerText) : "";
+
+  return `${resultText}${goalText}${confText}${recText}
 
 Free School Fundraiser Profit Calculator from The PTO Playbook
 
 https://school-fundraiser-calculator.pages.dev`;
+}
 
-navigator.clipboard.writeText(message);
-
-showToast("Copied! Paste it into Facebook or email.");
-
+function shareResult(){
+  const message=buildShareMessage();
+  navigator.clipboard.writeText(message);
+  showToast("Copied! Paste it into Facebook or email.");
 }
 
 function shareFacebook(){
-
-const resultText=document.getElementById("result").innerText;
-
-const text=encodeURIComponent(`${resultText}
-
-Free School Fundraiser Profit Calculator from The PTO Playbook`);
-
-const url=encodeURIComponent("https://school-fundraiser-calculator.pages.dev");
-
-window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${text}`,"_blank");
-
+  const message=buildShareMessage();
+  const text=encodeURIComponent(message.replace("\n\nhttps://school-fundraiser-calculator.pages.dev",""));
+  const url=encodeURIComponent("https://school-fundraiser-calculator.pages.dev");
+  window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${text}`,"_blank");
 }
 
 function resetInputs(){
+  document.getElementById("students").value=400;
+  document.getElementById("participation").value=60;
+  document.getElementById("donation").value=45;
+  document.getElementById("goal").value="";
 
-document.getElementById("students").value=400;
-document.getElementById("participation").value=60;
-document.getElementById("donation").value=45;
+  document.getElementById("result").innerText="Enter your numbers and click Calculate.";
+  document.getElementById("comparison").style.display="none";
 
-document.getElementById("result").innerText="Enter your numbers and click Calculate.";
-document.getElementById("comparison").style.display="none";
-
+  ["goalResult","confidence","recommendation"].forEach(id=>{
+    const el=document.getElementById(id);
+    el.style.display="none";
+    el.innerText="";
+  });
 }
 
 function showToast(msg){
-
-const toast=document.getElementById("toast");
-toast.innerText=msg;
-toast.style.display="block";
-
-setTimeout(()=>{toast.style.display="none";},2500);
-
+  const toast=document.getElementById("toast");
+  toast.innerText=msg;
+  toast.style.display="block";
+  setTimeout(()=>{toast.style.display="none";},2500);
 }
 
 document.addEventListener("keydown",function(e){
-
-if(e.key==="Enter"){
-calculate();
-}
-
+  if(e.key==="Enter"){
+    const active=document.activeElement;
+    if(active && (active.tagName==="INPUT")){
+      e.preventDefault();
+      calculateAll();
+    }
+  }
 });
 
+["students","participation","donation","goal"].forEach(id=>{
+  document.getElementById(id).addEventListener("input",()=>{
+    const current=document.getElementById("result").innerText;
+    if(current.includes("approximately")){
+      calculateAll();
+    }
+  });
+});
 </script>
 
 </body>
