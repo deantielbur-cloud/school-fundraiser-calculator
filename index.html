@@ -7,7 +7,7 @@
 
 <title>School Fundraiser Profit Calculator | The PTO Playbook</title>
 
-<meta name="description" content="Free school fundraiser profit calculator from The PTO Playbook. Estimate how much your PTO fundraiser could raise based on participation and average donations. Set a goal, get recommendations, compare fundraisers, and share results.">
+<meta name="description" content="Free school fundraiser profit calculator from The PTO Playbook. Estimate how much your PTO fundraiser could raise, set a goal, get recommendations, compare fundraisers, and share results.">
 
 <style>
 body{font-family:Arial,sans-serif;background:#f5f7fb;margin:0;padding:36px 16px;color:#222;}
@@ -46,45 +46,45 @@ input{padding:10px;margin-top:6px;width:100%;border:1px solid #ccc;border-radius
 .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#333;color:white;padding:10px 16px;border-radius:8px;font-size:14px;display:none;}
 .small-note{font-size:12px;color:#666;margin-top:6px;line-height:1.4;}
 
-/* Assumptions accordion */
-details.assumptions{
+/* Accordion (How-to + Assumptions) */
+details.accordion{
   margin-top:14px;
   background:#ffffff;
   border:1px solid #eee;
   border-radius:12px;
   padding:12px 14px;
 }
-details.assumptions summary{
+details.accordion summary{
   cursor:pointer;
   font-weight:900;
   font-size:14px;
   color:#222;
   list-style:none;
 }
-details.assumptions summary::-webkit-details-marker{display:none;}
-.assump-body{
+details.accordion summary::-webkit-details-marker{display:none;}
+.acc-body{
   margin-top:10px;
   color:#444;
   font-size:13px;
   line-height:1.5;
 }
-.assump-body code{
+.acc-body code{
   background:#f3f3f3;
   padding:2px 6px;
   border-radius:6px;
 }
-.assump-grid{
+.acc-grid{
   display:grid;
   gap:10px;
   margin-top:10px;
 }
-.assump-card{
+.acc-card{
   background:#f7f7f7;
   border:1px solid #e6e6e6;
   border-radius:10px;
   padding:10px 12px;
 }
-.assump-title{
+.acc-title{
   font-weight:900;
   margin-bottom:6px;
 }
@@ -135,17 +135,34 @@ details.assumptions summary::-webkit-details-marker{display:none;}
 
   <div id="recommendation"></div>
 
-  <!-- Assumptions Accordion (collapsed by default) -->
-  <details class="assumptions">
+  <!-- How-to Accordion -->
+  <details class="accordion">
+    <summary>How to use this calculator (click to expand)</summary>
+    <div class="acc-body">
+      <ol style="margin:6px 0 0 18px;">
+        <li>Enter your <b>student count</b>.</li>
+        <li>Estimate your <b>participation rate</b> (how many students will actively participate).</li>
+        <li>Enter an <b>average donation per participating student</b> (start with a conservative guess).</li>
+        <li>Optional: enter a <b>fundraising goal</b> to see the estimated donation needed per participating student.</li>
+        <li>Click <b>Compare Other Fundraisers</b> to see directional net comparisons using typical assumptions.</li>
+      </ol>
+      <div class="small-note" style="margin-top:10px;">
+        Pro tip: If your results feel too high or low, adjust the participation rate and average donation until it matches what you believe is realistic for your community.
+      </div>
+    </div>
+  </details>
+
+  <!-- Assumptions Accordion -->
+  <details class="accordion">
     <summary>Assumptions used for comparisons (click to expand)</summary>
-    <div class="assump-body">
+    <div class="acc-body">
       The “Compare Other Fundraisers” table uses simple planning assumptions to estimate <b>net</b> results.
       You can tune these later as you gather real data. Current assumptions:
 
-      <div class="assump-grid">
+      <div class="acc-grid">
 
-        <div class="assump-card">
-          <div class="assump-title">Fun Run (Managed Program)</div>
+        <div class="acc-card">
+          <div class="acc-title">Fun Run (Managed Program)</div>
           Uses your calculated <b>gross</b> estimate, then subtracts:
           <ul style="margin:6px 0 0 18px;">
             <li><code>3.5%</code> payment/processing estimate</li>
@@ -153,8 +170,8 @@ details.assumptions summary::-webkit-details-marker{display:none;}
           </ul>
         </div>
 
-        <div class="assump-card">
-          <div class="assump-title">Read-a-thon</div>
+        <div class="acc-card">
+          <div class="acc-title">Read-a-thon</div>
           Uses your calculated <b>gross</b> estimate, then subtracts:
           <ul style="margin:6px 0 0 18px;">
             <li><code>3.5%</code> payment/processing estimate</li>
@@ -164,8 +181,8 @@ details.assumptions summary::-webkit-details-marker{display:none;}
           </ul>
         </div>
 
-        <div class="assump-card">
-          <div class="assump-title">Product Sale</div>
+        <div class="acc-card">
+          <div class="acc-title">Product Sale</div>
           Uses your calculated <b>gross</b> estimate, then subtracts:
           <ul style="margin:6px 0 0 18px;">
             <li><code>2%</code> processing estimate</li>
@@ -173,8 +190,8 @@ details.assumptions summary::-webkit-details-marker{display:none;}
           </ul>
         </div>
 
-        <div class="assump-card">
-          <div class="assump-title">Restaurant Night</div>
+        <div class="acc-card">
+          <div class="acc-title">Restaurant Night</div>
           This row is a separate quick estimate:
           <ul style="margin:6px 0 0 18px;">
             <li><code>25%</code> of participating families attend</li>
@@ -187,8 +204,7 @@ details.assumptions summary::-webkit-details-marker{display:none;}
       </div>
 
       <div class="small-note" style="margin-top:10px;">
-        Tip: If you want this calculator to match your community more closely, adjust the input assumptions (participation and average donation),
-        then use the comparison results directionally—not as guarantees.
+        Tip: Use comparisons directionally—not as guarantees. Your community may perform above or below these assumptions.
       </div>
     </div>
   </details>
@@ -433,6 +449,8 @@ function resetInputs(){
     const el=document.getElementById(id);
     el.style.display="none";
     el.innerText="";
+    el.style.background="";
+    el.style.border="";
   });
 }
 
