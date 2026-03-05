@@ -91,8 +91,44 @@
     </div>
 
     <button onclick="calculate()">Calculate</button>
+    <button onclick="showComparison()" style="background:#4CAF50;">
+Compare Other Fundraisers
+</button>
 
     <div id="result">Enter your numbers and click Calculate.</div>
+    <div id="comparison" style="display:none; margin-top:20px; text-align:left;">
+
+<h3>Estimated Fundraiser Comparison</h3>
+
+<table style="width:100%; border-collapse:collapse;">
+<tr>
+<th style="text-align:left; border-bottom:1px solid #ccc;">Fundraiser</th>
+<th style="text-align:right; border-bottom:1px solid #ccc;">Typical Profit</th>
+</tr>
+
+<tr>
+<td>Fun Run</td>
+<td style="text-align:right;">$18,000 – $40,000</td>
+</tr>
+
+<tr>
+<td>Read-a-thon</td>
+<td style="text-align:right;">$10,000 – $25,000</td>
+</tr>
+
+<tr>
+<td>Restaurant Night</td>
+<td style="text-align:right;">$1,000 – $5,000</td>
+</tr>
+
+<tr>
+<td>Product Sale</td>
+<td style="text-align:right;">$5,000 – $15,000</td>
+</tr>
+
+</table>
+
+</div>
     <div style="margin-top:16px; font-size:14px;">
   Want help running a fundraiser like this? 
   <a href="mailto:Dean.Tielbur@ApexLeadershipCo.com" style="color:#2d7ef7; font-weight:bold;">
@@ -124,3 +160,7 @@
   </div>
 </body>
 </html>
+
+function showComparison() {
+  document.getElementById("comparison").style.display = "block";
+}
