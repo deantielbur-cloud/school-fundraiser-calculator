@@ -16,7 +16,7 @@ body{font-family:Arial,sans-serif;background:#f5f7fb;margin:0;padding:36px 16px;
 h1{margin:0 0 8px 0;font-size:28px;line-height:1.15;}
 .subhead{margin:0 0 18px 0;color:#555;line-height:1.5;font-size:14px;}
 label{display:block;margin-top:12px;font-weight:700;font-size:13px;color:#333;}
-input{padding:10px;margin-top:6px;width:100%;border:1px solid #ccc;border-radius:10px;font-size:16px;box-sizing:border-box;}
+input,select{padding:10px;margin-top:6px;width:100%;border:1px solid #ccc;border-radius:10px;font-size:16px;box-sizing:border-box;background:#fff;}
 .utility-row{display:flex;justify-content:space-between;margin-top:8px;font-size:12px;color:#666;gap:10px;flex-wrap:wrap;}
 .reset-link{font-weight:800;color:#2d7ef7;text-decoration:none;}
 .button-row{margin-top:18px;display:grid;gap:10px;}
@@ -32,8 +32,6 @@ input{padding:10px;margin-top:6px;width:100%;border:1px solid #ccc;border-radius
 #goalResult{margin-top:10px;padding:14px;background:#fff8e6;border:1px solid #ffe2a8;border-radius:12px;font-size:14px;font-weight:800;display:none;}
 #recommendation{margin-top:10px;padding:14px;background:#eefbf3;border:1px solid #ccefd8;border-radius:12px;font-size:14px;font-weight:800;display:none;}
 #confidence{margin-top:10px;padding:14px;border-radius:12px;font-size:14px;font-weight:900;display:none;}
-.help-line{margin-top:12px;font-size:14px;}
-.help-line a{color:#2d7ef7;font-weight:900;text-decoration:none;}
 .share-wrap{margin-top:16px;padding:14px;background:#f7f7f7;border:1px solid #e6e6e6;border-radius:12px;}
 .share-title{font-weight:900;margin-bottom:10px;}
 .share-buttons{display:grid;gap:10px;}
@@ -42,52 +40,23 @@ input{padding:10px;margin-top:6px;width:100%;border:1px solid #ccc;border-radius
 #comparison table{width:100%;border-collapse:collapse;}
 #comparison th,#comparison td{padding:10px 6px;border-bottom:1px solid #ddd;font-size:14px;}
 #comparison th:last-child,#comparison td:last-child{text-align:right;}
-.foot{margin-top:18px;font-size:12px;color:#666;}
+.foot{margin-top:18px;font-size:12px;color:#666;line-height:1.5;}
 .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#333;color:white;padding:10px 16px;border-radius:8px;font-size:14px;display:none;}
 .small-note{font-size:12px;color:#666;margin-top:6px;line-height:1.4;}
 
-/* Accordion (How-to + Assumptions) */
-details.accordion{
-  margin-top:14px;
-  background:#ffffff;
-  border:1px solid #eee;
-  border-radius:12px;
-  padding:12px 14px;
-}
-details.accordion summary{
-  cursor:pointer;
-  font-weight:900;
-  font-size:14px;
-  color:#222;
-  list-style:none;
-}
+/* Accordion */
+details.accordion{margin-top:14px;background:#ffffff;border:1px solid #eee;border-radius:12px;padding:12px 14px;}
+details.accordion summary{cursor:pointer;font-weight:900;font-size:14px;color:#222;list-style:none;}
 details.accordion summary::-webkit-details-marker{display:none;}
-.acc-body{
-  margin-top:10px;
-  color:#444;
-  font-size:13px;
-  line-height:1.5;
-}
-.acc-body code{
-  background:#f3f3f3;
-  padding:2px 6px;
-  border-radius:6px;
-}
-.acc-grid{
-  display:grid;
-  gap:10px;
-  margin-top:10px;
-}
-.acc-card{
-  background:#f7f7f7;
-  border:1px solid #e6e6e6;
-  border-radius:10px;
-  padding:10px 12px;
-}
-.acc-title{
-  font-weight:900;
-  margin-bottom:6px;
-}
+.acc-body{margin-top:10px;color:#444;font-size:13px;line-height:1.5;}
+.acc-grid{display:grid;gap:10px;margin-top:10px;}
+.acc-card{background:#f7f7f7;border:1px solid #e6e6e6;border-radius:10px;padding:10px 12px;}
+.acc-title{font-weight:900;margin-bottom:6px;}
+
+/* Lead form */
+.lead-box{margin-top:14px;padding:14px;background:#f7f7f7;border:1px solid #e6e6e6;border-radius:12px;}
+.lead-title{font-weight:900;margin-bottom:6px;}
+.lead-sub{font-size:13px;color:#555;line-height:1.4;margin-bottom:10px;}
 </style>
 
 </head>
@@ -130,10 +99,59 @@ details.accordion summary::-webkit-details-marker{display:none;}
   <div id="result">Enter your numbers and click Calculate.</div>
 
   <div id="goalResult"></div>
-
   <div id="confidence"></div>
-
   <div id="recommendation"></div>
+
+  <!-- Lead Form -->
+  <div class="lead-box">
+    <div class="lead-title">Want a simple plan to hit your goal?</div>
+    <div class="lead-sub">
+      Fill this out and click send — it drafts an email to Dean with your calculator numbers included.
+      No pressure and no spam.
+    </div>
+
+    <div style="display:grid;gap:10px;">
+      <div>
+        <label style="margin-top:0;">Your Name</label>
+        <input id="leadName" type="text" placeholder="e.g., Jamie Smith">
+      </div>
+
+      <div>
+        <label>School Name</label>
+        <input id="leadSchool" type="text" placeholder="e.g., Lincoln Elementary">
+      </div>
+
+      <div>
+        <label>Your Role</label>
+        <select id="leadRoleSelect" onchange="toggleOtherRole()">
+          <option value="">Select one…</option>
+          <option value="PTO President">PTO President</option>
+          <option value="PTO Treasurer">PTO Treasurer</option>
+          <option value="PTO Secretary">PTO Secretary</option>
+          <option value="PTO Volunteer">PTO Volunteer</option>
+          <option value="Principal">Principal</option>
+          <option value="Teacher">Teacher</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div id="leadRoleOtherWrap" style="display:none;">
+        <label style="margin-top:0;">Type your role</label>
+        <input id="leadRoleOther" type="text" placeholder="e.g., PTA VP, School Admin, Parent Liaison">
+      </div>
+
+      <button class="btn btn-primary" onclick="emailPlanFromForm()">
+        Yes — send me a simple plan
+      </button>
+
+      <div class="small-note">
+        Prefer to email directly?
+        <a href="mailto:Dean.Tielbur@ApexLeadershipCo.com" style="color:#2d7ef7;font-weight:900;text-decoration:none;">
+          Dean.Tielbur@ApexLeadershipCo.com
+        </a>
+      </div>
+    </div>
+  </div>
 
   <!-- How-to Accordion -->
   <details class="accordion">
@@ -141,13 +159,13 @@ details.accordion summary::-webkit-details-marker{display:none;}
     <div class="acc-body">
       <ol style="margin:6px 0 0 18px;">
         <li>Enter your <b>student count</b>.</li>
-        <li>Estimate your <b>participation rate</b> (how many students will actively participate).</li>
-        <li>Enter an <b>average donation per participating student</b> (start with a conservative guess).</li>
-        <li>Optional: enter a <b>fundraising goal</b> to see the estimated donation needed per participating student.</li>
-        <li>Click <b>Compare Other Fundraisers</b> to see directional net comparisons using typical assumptions.</li>
+        <li>Estimate your <b>participation rate</b>.</li>
+        <li>Enter an <b>average donation per participating student</b> (start conservative).</li>
+        <li>Optional: enter a <b>fundraising goal</b> to see the donation needed per participating student.</li>
+        <li>Click <b>Compare Other Fundraisers</b> for directional comparisons.</li>
       </ol>
       <div class="small-note" style="margin-top:10px;">
-        Pro tip: If your results feel too high or low, adjust the participation rate and average donation until it matches what you believe is realistic for your community.
+        Pro tip: If results feel too high/low, tweak participation and average donation to match your community.
       </div>
     </div>
   </details>
@@ -157,7 +175,6 @@ details.accordion summary::-webkit-details-marker{display:none;}
     <summary>Assumptions used for comparisons (click to expand)</summary>
     <div class="acc-body">
       The “Compare Other Fundraisers” table uses simple planning assumptions to estimate <b>net</b> results.
-      You can tune these later as you gather real data. Current assumptions:
 
       <div class="acc-grid">
 
@@ -165,8 +182,8 @@ details.accordion summary::-webkit-details-marker{display:none;}
           <div class="acc-title">Fun Run (Managed Program)</div>
           Uses your calculated <b>gross</b> estimate, then subtracts:
           <ul style="margin:6px 0 0 18px;">
-            <li><code>3.5%</code> payment/processing estimate</li>
-            <li><code>50%</code> program split estimate</li>
+            <li><b>3.5%</b> processing estimate</li>
+            <li><b>50%</b> program split estimate</li>
           </ul>
         </div>
 
@@ -174,10 +191,10 @@ details.accordion summary::-webkit-details-marker{display:none;}
           <div class="acc-title">Read-a-thon</div>
           Uses your calculated <b>gross</b> estimate, then subtracts:
           <ul style="margin:6px 0 0 18px;">
-            <li><code>3.5%</code> payment/processing estimate</li>
-            <li><code>10%</code> platform/program fee estimate</li>
-            <li><code>$100</code> fixed supplies/admin estimate</li>
-            <li><code>$0.50</code> per participating student (printing/admin)</li>
+            <li><b>3.5%</b> processing estimate</li>
+            <li><b>10%</b> platform/program fee estimate</li>
+            <li><b>$100</b> fixed supplies/admin</li>
+            <li><b>$0.50</b> per participating student</li>
           </ul>
         </div>
 
@@ -185,34 +202,29 @@ details.accordion summary::-webkit-details-marker{display:none;}
           <div class="acc-title">Product Sale</div>
           Uses your calculated <b>gross</b> estimate, then subtracts:
           <ul style="margin:6px 0 0 18px;">
-            <li><code>2%</code> processing estimate</li>
-            <li><code>55%</code> product cost/margin estimate</li>
+            <li><b>2%</b> processing estimate</li>
+            <li><b>55%</b> product cost/margin estimate</li>
           </ul>
         </div>
 
         <div class="acc-card">
           <div class="acc-title">Restaurant Night</div>
-          This row is a separate quick estimate:
+          Separate estimate:
           <ul style="margin:6px 0 0 18px;">
-            <li><code>25%</code> of participating families attend</li>
-            <li><code>$18</code> average spend per attending family</li>
-            <li><code>20%</code> giveback rate</li>
-            <li><code>$50</code> fixed promo/materials estimate</li>
+            <li><b>25%</b> attendance of participating families</li>
+            <li><b>$18</b> average spend</li>
+            <li><b>20%</b> giveback rate</li>
+            <li><b>$50</b> fixed promo/materials</li>
           </ul>
         </div>
 
       </div>
 
       <div class="small-note" style="margin-top:10px;">
-        Tip: Use comparisons directionally—not as guarantees. Your community may perform above or below these assumptions.
+        Tip: Use comparisons directionally—not as guarantees.
       </div>
     </div>
   </details>
-
-  <div class="help-line">
-    Want help running a fundraiser like this?
-    <a href="mailto:Dean.Tielbur@ApexLeadershipCo.com">Contact us</a>.
-  </div>
 
   <div class="share-wrap">
     <div class="share-title">Share this tool with your PTO</div>
@@ -290,17 +302,11 @@ function calculateConfidence(){
   const { goal, participants, participationPct } = getInputs();
   const box = document.getElementById("confidence");
 
-  if(!goal || goal <= 0){
+  if(!goal || goal <= 0 || participants <= 0){
     box.style.display="none";
     box.innerText="";
     box.style.background="";
     box.style.border="";
-    return;
-  }
-
-  if(participants <= 0){
-    box.style.display="none";
-    box.innerText="";
     return;
   }
 
@@ -436,11 +442,67 @@ function shareFacebook(){
   window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${text}`,"_blank");
 }
 
+function toggleOtherRole(){
+  const sel=document.getElementById("leadRoleSelect").value;
+  const wrap=document.getElementById("leadRoleOtherWrap");
+  if(sel==="Other"){
+    wrap.style.display="block";
+  } else {
+    wrap.style.display="none";
+    document.getElementById("leadRoleOther").value="";
+  }
+}
+
+function emailPlanFromForm(){
+  const { students, participationPct, donation, goal, gross } = getInputs();
+
+  const name=(document.getElementById("leadName").value||"").trim();
+  const school=(document.getElementById("leadSchool").value||"").trim();
+
+  const roleSel=(document.getElementById("leadRoleSelect").value||"").trim();
+  const roleOther=(document.getElementById("leadRoleOther").value||"").trim();
+  const role = (roleSel==="Other") ? roleOther : roleSel;
+
+  const subject=encodeURIComponent("PTO Fundraiser Plan Request (Calculator Results)");
+
+  const lines=[];
+  lines.push("Hi Dean,");
+  lines.push("");
+  lines.push("I used The PTO Playbook calculator and would love a simple plan based on our numbers.");
+  lines.push("");
+
+  if(name) lines.push(`Name: ${name}`);
+  if(school) lines.push(`School: ${school}`);
+  if(role) lines.push(`Role: ${role}`);
+  if(name || school || role) lines.push("");
+
+  lines.push("Calculator inputs:");
+  lines.push(`- Students: ${students}`);
+  lines.push(`- Participation estimate: ${participationPct}%`);
+  lines.push(`- Avg donation per participating student: $${donation}`);
+  if(goal && goal > 0) lines.push(`- Fundraising goal: $${goal.toLocaleString()}`);
+  lines.push(`- Calculator gross estimate: ${money(gross)}`);
+  lines.push("");
+  lines.push("Can you recommend the best fundraiser type and a simple timeline/checklist to hit our goal?");
+  lines.push("");
+  lines.push("Thanks!");
+
+  const body=encodeURIComponent(lines.join("\n"));
+
+  window.location.href=`mailto:Dean.Tielbur@ApexLeadershipCo.com?subject=${subject}&body=${body}`;
+}
+
 function resetInputs(){
   document.getElementById("students").value=400;
   document.getElementById("participation").value=60;
   document.getElementById("donation").value=45;
   document.getElementById("goal").value="";
+
+  document.getElementById("leadName").value="";
+  document.getElementById("leadSchool").value="";
+  document.getElementById("leadRoleSelect").value="";
+  document.getElementById("leadRoleOther").value="";
+  document.getElementById("leadRoleOtherWrap").style.display="none";
 
   document.getElementById("result").innerText="Enter your numbers and click Calculate.";
   document.getElementById("comparison").style.display="none";
