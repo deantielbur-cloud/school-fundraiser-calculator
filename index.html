@@ -78,21 +78,22 @@ details.accordion summary::-webkit-details-marker{display:none;}
 
   <div class="row-2">
     <div>
-      <label>Fundraiser Style</label>
+      <label>Fundraiser Type</label>
       <select id="fundraiserStyle" onchange="applyStyleDefaults()">
-        <option value="event">Event Fundraiser (Fun Run / Dance / Big Event)</option>
-        <option value="typical" selected>Typical PTO Fundraiser (Conservative Estimate)</option>
+        <option value="apex" selected>Apex-Managed Event</option>
+        <option value="diy">DIY Event</option>
+        <option value="typical">Typical PTO Fundraiser</option>
       </select>
-      <div class="small-note">This sets realistic starting assumptions. You can still change participation and average donation below.</div>
+      <div class="small-note">This sets a realistic starting point. You can still change participation and average donation below.</div>
     </div>
 
     <div>
-      <label>Includes on-campus team + incentives?</label>
-      <select id="programIncludes" onchange="maybeRecalcOnToggle()">
-        <option value="yes" selected>Yes (coaches/athletes, prizes, wearables, classroom materials)</option>
-        <option value="no">No (DIY / minimal program support)</option>
+      <label>Comparison Baseline</label>
+      <select id="comparisonMode" onchange="maybeRecalcOnToggle()">
+        <option value="selected" selected>Use selected fundraiser type as baseline</option>
+        <option value="apex">Always compare against Apex-managed event baseline</option>
       </select>
-      <div class="small-note">Program quality often changes outcomes. This helps comparisons feel more realistic.</div>
+      <div class="small-note">This controls how the comparison table is anchored.</div>
     </div>
   </div>
 
@@ -100,10 +101,10 @@ details.accordion summary::-webkit-details-marker{display:none;}
   <input id="students" type="number" value="400" min="0">
 
   <label>Participation Rate (%)</label>
-  <input id="participation" type="number" value="60" min="0" max="100">
+  <input id="participation" type="number" value="50" min="0" max="100">
 
   <label>Average Donation per Participating Student ($)</label>
-  <input id="donation" type="number" value="45" min="0">
+  <input id="donation" type="number" value="250" min="0">
 
   <label>Fundraising Goal ($) <span style="font-weight:600;color:#666;">(optional)</span></label>
   <input id="goal" type="number" value="" min="0" placeholder="e.g., 25000">
@@ -125,7 +126,6 @@ details.accordion summary::-webkit-details-marker{display:none;}
   <div id="confidence"></div>
   <div id="recommendation"></div>
 
-  <!-- Lead Form -->
   <div class="lead-box">
     <div class="lead-title">Want a simple plan to hit your goal?</div>
     <div class="lead-sub">
@@ -176,24 +176,21 @@ details.accordion summary::-webkit-details-marker{display:none;}
     </div>
   </div>
 
-  <!-- How-to Accordion -->
   <details class="accordion">
     <summary>How to use this calculator (click to expand)</summary>
     <div class="acc-body">
       <ol style="margin:6px 0 0 18px;">
-        <li>Pick a <b>Fundraiser Style</b> for a realistic starting point.</li>
-        <li>Choose whether the program includes an <b>on-campus team + incentives</b>.</li>
+        <li>Choose a fundraiser type: <b>Apex-managed</b>, <b>DIY event</b>, or <b>Typical PTO</b>.</li>
         <li>Enter students, participation, and average donation.</li>
         <li>Optional: enter a goal to see the donation needed per participating student.</li>
         <li>Click <b>Compare Other Fundraisers</b> for directional comparisons.</li>
       </ol>
       <div class="small-note" style="margin-top:10px;">
-        Pro tip: If results feel too high/low, tweak participation and average donation to match your community.
+        Pro tip: Apex-managed events typically raise much more than DIY, so starting with the right baseline matters.
       </div>
     </div>
   </details>
 
-  <!-- Assumptions Accordion -->
   <details class="accordion">
     <summary>Assumptions used for comparisons (click to expand)</summary>
     <div class="acc-body">
@@ -203,32 +200,32 @@ details.accordion summary::-webkit-details-marker{display:none;}
       <div class="acc-grid">
 
         <div class="acc-card">
-          <div class="acc-title">What “on-campus team + incentives” usually includes</div>
+          <div class="acc-title">What Apex-style programs usually include</div>
           <ul style="margin:6px 0 0 18px;">
-            <li>Student wearables / event shirts</li>
+            <li>Event wearables / shirts</li>
             <li>Leadership lessons / classroom materials</li>
-            <li>On-campus coaches/athletes running the program</li>
-            <li>Prizes, incentives, recognition</li>
-            <li>Event-day production + logistics support</li>
+            <li>On-campus athletes/coaches</li>
+            <li>Prizes and incentives</li>
+            <li>Event-day production + logistics</li>
           </ul>
         </div>
 
         <div class="acc-card">
-          <div class="acc-title">Gross multipliers (relative to Event Fundraiser)</div>
+          <div class="acc-title">Comparison gross multipliers (anchored to Apex baseline)</div>
           <ul style="margin:6px 0 0 18px;">
-            <li><b>Event Fundraiser:</b> <code>1.00×</code> baseline</li>
-            <li><b>Read-a-thon:</b> <code>0.45×</code></li>
-            <li><b>Product Sale:</b> <code>0.35×</code></li>
-            <li><b>Restaurant Night:</b> separate estimate</li>
+            <li><b>Apex-managed event:</b> <code>1.00×</code></li>
+            <li><b>DIY event:</b> <code>0.33×</code></li>
+            <li><b>Read-a-thon:</b> <code>0.45×</code> of Apex-managed</li>
+            <li><b>Product Sale:</b> <code>0.35×</code> of Apex-managed</li>
+            <li><b>Restaurant Night:</b> separate small estimate</li>
           </ul>
           <div class="small-note" style="margin-top:8px;">
-            If “on-campus team + incentives” is set to <b>Yes</b>, the event baseline is lifted by <b>+20%</b> for comparison purposes.
+            If “on-campus team + incentives” is set to <b>Yes</b>, the event baseline is lifted by <b>+30%</b> for comparison purposes.
           </div>
         </div>
 
         <div class="acc-card">
-          <div class="acc-title">Event Fundraiser (On-Campus Team + Incentives)</div>
-          Takes event gross, then subtracts:
+          <div class="acc-title">Apex-managed event fees</div>
           <ul style="margin:6px 0 0 18px;">
             <li><code>3.5%</code> payment/processing estimate</li>
             <li><code>48%</code> program split estimate (school keeps ~52%)</li>
@@ -237,7 +234,6 @@ details.accordion summary::-webkit-details-marker{display:none;}
 
         <div class="acc-card">
           <div class="acc-title">Read-a-thon</div>
-          Takes <code>0.45×</code> of event gross, then subtracts:
           <ul style="margin:6px 0 0 18px;">
             <li><code>3.5%</code> processing estimate</li>
             <li><code>10%</code> platform/program fee estimate</li>
@@ -248,7 +244,6 @@ details.accordion summary::-webkit-details-marker{display:none;}
 
         <div class="acc-card">
           <div class="acc-title">Product Sale</div>
-          Takes <code>0.35×</code> of event gross, then subtracts:
           <ul style="margin:6px 0 0 18px;">
             <li><code>2%</code> processing estimate</li>
             <li><code>55%</code> product cost/margin estimate</li>
@@ -257,7 +252,6 @@ details.accordion summary::-webkit-details-marker{display:none;}
 
         <div class="acc-card">
           <div class="acc-title">Restaurant Night</div>
-          Separate estimate:
           <ul style="margin:6px 0 0 18px;">
             <li><code>25%</code> of participating families attend</li>
             <li><code>$18</code> average spend</li>
@@ -269,7 +263,7 @@ details.accordion summary::-webkit-details-marker{display:none;}
       </div>
 
       <div class="small-note" style="margin-top:10px;">
-        Tip: Use comparisons directionally—not as guarantees. Your community may perform above or below these assumptions.
+        Tip: These comparisons are directional. Your school, community, and execution can move results up or down.
       </div>
     </div>
   </details>
@@ -284,6 +278,9 @@ details.accordion summary::-webkit-details-marker{display:none;}
 
   <div id="comparison">
     <h3 style="margin-top:0;">Fundraiser Profit Comparison</h3>
+    <p style="font-size:12px;color:#666;line-height:1.4;margin:0 0 10px 0;">
+      Comparison estimates are anchored to Apex-managed event performance based on typical school fundraising outcomes.
+    </p>
     <div id="comparisonContent"></div>
   </div>
 
@@ -296,20 +293,17 @@ details.accordion summary::-webkit-details-marker{display:none;}
 <div id="toast" class="toast"></div>
 
 <script>
-/* ========= Tunable assumptions ========= */
 const ASSUMPTIONS = {
-  event: { grossMultiplier: 1.00, processingPct: 0.035, programFeePct: 0.48 }, // school keeps ~52%
+  apexEvent: { grossMultiplier: 1.00, processingPct: 0.035, programFeePct: 0.48 },
+  diyEvent: { grossMultiplier: 0.33, processingPct: 0.02, programFeePct: 0.00, fixedCost: 250 },
   readAThon: { grossMultiplier: 0.45, processingPct: 0.035, platformFeePct: 0.10, fixedCost: 100, perParticipantCost: 0.50 },
   productSale: { grossMultiplier: 0.35, processingPct: 0.02, productCostPct: 0.55 },
-  restaurantNight: { attendancePct: 0.25, avgSpend: 18, givebackPct: 0.20, fixedCost: 50 },
-
-  // Uplift applied to event baseline when program includes on-campus team + incentives.
-  programUpliftYes: 1.20,
-  programUpliftNo: 1.00
+  restaurantNight: { attendancePct: 0.25, avgSpend: 18, givebackPct: 0.20, fixedCost: 50 }
 };
 
 const STYLE_DEFAULTS = {
-  event:   { participationPct: 55, donation: 150 },
+  apex:    { participationPct: 50, donation: 250 },
+  diy:     { participationPct: 45, donation: 135 },
   typical: { participationPct: 60, donation: 45 }
 };
 
@@ -323,32 +317,25 @@ function getInputs(){
 
   const participation=Math.max(0,Math.min(1,participationPct/100));
   const participants=students*participation;
-
-  // Base gross is user-defined (event baseline style).
   const gross=participants*donation;
 
   return{students,participationPct,participation,participants,donation,goal,gross};
-}
-
-function getProgramUplift(){
-  const v=document.getElementById("programIncludes").value;
-  return (v==="yes") ? ASSUMPTIONS.programUpliftYes : ASSUMPTIONS.programUpliftNo;
-}
-
-function maybeRecalcOnToggle(){
-  const current=document.getElementById("result").innerText;
-  if(current.includes("approximately")){
-    calculateAll();
-  }
 }
 
 function applyStyleDefaults(){
   const style=document.getElementById("fundraiserStyle").value;
   const d=STYLE_DEFAULTS[style] || STYLE_DEFAULTS.typical;
 
-  document.getElementById("participation").value = d.participationPct;
-  document.getElementById("donation").value = d.donation;
+  document.getElementById("participation").value=d.participationPct;
+  document.getElementById("donation").value=d.donation;
 
+  const current=document.getElementById("result").innerText;
+  if(current.includes("approximately")){
+    calculateAll();
+  }
+}
+
+function maybeRecalcOnToggle(){
   const current=document.getElementById("result").innerText;
   if(current.includes("approximately")){
     calculateAll();
@@ -362,10 +349,33 @@ function calculateAll(){
   calculateRecommendation();
 }
 
+function getApexEquivalentGross(){
+  const { gross } = getInputs();
+  const style=document.getElementById("fundraiserStyle").value;
+  const comparisonMode=document.getElementById("comparisonMode").value;
+
+  if(comparisonMode==="apex"){
+    if(style==="apex") return gross;
+    if(style==="diy") return gross / ASSUMPTIONS.diyEvent.grossMultiplier;
+    return gross;
+  }
+
+  if(style==="apex") return gross;
+  if(style==="diy") return gross / ASSUMPTIONS.diyEvent.grossMultiplier;
+  return gross;
+}
+
 function calculate(){
   const{gross}=getInputs();
+  const style=document.getElementById("fundraiserStyle").value;
+
+  let label="fundraiser";
+  if(style==="apex") label="Apex-managed event";
+  else if(style==="diy") label="DIY event";
+  else label="typical PTO fundraiser";
+
   document.getElementById("result").innerText=
-    `This fundraiser could raise approximately ${money(gross)} (based on your inputs).`;
+    `This ${label} could raise approximately ${money(gross)} (based on your inputs).`;
 }
 
 function calculateGoal(){
@@ -428,6 +438,7 @@ function calculateConfidence(){
 function calculateRecommendation(){
   const { goal, participants, students } = getInputs();
   const recBox = document.getElementById("recommendation");
+  const style=document.getElementById("fundraiserStyle").value;
 
   if(!goal || goal <= 0){
     recBox.style.display="none";
@@ -437,15 +448,19 @@ function calculateRecommendation(){
 
   let rec="";
   if(goal >= 20000){
-    rec="Recommendation: For a goal this size, most schools choose a participation-based main event (like a Fun Run / fitness event) rather than a restaurant night or product sale.";
+    rec="Recommendation: For a goal this size, most schools perform best with a participation-based main event rather than a restaurant night or product sale.";
   } else if(goal >= 8000){
-    rec="Recommendation: For a mid-sized goal, a Read-a-thon or participation-based event often performs better than product sales (less volunteer workload, cleaner logistics).";
+    rec="Recommendation: For a mid-sized goal, a Read-a-thon or strong event fundraiser usually outperforms product sales with less volunteer hassle.";
   } else {
     rec="Recommendation: For a smaller goal, a restaurant spirit night or simple donation drive can work well—especially if you want something quick and low effort.";
   }
 
+  if(style==="diy"){
+    rec += " Based on your experience, DIY events typically trail Apex-managed events by a large margin, so expectations should be adjusted accordingly.";
+  }
+
   if(students > 0 && students < 300 && goal >= 20000){
-    rec += " Note: For smaller schools, hitting a large goal usually requires exceptionally strong participation + average donation, so set expectations early.";
+    rec += " Note: For smaller schools, hitting a large goal usually requires exceptionally strong participation + average donation.";
   }
 
   if(participants > 0 && goal > 0){
@@ -459,22 +474,23 @@ function calculateRecommendation(){
   recBox.innerText=rec;
 }
 
-/* ========= Comparison logic ========= */
 function computeModels(){
-  const { participants, gross: baseGross } = getInputs();
-  const uplift = getProgramUplift();
+  const { participants } = getInputs();
 
-  // Event baseline (uplifted if program includes on-campus team + incentives)
-  const eventGross = baseGross * uplift;
+  const apexGross = getApexEquivalentGross();
 
-  const eventFees = eventGross * (ASSUMPTIONS.event.processingPct + ASSUMPTIONS.event.programFeePct);
-  const eventNet = eventGross - eventFees;
+  const apexFees = apexGross * (ASSUMPTIONS.apexEvent.processingPct + ASSUMPTIONS.apexEvent.programFeePct);
+  const apexNet = apexGross - apexFees;
 
-  const readGross = eventGross * ASSUMPTIONS.readAThon.grossMultiplier;
+  const diyGross = apexGross * ASSUMPTIONS.diyEvent.grossMultiplier;
+  const diyFees = diyGross * ASSUMPTIONS.diyEvent.processingPct;
+  const diyNet = diyGross - diyFees - ASSUMPTIONS.diyEvent.fixedCost;
+
+  const readGross = apexGross * ASSUMPTIONS.readAThon.grossMultiplier;
   const readFees = readGross * (ASSUMPTIONS.readAThon.processingPct + ASSUMPTIONS.readAThon.platformFeePct);
   const readNet = readGross - readFees - ASSUMPTIONS.readAThon.fixedCost - (participants * ASSUMPTIONS.readAThon.perParticipantCost);
 
-  const prodGross = eventGross * ASSUMPTIONS.productSale.grossMultiplier;
+  const prodGross = apexGross * ASSUMPTIONS.productSale.grossMultiplier;
   const prodFees = prodGross * (ASSUMPTIONS.productSale.processingPct + ASSUMPTIONS.productSale.productCostPct);
   const prodNet = prodGross - prodFees;
 
@@ -484,7 +500,8 @@ function computeModels(){
   const restNet = restGross - ASSUMPTIONS.restaurantNight.fixedCost;
 
   return [
-    { name:"Event Fundraiser (On-Campus Team + Incentives)", gross: eventGross, net: eventNet },
+    { name:"Apex-Managed Event", gross: apexGross, net: apexNet },
+    { name:"DIY Event", gross: diyGross, net: diyNet },
     { name:"Read-a-thon", gross: readGross, net: readNet },
     { name:"Product Sale", gross: prodGross, net: prodNet },
     { name:"Restaurant Night", gross: restGross, net: restNet }
@@ -510,7 +527,7 @@ function showComparison(){
       ${tableRows}
     </table>
     <div style="margin-top:10px;font-size:12px;color:#666;line-height:1.4;">
-      Comparisons use an event baseline (optionally uplifted by program support) + typical fee assumptions. Directional only.
+      Comparisons are directional and anchored to your Apex-managed event baseline assumptions unless you change the comparison mode.
     </div>
   `;
 
@@ -549,7 +566,6 @@ function shareFacebook(){
   window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${text}`,"_blank");
 }
 
-/* ========= Lead form ========= */
 function toggleOtherRole(){
   const sel=document.getElementById("leadRoleSelect").value;
   const wrap=document.getElementById("leadRoleOtherWrap");
@@ -585,13 +601,12 @@ function emailPlanFromForm(){
   if(name || school || role) lines.push("");
 
   lines.push("Calculator inputs:");
-  lines.push(`- Fundraiser style: ${document.getElementById("fundraiserStyle").value === "event" ? "Event Fundraiser" : "Typical PTO Fundraiser"}`);
-  lines.push(`- Includes on-campus team + incentives: ${document.getElementById("programIncludes").value === "yes" ? "Yes" : "No"}`);
+  lines.push(`- Fundraiser type: ${document.getElementById("fundraiserStyle").selectedOptions[0].text}`);
   lines.push(`- Students: ${students}`);
   lines.push(`- Participation estimate: ${participationPct}%`);
   lines.push(`- Avg donation per participating student: $${donation}`);
   if(goal && goal > 0) lines.push(`- Fundraising goal: $${goal.toLocaleString()}`);
-  lines.push(`- Gross estimate (inputs): ${money(gross)}`);
+  lines.push(`- Gross estimate: ${money(gross)}`);
   lines.push("");
   lines.push("Can you recommend the best fundraiser type and a simple timeline/checklist to hit our goal?");
   lines.push("");
@@ -601,14 +616,13 @@ function emailPlanFromForm(){
   window.location.href=`mailto:Dean.Tielbur@ApexLeadershipCo.com?subject=${subject}&body=${body}`;
 }
 
-/* ========= Misc ========= */
 function resetInputs(){
-  document.getElementById("fundraiserStyle").value="typical";
-  document.getElementById("programIncludes").value="yes";
+  document.getElementById("fundraiserStyle").value="apex";
+  document.getElementById("comparisonMode").value="selected";
 
   document.getElementById("students").value=400;
-  document.getElementById("participation").value=STYLE_DEFAULTS.typical.participationPct;
-  document.getElementById("donation").value=STYLE_DEFAULTS.typical.donation;
+  document.getElementById("participation").value=STYLE_DEFAULTS.apex.participationPct;
+  document.getElementById("donation").value=STYLE_DEFAULTS.apex.donation;
   document.getElementById("goal").value="";
 
   document.getElementById("leadName").value="";
