@@ -799,13 +799,16 @@
   Built for PTO leaders by <strong style="color:rgba(255,255,255,.8)">The PTO Playbook</strong> · Results are planning estimates — actual outcomes vary by school and community.
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   /* ── Slider live update ── */
   const participationSlider = document.getElementById('participation');
   const participationVal    = document.getElementById('participation-val');
-  participationSlider.addEventListener('input', () => {
+
+  function updateParticipationDisplay() {
     participationVal.textContent = participationSlider.value + '%';
-  });
+  }
+  participationSlider.addEventListener('input', updateParticipationDisplay);
+  updateParticipationDisplay(); // initialize on load
 
   /* ── FRL slider live update ── */
   const frlSlider = document.getElementById('frl');
@@ -830,9 +833,9 @@
     return                 { partMult: 0.82, donMult: 0.70 };
   }
 
-  frlSlider.addEventListener('input', () => {
+  function updateFrlDisplay() {
     const pct = parseInt(frlSlider.value);
-    frlVal.textContent = pct === 0 ? '—' : pct + '%';
+    frlVal.textContent = pct === 0 ? '0%' : pct + '%';
     const tier = getFrlTier(pct);
     if (!tier) {
       frlBadge.style.display = 'none';
@@ -851,7 +854,10 @@
           </div>
         </div>`;
     }
-  });
+  }
+
+  frlSlider.addEventListener('input', updateFrlDisplay);
+  updateFrlDisplay(); // initialize on load
 
 
   const typeHints = {
@@ -863,12 +869,8 @@
     r.addEventListener('change', () => {
       const hint = document.getElementById('type-hint');
       hint.textContent = typeHints[r.value] || '';
-      // auto-fill sensible defaults
+      // auto-fill avg donation default only if field is empty
       if (r.value === 'apex') {
-        if (!document.getElementById('participation').value || document.getElementById('participation').value === '70') {
-          document.getElementById('participation').value = 70;
-          participationVal.textContent = '70%';
-        }
         if (!document.getElementById('avg-donation').value)
           document.getElementById('avg-donation').value = 90;
       } else if (r.value === 'diy') {
@@ -912,19 +914,21 @@
     const frlAdjusted  = frlPct > 0 && (partMult < 1 || donMult < 1);
 
     const participants = students * adjPartRate;
-    const gross        = participants * adjAvgDon;
+    const baseGross    = participants * adjAvgDon;
     const uplift       = onCampus ? 1.30 : 1.00;
+    const gross        = baseGross * uplift;
 
-    let net, fees, feesLabel, programValue = 0, schoolPct;
+    let net, fees, feesLabel, programValue = 0;
+    let schoolPct = 0.52; // default, updated below for apex
+
     if (ftype === 'apex') {
       // Official Apex Price Scale — school keeps 52%–60% based on total raised
-      schoolPct = apexSlidingScale(gross);
+      schoolPct    = apexSlidingScale(gross);
       const processing = gross * 0.035;
-      net     = gross * schoolPct - processing;
-      fees    = gross - net;
-      // Program materials: prizes, wearables, pledge kits, on-campus athlete, teacher materials, class awards, setup/teardown
+      net          = gross * schoolPct - processing;
+      fees         = gross - net;
       programValue = gross * 0.30;
-      feesLabel = `${Math.round((1 - schoolPct) * 100)}% Apex share + 3.5% processing · School keeps ${Math.round(schoolPct * 100)}%`;
+      feesLabel    = `${Math.round((1 - schoolPct) * 100)}% Apex share + 3.5% processing · School keeps ${Math.round(schoolPct * 100)}%`;
     } else if (ftype === 'diy') {
       fees    = gross * 0.035;
       net     = gross - fees;
@@ -1097,11 +1101,9 @@
     document.getElementById('avg-donation').value = '';
     document.getElementById('goal').value = '';
     document.getElementById('participation').value = 70;
-    participationVal.textContent = '70%';
+    updateParticipationDisplay();
     document.getElementById('frl').value = 0;
-    frlVal.textContent = '—';
-    frlBadge.style.display = 'none';
-    frlBadge.innerHTML = '';
+    updateFrlDisplay();
     document.getElementById('oncampus').checked = false;
     document.getElementById('apex-baseline').checked = true;
     document.querySelector('input[name="ftype"][value="apex"]').checked = true;
