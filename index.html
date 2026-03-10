@@ -624,8 +624,9 @@
             <tr>
               <th>Fundraiser Type</th>
               <th>Est. Gross</th>
-              <th>Est. Net (to school)</th>
-              <th>Fees / Costs</th>
+              <th>Est. Cash (to school)</th>
+              <th>Program Value*</th>
+              <th>Total Value</th>
               <th>Effort Level</th>
             </tr>
           </thead>
@@ -633,6 +634,10 @@
           </tbody>
         </table>
       </div>
+
+      <p style="font-size:12px;color:var(--muted);margin-top:10px;">
+        * <strong>Program Value</strong> = estimated retail value of materials &amp; services Apex provides to the school (prizes, event wearables, pledge kits, dedicated on-campus athlete, teacher materials, class awards, full event setup &amp; teardown). Estimated at ~30% of gross. Other fundraiser types provide $0 in included program materials.
+      </p>
 
       <!-- Assumptions Accordion -->
       <div class="accordion" style="margin-top:20px;">
@@ -659,10 +664,32 @@
           </button>
           <div class="accordion-body">
             <div class="assumption-grid">
-              <div class="assumption-block">
-                <strong>Apex-Managed Event</strong>
-                <span>3.5% processing</span>
-                <span>48% program split (school keeps ~52%)</span>
+              <div class="assumption-block" style="grid-column:1/-1;">
+                <strong>Apex Price Scale (Official)</strong>
+                <div style="overflow-x:auto;margin-top:8px;">
+                  <table style="width:100%;border-collapse:collapse;font-size:12px;">
+                    <thead>
+                      <tr style="background:var(--navy);color:var(--white);">
+                        <th style="padding:6px 10px;text-align:left;font-weight:600;">Min Collected</th>
+                        <th style="padding:6px 10px;text-align:left;font-weight:600;">Max Collected</th>
+                        <th style="padding:6px 10px;text-align:left;font-weight:600;color:var(--gold);">School %</th>
+                        <th style="padding:6px 10px;text-align:left;font-weight:600;">Apex %</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr style="border-bottom:1px solid var(--border)"><td style="padding:5px 10px;">$100,001</td><td style="padding:5px 10px;">+</td><td style="padding:5px 10px;font-weight:700;color:var(--green);">60%</td><td style="padding:5px 10px;color:var(--muted);">40%</td></tr>
+                      <tr style="border-bottom:1px solid var(--border);background:var(--off)"><td style="padding:5px 10px;">$90,001</td><td style="padding:5px 10px;">$100,000</td><td style="padding:5px 10px;font-weight:700;color:var(--green);">59%</td><td style="padding:5px 10px;color:var(--muted);">41%</td></tr>
+                      <tr style="border-bottom:1px solid var(--border)"><td style="padding:5px 10px;">$80,001</td><td style="padding:5px 10px;">$90,000</td><td style="padding:5px 10px;font-weight:700;color:var(--green);">58%</td><td style="padding:5px 10px;color:var(--muted);">42%</td></tr>
+                      <tr style="border-bottom:1px solid var(--border);background:var(--off)"><td style="padding:5px 10px;">$70,001</td><td style="padding:5px 10px;">$80,000</td><td style="padding:5px 10px;font-weight:700;color:var(--green);">57%</td><td style="padding:5px 10px;color:var(--muted);">43%</td></tr>
+                      <tr style="border-bottom:1px solid var(--border)"><td style="padding:5px 10px;">$60,001</td><td style="padding:5px 10px;">$70,000</td><td style="padding:5px 10px;font-weight:700;color:var(--green);">56%</td><td style="padding:5px 10px;color:var(--muted);">44%</td></tr>
+                      <tr style="border-bottom:1px solid var(--border);background:var(--off)"><td style="padding:5px 10px;">$50,001</td><td style="padding:5px 10px;">$60,000</td><td style="padding:5px 10px;font-weight:700;color:var(--green);">55%</td><td style="padding:5px 10px;color:var(--muted);">45%</td></tr>
+                      <tr style="border-bottom:1px solid var(--border)"><td style="padding:5px 10px;">$45,001</td><td style="padding:5px 10px;">$50,000</td><td style="padding:5px 10px;font-weight:700;color:var(--green);">54%</td><td style="padding:5px 10px;color:var(--muted);">46%</td></tr>
+                      <tr style="border-bottom:1px solid var(--border);background:var(--off)"><td style="padding:5px 10px;">$40,001</td><td style="padding:5px 10px;">$45,000</td><td style="padding:5px 10px;font-weight:700;color:var(--green);">53%</td><td style="padding:5px 10px;color:var(--muted);">47%</td></tr>
+                      <tr><td style="padding:5px 10px;">$0</td><td style="padding:5px 10px;">$40,000</td><td style="padding:5px 10px;font-weight:700;color:var(--green);">52%</td><td style="padding:5px 10px;color:var(--muted);">48%</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <span style="margin-top:8px;display:block;">+ ~30% of gross in program materials (prizes, wearables, pledge kits, on-campus athlete, teacher materials, class awards, setup &amp; teardown) — included at no extra cost</span>
               </div>
               <div class="assumption-block">
                 <strong>DIY Event</strong>
@@ -686,7 +713,7 @@
               </div>
               <div class="assumption-block">
                 <strong>On-Campus Uplift</strong>
-                <span>+30% gross lift to event baseline when enabled</span>
+                <span>+30% gross lift applied when "on-campus team + incentives" toggle is enabled. Separate from program materials value, which is always included for Apex events.</span>
               </div>
             </div>
             <p style="margin-top:12px;font-style:italic;">These are directional planning estimates — not guarantees. Actual outcomes depend on school size, community engagement, and execution.</p>
@@ -737,7 +764,7 @@
       ✅ Thanks! Check your email shortly. Dean at Apex will follow up with a personalized plan.
     </div>
     <p class="no-spam">
-      Prefer to email directly? <a href="mailto:Dean.Tielbur@ApexLeadershipCo.com">Dean.Tielbur@ApexLeadershipCo.com</a>
+      Prefer to email directly? <a href="/cdn-cgi/l/email-protection#6b2f0e0a05453f020e07091e192b2a1b0e13270e0a0f0e191803021b280445080406"><span class="__cf_email__" data-cfemail="9cd8f9fdf2b2c8f5f9f0fee9eedcddecf9e4d0f9fdf8f9eeeff4f5ecdff3b2fff3f1">[email&#160;protected]</span></a>
     </p>
   </div>
 
@@ -750,7 +777,7 @@
   Built for PTO leaders by <strong style="color:rgba(255,255,255,.8)">The PTO Playbook</strong> · Results are planning estimates — actual outcomes vary by school and community.
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   /* ── Slider live update ── */
   const participationSlider = document.getElementById('participation');
   const participationVal    = document.getElementById('participation-val');
@@ -813,32 +840,50 @@
     const gross        = participants * avgDon;
     const uplift       = onCampus ? 1.30 : 1.00;
 
-    let net, fees, feesLabel;
+    let net, fees, feesLabel, programValue = 0, schoolPct;
     if (ftype === 'apex') {
+      // Official Apex Price Scale — school keeps 52%–60% based on total raised
+      schoolPct = apexSlidingScale(gross);
       const processing = gross * 0.035;
-      const split      = gross * 0.48;
-      fees    = processing + split;
-      net     = gross - fees;
-      feesLabel = `3.5% processing + 48% program split`;
+      net     = gross * schoolPct - processing;
+      fees    = gross - net;
+      // Program materials: prizes, wearables, pledge kits, on-campus athlete, teacher materials, class awards, setup/teardown
+      programValue = gross * 0.30;
+      feesLabel = `${Math.round((1 - schoolPct) * 100)}% Apex share + 3.5% processing · School keeps ${Math.round(schoolPct * 100)}%`;
     } else if (ftype === 'diy') {
       fees    = gross * 0.035;
       net     = gross - fees;
+      programValue = 0;
       feesLabel = `3.5% processing`;
     } else {
       fees    = gross * (0.035 + 0.10) + 100 + (participants * 0.50);
       net     = gross - fees;
+      programValue = 0;
       feesLabel = `3.5% + 10% platform + $100 + $0.50/student`;
     }
 
-    const netPct = (net / gross) * 100;
+    const totalVal = net + programValue;
 
     /* Render stat cards */
     const grid = document.getElementById('stat-grid');
+    const totalValue = net + programValue;
+    const apexScaleNote = ftype === 'apex'
+      ? `<div class="stat-card" style="grid-column:1/-1;background:var(--gold-lt);border-color:#e8c06a;">
+           <div class="stat-label" style="color:#7a5500;">Apex Program Materials Included</div>
+           <div class="stat-value" style="color:var(--navy);font-size:22px;">+${fmt(programValue)} in program value</div>
+           <div class="stat-sub" style="color:#7a5500;">Prizes · Event wearables · Pledge kits · Dedicated on-campus athlete · Teacher materials · Class awards · Full setup &amp; teardown — all included at no extra cost</div>
+         </div>
+         <div class="stat-card" style="background:var(--green-lt);border-color:#8ecfae;">
+           <div class="stat-label" style="color:var(--green);">Total Value to School</div>
+           <div class="stat-value" style="color:var(--green);">${fmt(totalValue)}</div>
+           <div class="stat-sub" style="color:var(--green);">Cash + program materials</div>
+         </div>`
+      : '';
     grid.innerHTML = `
       <div class="stat-card highlight">
-        <div class="stat-label">Est. Net to School</div>
+        <div class="stat-label">Est. Cash to School</div>
         <div class="stat-value">${fmt(net)}</div>
-        <div class="stat-sub">${fmtPct(netPct)} of gross</div>
+        <div class="stat-sub">${ftype === 'apex' ? Math.round(schoolPct*100)+'% of gross (sliding scale)' : fmtPct((net/gross)*100) + ' of gross'}</div>
       </div>
       <div class="stat-card">
         <div class="stat-label">Est. Gross Raised</div>
@@ -846,10 +891,11 @@
         <div class="stat-sub">${Math.round(participants)} participants</div>
       </div>
       <div class="stat-card">
-        <div class="stat-label">Fees / Costs</div>
+        <div class="stat-label">${ftype === 'apex' ? 'Apex Share + Processing' : 'Fees / Costs'}</div>
         <div class="stat-value">${fmt(fees)}</div>
         <div class="stat-sub" style="font-size:11px">${feesLabel}</div>
       </div>
+      ${apexScaleNote}
     `;
 
     /* Goal section */
@@ -888,42 +934,56 @@
     }
   }
 
+  function apexSlidingScale(gross) {
+    // Official Apex Price Scale — school % based on total collected
+    if      (gross > 100000) return 0.60;
+    else if (gross > 90000)  return 0.59;
+    else if (gross > 80000)  return 0.58;
+    else if (gross > 70000)  return 0.57;
+    else if (gross > 60000)  return 0.56;
+    else if (gross > 50000)  return 0.55;
+    else if (gross > 45000)  return 0.54;
+    else if (gross > 40000)  return 0.53;
+    else                     return 0.52; // $0–$40,000
+  }
+
   function buildComparison(myGross, uplift, alwaysApex, myType, students, partRate) {
     /* Establish baseline gross */
     let baseGross = myGross;
     if (alwaysApex && myType !== 'apex') {
-      // Back-calculate what Apex gross would be
-      if (myType === 'diy')       baseGross = myGross / 0.33;
-      else                        baseGross = myGross / 0.45;
+      if (myType === 'diy') baseGross = myGross / 0.33;
+      else                  baseGross = myGross / 0.45;
     }
-    const apexGross   = baseGross * uplift;
-    const diyGross    = apexGross * 0.33;
-    const readGross   = apexGross * 0.45;
-    const prodGross   = apexGross * 0.35;
+    const apexGross = baseGross * uplift;
+    const diyGross  = apexGross * 0.33;
+    const readGross = apexGross * 0.45;
+    const prodGross = apexGross * 0.35;
 
-    /* Apex net */
-    const apexNet = apexGross * (1 - 0.035 - 0.48);
-    /* DIY net */
-    const diyNet  = diyGross * (1 - 0.035);
-    /* Read-a-thon net */
-    const readNet = readGross - (readGross * (0.035 + 0.10)) - 100 - (students * partRate * 0.50);
-    /* Product sale net */
-    const prodNet = prodGross - (prodGross * (0.02 + 0.55));
+    /* Apex: sliding scale + program materials */
+    const apexSchoolPct  = apexSlidingScale(apexGross);
+    const apexCash       = apexGross * apexSchoolPct - apexGross * 0.035;
+    const apexProgValue  = apexGross * 0.30;
+    const apexTotal      = apexCash + apexProgValue;
+
+    /* DIY */
+    const diyNet   = diyGross * (1 - 0.035);
+    /* Read-a-thon */
+    const readNet  = readGross - (readGross * (0.035 + 0.10)) - 100 - (students * partRate * 0.50);
+    /* Product sale */
+    const prodNet  = prodGross - (prodGross * (0.02 + 0.55));
     /* Restaurant night */
-    const restFamilies = students * 0.4; // assume avg 0.4 families per student attend
-    const restGross = restFamilies * 0.25 * 18;
+    const restGross = students * 0.4 * 0.25 * 18;
     const restNet   = restGross * 0.20 - 50;
 
     const rows = [
-      { name: 'Apex-Managed Event', tag:'apex', gross: apexGross, net: apexNet, fees: apexGross - apexNet, effort:'Low (managed)' },
-      { name: 'Read-a-Thon',        tag:'other', gross: readGross, net: readNet,  fees: readGross - readNet, effort:'Medium' },
-      { name: 'Product Sale',       tag:'other', gross: prodGross, net: prodNet,  fees: prodGross - prodNet, effort:'Medium' },
-      { name: 'DIY Event',          tag:'diy',   gross: diyGross,  net: diyNet,   fees: diyGross - diyNet,  effort:'High (self-run)' },
-      { name: 'Restaurant Night',   tag:'other', gross: restGross, net: restNet,  fees: restGross - restNet, effort:'Low' },
-    ].sort((a, b) => b.net - a.net);
+      { name: 'Apex-Managed Event', tag:'apex', gross: apexGross, cash: apexCash,  progVal: apexProgValue, total: apexTotal,    effort:'Low (managed)',  scalePct: Math.round(apexSchoolPct*100) },
+      { name: 'Read-a-Thon',        tag:'other', gross: readGross, cash: readNet,   progVal: 0,             total: readNet,      effort:'Medium' },
+      { name: 'Product Sale',       tag:'other', gross: prodGross, cash: prodNet,   progVal: 0,             total: prodNet,      effort:'Medium' },
+      { name: 'DIY Event',          tag:'diy',   gross: diyGross,  cash: diyNet,    progVal: 0,             total: diyNet,       effort:'High (self-run)' },
+      { name: 'Restaurant Night',   tag:'other', gross: restGross, cash: restNet,   progVal: 0,             total: restNet,      effort:'Low' },
+    ].sort((a, b) => b.total - a.total);
 
-    const maxNet = rows[0].net;
-    const tbody  = document.getElementById('compare-body');
+    const tbody = document.getElementById('compare-body');
     tbody.innerHTML = rows.map((r, i) => `
       <tr class="${i === 0 ? 'best-row' : ''}">
         <td>
@@ -932,8 +992,9 @@
           ${i === 0 ? ' 🏆' : ''}
         </td>
         <td>${fmt(r.gross)}</td>
-        <td><strong>${fmt(r.net)}</strong></td>
-        <td>${fmt(r.fees)}</td>
+        <td><strong>${fmt(r.cash)}</strong>${r.scalePct ? `<br><span style="font-size:11px;color:var(--muted)">${r.scalePct}% of gross</span>` : ''}</td>
+        <td>${r.progVal > 0 ? `<span style="color:var(--green);font-weight:600">${fmt(r.progVal)}</span><br><span style="font-size:11px;color:var(--muted)">incl. prizes, wearables &amp; more</span>` : '<span style="color:var(--muted)">—</span>'}</td>
+        <td><strong style="color:${i===0?'var(--navy)':'inherit'}">${fmt(r.total)}</strong></td>
         <td>${r.effort}</td>
       </tr>
     `).join('');
@@ -991,16 +1052,4 @@
   function toggleAccordion(btn) {
     const expanded = btn.getAttribute('aria-expanded') === 'true';
     btn.setAttribute('aria-expanded', !expanded);
-    btn.nextElementSibling.classList.toggle('open', !expanded);
-  }
-
-  /* ── TOAST ── */
-  function showToast(msg) {
-    const t = document.getElementById('toast');
-    t.textContent = msg;
-    t.classList.add('show');
-    setTimeout(() => t.classList.remove('show'), 3000);
-  }
-</script>
-</body>
-</html>
+    btn.nextElementSibling.classList.toggl
