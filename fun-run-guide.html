@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Run a School Fun Run | The PTO Playbook</title>
+  <meta name="description" content="The complete PTO guide to planning a school fun run — pledge-based vs. flat donation, grade-level tips, timeline, and what to expect from event day." />
+  <meta property="og:title" content="How to Run a School Fun Run | The PTO Playbook" />
+  <meta property="og:description" content="Everything a PTO leader needs to plan a successful school fun run — from pledge sheets to event day logistics." />
+  <meta property="og:type" content="article" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy:    #0d2545;
+      --blue:    #1a4d8f;
+      --sky:     #2e7dd1;
+      --gold:    #f5a623;
+      --gold-lt: #ffefc4;
+      --green:   #1a7a4a;
+      --green-lt:#d4f0e0;
+      --white:   #ffffff;
+      --off:     #f7f8fc;
+      --border:  #dde3ef;
+      --muted:   #6b7a99;
+      --text:    #1a2540;
+      --radius:  14px;
+      --shadow:  0 4px 24px rgba(13,37,69,.10);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--off); color: var(--text); line-height: 1.7; }
+
+    /* Header */
+    .site-header { background: var(--navy); padding: 14px 24px; display: flex; align-items: center; gap: 12px; }
+    .logo-mark { width:36px; height:36px; border-radius:8px; background:var(--gold); display:flex; align-items:center; justify-content:center; font-family:'Fraunces',serif; font-weight:700; font-size:18px; color:var(--navy); flex-shrink:0; }
+    .brand { font-family:'Fraunces',serif; font-size:17px; font-weight:600; color:var(--white); letter-spacing:.01em; }
+    .header-nav { margin-left:auto; display:flex; gap:20px; }
+    .header-nav a { font-size:13px; color:rgba(255,255,255,.7); text-decoration:none; font-weight:500; }
+    .header-nav a:hover { color:var(--white); }
+
+    /* Hero */
+    .hero { background:linear-gradient(135deg,var(--navy) 0%,var(--blue) 100%); padding:56px 24px 48px; text-align:center; position:relative; overflow:hidden; }
+    .hero::before { content:''; position:absolute; inset:0; background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+    .hero-eyebrow { font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--gold); margin-bottom:14px; position:relative; }
+    .hero h1 { font-family:'Fraunces',serif; font-size:clamp(28px,5vw,46px); font-weight:700; color:var(--white); line-height:1.15; margin-bottom:16px; position:relative; }
+    .hero h1 em { color:var(--gold); font-style:italic; }
+    .hero p { color:rgba(255,255,255,.75); font-size:17px; max-width:580px; margin:0 auto 24px; position:relative; }
+    .hero-meta { display:flex; gap:20px; justify-content:center; flex-wrap:wrap; position:relative; }
+    .hero-meta span { font-size:13px; color:rgba(255,255,255,.6); display:flex; align-items:center; gap:5px; }
+
+    /* Layout */
+    .page-wrap { max-width:780px; margin:0 auto; padding:40px 20px 80px; }
+
+    /* TOC */
+    .toc { background:var(--white); border:1px solid var(--border); border-radius:var(--radius); padding:22px 26px; margin-bottom:40px; box-shadow:var(--shadow); }
+    .toc h3 { font-family:'Fraunces',serif; font-size:16px; font-weight:600; color:var(--navy); margin-bottom:12px; }
+    .toc ol { padding-left:20px; }
+    .toc li { margin-bottom:6px; }
+    .toc a { color:var(--sky); font-size:14px; text-decoration:none; font-weight:500; }
+    .toc a:hover { text-decoration:underline; }
+
+    /* Article sections */
+    .section { margin-bottom:48px; }
+    .section-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:var(--sky); margin-bottom:8px; }
+    .section h2 { font-family:'Fraunces',serif; font-size:clamp(22px,4vw,30px); font-weight:700; color:var(--navy); margin-bottom:16px; line-height:1.2; }
+    .section h3 { font-family:'Fraunces',serif; font-size:20px; font-weight:600; color:var(--navy); margin:28px 0 10px; }
+    .section p { font-size:15px; color:var(--text); margin-bottom:16px; }
+    .section ul, .section ol { padding-left:22px; margin-bottom:16px; }
+    .section li { font-size:15px; color:var(--text); margin-bottom:8px; line-height:1.65; }
+    .section strong { color:var(--navy); }
+    hr.section-divider { border:none; border-top:2px solid var(--border); margin:48px 0; }
+
+    /* Callout boxes */
+    .callout { border-radius:10px; padding:18px 20px; margin:20px 0; font-size:14px; line-height:1.65; }
+    .callout-gold { background:var(--gold-lt); border-left:4px solid var(--gold); color:#7a5500; }
+    .callout-blue { background:#eaf4ff; border-left:4px solid var(--sky); color:#1a4d8f; }
+    .callout-green { background:var(--green-lt); border-left:4px solid var(--green); color:#1a5c38; }
+    .callout strong { display:block; margin-bottom:4px; font-size:15px; }
+
+    /* Comparison table */
+    .compare-table { width:100%; border-collapse:collapse; font-size:14px; margin:20px 0; }
+    .compare-table th { background:var(--navy); color:var(--white); padding:11px 14px; text-align:left; font-size:12px; font-weight:600; letter-spacing:.04em; text-transform:uppercase; }
+    .compare-table td { padding:11px 14px; border-bottom:1px solid var(--border); vertical-align:top; }
+    .compare-table tr:last-child td { border-bottom:none; }
+    .compare-table tr:nth-child(even) td { background:var(--off); }
+    .winner { color:var(--green); font-weight:700; }
+
+    /* Grade cards */
+    .grade-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin:20px 0; }
+    .grade-card { background:var(--white); border:1px solid var(--border); border-radius:10px; padding:16px; box-shadow:0 2px 8px rgba(13,37,69,.06); }
+    .grade-card .grade-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.07em; color:var(--muted); margin-bottom:6px; }
+    .grade-card .grade-title { font-family:'Fraunces',serif; font-size:16px; font-weight:700; color:var(--navy); margin-bottom:8px; }
+    .grade-card p { font-size:13px; color:var(--muted); line-height:1.6; margin:0; }
+
+    /* Timeline */
+    .timeline { margin:24px 0; }
+    .timeline-item { display:flex; gap:16px; margin-bottom:20px; }
+    .timeline-day { flex-shrink:0; width:56px; height:56px; border-radius:10px; background:var(--navy); color:var(--white); display:flex; flex-direction:column; align-items:center; justify-content:center; font-family:'Fraunces',serif; }
+    .timeline-day .day-label { font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:.05em; color:rgba(255,255,255,.6); }
+    .timeline-day .day-num { font-size:20px; font-weight:700; line-height:1; color:var(--gold); }
+    .timeline-content { padding-top:4px; }
+    .timeline-content strong { display:block; font-size:15px; color:var(--navy); margin-bottom:4px; }
+    .timeline-content p { font-size:13px; color:var(--muted); margin:0; line-height:1.6; }
+
+    /* CTA card */
+    .cta-card { background:linear-gradient(135deg,var(--navy),var(--blue)); border-radius:var(--radius); padding:36px 28px; color:var(--white); text-align:center; margin-top:48px; }
+    .cta-card h2 { font-family:'Fraunces',serif; font-size:clamp(22px,4vw,30px); font-weight:700; margin-bottom:12px; }
+    .cta-card p { color:rgba(255,255,255,.75); font-size:15px; max-width:500px; margin:0 auto 24px; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:7px; height:50px; padding:0 28px; border-radius:10px; border:none; cursor:pointer; font-family:'DM Sans',sans-serif; font-size:15px; font-weight:600; text-decoration:none; transition:box-shadow .15s; }
+    .btn-gold { background:var(--gold); color:var(--navy); box-shadow:0 4px 14px rgba(245,166,35,.35); }
+    .btn-gold:hover { box-shadow:0 6px 20px rgba(245,166,35,.5); }
+    .btn-white { background:rgba(255,255,255,.15); color:var(--white); border:1px solid rgba(255,255,255,.3); margin-left:10px; }
+    .btn-white:hover { background:rgba(255,255,255,.22); }
+
+    /* Stat strip */
+    .stat-strip { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:14px; background:var(--navy); border-radius:var(--radius); padding:24px; margin:28px 0; }
+    .stat-item { text-align:center; }
+    .stat-item .val { font-family:'Fraunces',serif; font-size:28px; font-weight:700; color:var(--gold); line-height:1; }
+    .stat-item .lbl { font-size:12px; color:rgba(255,255,255,.6); margin-top:4px; }
+
+    /* Footer */
+    footer { background:var(--navy); color:rgba(255,255,255,.5); padding:20px; font-size:13px; }
+    footer .footer-inner { max-width:780px; margin:0 auto; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px; }
+    footer a { color:rgba(255,255,255,.65); text-decoration:none; }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo-mark">P</div>
+  <span class="brand">The PTO Playbook</span>
+  <nav class="header-nav">
+    <a href="index.html">← Calculator</a>
+    <a href="mailto:Dean.Tielbur@ApexLeadershipCo.com">Contact Dean</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="hero-eyebrow">The Complete PTO Guide</div>
+  <h1>How to Run a <em>School Fun Run</em><br>That Actually Raises Money</h1>
+  <p>Pledge-based vs. flat donation, grade-level strategies, event-day logistics, and the honest math behind what schools really net.</p>
+  <div class="hero-meta">
+    <span>📖 12 min read</span>
+    <span>🎯 For PTO leaders planning their first or next fundraiser</span>
+    <span>📍 Illinois &amp; Wisconsin focus</span>
+  </div>
+</div>
+
+<div class="page-wrap">
+
+  <!-- TOC -->
+  <nav class="toc">
+    <h3>In This Guide</h3>
+    <ol>
+      <li><a href="#what-is">What is a school fun run?</a></li>
+      <li><a href="#pledge-vs-flat">Pledge-based vs. flat donation — which raises more?</a></li>
+      <li><a href="#grade-tips">Grade-level strategies that actually work</a></li>
+      <li><a href="#timeline">A week-by-week planning timeline</a></li>
+      <li><a href="#event-day">Event day: what to expect</a></li>
+      <li><a href="#math">The math: what your school actually keeps</a></li>
+      <li><a href="#diy-vs-managed">DIY vs. managed program — an honest comparison</a></li>
+      <li><a href="#calculator">Estimate your school's potential</a></li>
+    </ol>
+  </nav>
+
+  <!-- SECTION 1 -->
+  <div class="section" id="what-is">
+    <div class="section-label">Section 1</div>
+    <h2>What Is a School Fun Run?</h2>
+    <p>A school fun run is a pledge-based or flat-donation fundraiser where students walk, jog, or run laps around a course — typically on school grounds — while families and community members sponsor them. Unlike product sales where families buy wrapping paper or cookie dough they may not need, a fun run asks for a straightforward financial contribution in exchange for something kids genuinely enjoy: physical activity, energy, and celebration.</p>
+    <p>Done well, a fun run can be the highest-grossing single fundraiser a school runs all year. Done poorly, it's an exhausting day of logistics that leaves your PTO burned out and underwhelmed by the results.</p>
+    <p>The difference almost always comes down to three things: the fundraising model you choose, how well you prime families before the event, and what's driving student motivation on event day.</p>
+
+    <div class="callout callout-blue">
+      <strong>Why fun runs outperform product sales for most schools</strong>
+      Product sales typically return 40–50 cents on the dollar to the school after product costs. A well-run fun run can return 52–97 cents per dollar raised, depending on your model and overhead. Families also consistently prefer giving directly over buying products they didn't ask for.
+    </div>
+  </div>
+
+  <hr class="section-divider" />
+
+  <!-- SECTION 2 -->
+  <div class="section" id="pledge-vs-flat">
+    <div class="section-label">Section 2</div>
+    <h2>Pledge-Based vs. Flat Donation — Which Raises More?</h2>
+    <p>This is the most consequential decision your PTO will make before the event. Every other variable — participation rate, average donation, sharing behavior — flows downstream from this choice.</p>
+
+    <h3>Pledge-Based Fundraising</h3>
+    <p>In a pledge-based model, students collect sponsors who commit to donating a set amount <em>per lap</em> completed. A student who runs 30 laps with a $1/lap pledge raises $30 from that sponsor. Students typically collect 5–10 sponsors each — parents, grandparents, neighbors, and family friends — which turns one child into a fundraising network.</p>
+    <p>The viral mechanic is real: students are motivated to run more laps because more laps means more money and better prizes. Sponsors feel their donation is earned rather than asked for. And the sharing behavior — sending pledge links to out-of-town relatives — extends your fundraiser well beyond your immediate school community.</p>
+
+    <div class="callout callout-gold">
+      <strong>Real data: why pledge-based outperforms flat donation</strong>
+      At Millburn Elementary (711 students), the average student generated 4.09 pledges. At Racine Montessori (114 students), the average was 8.14 — meaning families reached well outside their immediate network. Flat-donation models typically see 1–2 donors per student because there's no ongoing story to tell and no reason to follow up.
+    </div>
+
+    <h3>Flat Donation Model</h3>
+    <p>In a flat-donation model, families are asked to contribute a single set amount — often $20 or $25 per student — regardless of laps run. The appeal is simplicity: one ask, one payment, done. For very small schools or schools with highly time-constrained families, this can reduce friction.</p>
+    <p>The drawback is ceiling. Once a family gives their flat amount, there's no mechanism to go back for more. You also lose the viral sharing behavior because there's nothing dynamic to share. Average per-student donations in flat models typically run 20–35% lower than pledge-based events of comparable size.</p>
+
+    <div style="overflow-x:auto;">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Factor</th>
+            <th>Pledge-Based</th>
+            <th>Flat Donation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Avg. donors per student</strong></td><td class="winner">4–8+</td><td>1–2</td></tr>
+          <tr><td><strong>Student motivation</strong></td><td class="winner">High — laps = money</td><td>Low — outcome fixed</td></tr>
+          <tr><td><strong>Out-of-family reach</strong></td><td class="winner">Strong (grandparents, neighbors)</td><td>Minimal</td></tr>
+          <tr><td><strong>Typical gross per student</strong></td><td class="winner">$75–$120+</td><td>$20–$35</td></tr>
+          <tr><td><strong>Admin complexity</strong></td><td>Moderate</td><td class="winner">Low</td></tr>
+          <tr><td><strong>Best for</strong></td><td class="winner">Most schools seeking maximum raise</td><td>Very small schools, tight timelines</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout callout-green">
+      <strong>Bottom line</strong>
+      For most schools, pledge-based fundraising will raise 2–4× more than a flat donation model. The added complexity — pledge sheets, per-lap tracking — is manageable and well worth the outcome. Only choose flat donation if your school has fewer than 150 students or your timeline is under two weeks.
+    </div>
+  </div>
+
+  <hr class="section-divider" />
+
+  <!-- SECTION 3 -->
+  <div class="section" id="grade-tips">
+    <div class="section-label">Section 3</div>
+    <h2>Grade-Level Strategies That Actually Work</h2>
+    <p>One of the most common PTO mistakes is treating all students the same. A kindergartner and a 5th grader have completely different motivations, different pledge collection capabilities, and different roles on event day. Here's how to approach each level.</p>
+
+    <div class="grade-grid">
+      <div class="grade-card">
+        <div class="grade-label">Kindergarten &amp; 1st Grade</div>
+        <div class="grade-title">The Excitement Engine</div>
+        <p>These students can't manage pledge collection independently — that's fully on parents. Focus entirely on their enthusiasm. Let them wear their event t-shirt all week. Give them a simple, visual prize chart. Their energy is contagious and sets the tone for the whole school.</p>
+      </div>
+      <div class="grade-card">
+        <div class="grade-label">2nd &amp; 3rd Grade</div>
+        <div class="grade-title">The Core Raisers</div>
+        <p>Old enough to understand the goal, young enough to be genuinely motivated by prizes and recognition. These grades typically have the highest participation rates. Lean into class competition — post a leaderboard. Parents at this level are still highly engaged.</p>
+      </div>
+      <div class="grade-card">
+        <div class="grade-label">4th &amp; 5th Grade</div>
+        <div class="grade-title">The Leaders</div>
+        <p>Give them ownership. Assign older students as lap counters, course monitors, or "hype crew" for younger grades. Students who feel responsible for the event's success become your best ambassadors at home. Per-student raise is highest at this level when motivated correctly.</p>
+      </div>
+      <div class="grade-card">
+        <div class="grade-label">Middle School (6th–8th)</div>
+        <div class="grade-title">The Wild Card</div>
+        <p>Harder to motivate with typical prize structures. Focus on peer competition between classrooms and social recognition over individual prizes. A class that raises the most getting a pizza party or free period lands better than another plastic trophy.</p>
+      </div>
+    </div>
+
+    <h3>Class Competition: The Single Best Participation Driver</h3>
+    <p>Posting a visible, real-time classroom leaderboard — either physical in the hallway or digital on a screen — consistently increases both participation and per-student raise. Students talk about it at home. Parents who haven't given yet suddenly get a text from their child asking them to donate so their class can move up.</p>
+    <p>Keep the metric simple: total dollars raised per classroom, updated daily during pledge week. Don't use per-student averages — it disadvantages larger classrooms and creates friction. Absolute total keeps all classrooms in the race.</p>
+  </div>
+
+  <hr class="section-divider" />
+
+  <!-- SECTION 4 -->
+  <div class="section" id="timeline">
+    <div class="section-label">Section 4</div>
+    <h2>A Week-by-Week Planning Timeline</h2>
+    <p>The most successful fun runs follow a predictable arc: a build-up week that creates genuine anticipation, a pledge collection window that gives families enough time without losing urgency, and a single high-energy event day. Here's what that looks like in practice.</p>
+
+    <h3>3–4 Weeks Before Event Day</h3>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-day"><div class="day-label">Week</div><div class="day-num">-4</div></div>
+        <div class="timeline-content">
+          <strong>Lock the date and communicate to families</strong>
+          <p>Send a save-the-date home and post in your school's app or Facebook group. Include the cause — what will the money fund? A specific, tangible goal ("new playground equipment" or "STEM lab supplies") raises more than a generic "school needs."</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-day"><div class="day-label">Week</div><div class="day-num">-3</div></div>
+        <div class="timeline-content">
+          <strong>Distribute pledge materials and set up online giving</strong>
+          <p>Paper pledge sheets still work, but schools with online giving platforms consistently raise 30–40% more because they unlock out-of-area donors. Grandparents in Florida can sponsor a lap with three clicks. Physical sheets alone can't do that.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-day"><div class="day-label">Week</div><div class="day-num">-2</div></div>
+        <div class="timeline-content">
+          <strong>First family reminder — include a specific ask</strong>
+          <p>Don't just say "don't forget to collect pledges." Say: "Ask 5 people this week — one family member, one neighbor, one coworker, one friend, and one anyone-else." A specific number is far more actionable than a vague reminder.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-day"><div class="day-label">Week</div><div class="day-num">-1</div></div>
+        <div class="timeline-content">
+          <strong>Build-up week begins — daily energy in school</strong>
+          <p>This is when student excitement should peak. Daily theme days, classroom competitions, morning announcements with the running total. The goal is for every student to go home talking about the fundraiser.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3>Event Week: The Daily Structure</h3>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-day"><div class="day-label">Mon</div><div class="day-num">1</div></div>
+        <div class="timeline-content">
+          <strong>Kickoff — introduce the theme and goal</strong>
+          <p>Reveal the fundraising goal. Show students what it will fund. Make it visual. Post the classroom leaderboard. First-day energy sets the tone for the whole week.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-day"><div class="day-label">Tue</div><div class="day-num">2</div></div>
+        <div class="timeline-content">
+          <strong>Leadership lesson + mid-week push</strong>
+          <p>Check in on pledges collected. Celebrate classrooms that are leading. Send a parent reminder — this is often when a second wave of donations comes in from families who were waiting to see if their child was serious.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-day"><div class="day-label">Wed</div><div class="day-num">3</div></div>
+        <div class="timeline-content">
+          <strong>Halfway milestone celebration</strong>
+          <p>Announce the current total raised. If you're on track, celebrate loudly. If you're behind, use it as a rally — "we're $X away from our goal, one more ask each could get us there."</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-day"><div class="day-label">Thu</div><div class="day-num">4</div></div>
+        <div class="timeline-content">
+          <strong>Final push — last day to collect pledges</strong>
+          <p>Urgency communication to families. Any student who hasn't collected pledges yet gets a direct, personal nudge — not a group blast. Tomorrow is the event.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-day" style="background:var(--gold);"><div class="day-label" style="color:var(--navy);opacity:.7;">Fri</div><div class="day-num" style="color:var(--navy);">5</div></div>
+        <div class="timeline-content">
+          <strong>Event Day 🎉</strong>
+          <p>The run itself. Each class runs as a group. Lap counters track progress. Music, energy, and celebration. This is the payoff for the week's buildup — make it feel like a party, not a PE class.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider" />
+
+  <!-- SECTION 5 -->
+  <div class="section" id="event-day">
+    <div class="section-label">Section 5</div>
+    <h2>Event Day: What to Expect</h2>
+    <p>Event day is where months of planning either pay off or fall flat. The most common failure mode is underestimating logistics. Here's what needs to be in place before the first class takes the course.</p>
+
+    <h3>Course Setup</h3>
+    <p>A standard fun run course is a simple loop on school grounds — typically a quarter-mile or less, depending on your space. Cones or chalk mark the path. The goal is a loop students can complete in 60–90 seconds at a light jog, allowing enough repetitions in a 20-minute period to feel meaningful. Longer loops reduce lap counts and can deflate the energy.</p>
+
+    <h3>Lap Counting</h3>
+    <p>Accuracy matters here because lap count directly determines pledge totals. Options include physical tally wristbands (one bead or ring per lap), volunteer counters at the finish line, or app-based tracking. Physical wristbands are the most reliable for K–5 — they're tangible, immediate, and kids love adding each bead.</p>
+
+    <h3>Class Scheduling</h3>
+    <p>Run classes in 20–30 minute windows, youngest grades first. This lets K–2 students have their moment before the day gets chaotic, and it means the older students — who typically run harder and create the most energy — are on the course when parent volunteers and spectators are most present.</p>
+
+    <h3>Volunteer Roles You Actually Need</h3>
+    <ul>
+      <li><strong>Course monitors (2–3 per straight):</strong> Keep students on path, count laps at the finish line.</li>
+      <li><strong>Water station (1–2 volunteers):</strong> Critical on warm days. Position at the halfway point.</li>
+      <li><strong>Photographer:</strong> Photos of students running are your single best social content for sharing results and building excitement for next year.</li>
+      <li><strong>Prize table:</strong> Have prizes organized and accessible. Nothing kills momentum like a 10-minute search for the right prize tier after a student finishes.</li>
+      <li><strong>Hype:</strong> At least one person whose entire job is energy — music, cheering, announcements. This role is underestimated and makes an enormous difference.</li>
+    </ul>
+
+    <div class="callout callout-gold">
+      <strong>The most common event-day mistake</strong>
+      Running all grades simultaneously. It feels efficient but creates chaos — course crowding, inaccurate lap counting, and diluted energy. Grade-by-grade scheduling takes longer but produces a better experience, better lap accuracy, and higher parent engagement because each class gets a dedicated window.
+    </div>
+  </div>
+
+  <hr class="section-divider" />
+
+  <!-- SECTION 6 -->
+  <div class="section" id="math">
+    <div class="section-label">Section 6</div>
+    <h2>The Math: What Your School Actually Keeps</h2>
+    <p>This is where PTOs are most often misled — by gross figures that don't account for real costs. Here's an honest breakdown of what different models actually return to the school.</p>
+
+    <div class="stat-strip">
+      <div class="stat-item"><div class="val">52–60%</div><div class="lbl">School keeps (managed program)</div></div>
+      <div class="stat-item"><div class="val">~96%</div><div class="lbl">School keeps (DIY, no prizes)</div></div>
+      <div class="stat-item"><div class="val">30%</div><div class="lbl">Added value in managed program materials</div></div>
+      <div class="stat-item"><div class="val">3×</div><div class="lbl">Typical gross advantage of managed vs. DIY</div></div>
+    </div>
+
+    <h3>DIY Fun Run: The Real Cost Picture</h3>
+    <p>A DIY fun run keeps a higher percentage of gross on paper — you're not paying a program fee. But the true cost picture includes: t-shirts ($5–12/student), prizes ($3–8/student across tiers), online platform fees (3–4% of gross), volunteer time (40–80 hours of PTO labor), and often a lower gross because there's no dedicated energy-building program driving participation.</p>
+    <p>A school that raises $20,000 DIY and keeps 90% nets $18,000. A school that raises $60,000 with a managed program and keeps 55% nets $33,000 — plus receives approximately $18,000 in program materials (t-shirts, prizes, classroom curriculum, on-campus staff). The managed school is ahead by $33,000 in cash plus $18,000 in value, against the DIY school's $18,000.</p>
+
+    <h3>What "Program Materials" Are Actually Worth</h3>
+    <p>When a managed program includes event wearables, student prizes across multiple tiers, classroom leadership curriculum, a dedicated on-campus team for the full week, class awards, and complete setup and teardown, that's not a soft benefit — it has real dollar value. At scale, those materials and labor represent roughly 30% of gross that would otherwise come out of the school's net if sourced independently.</p>
+
+    <div class="callout callout-green">
+      <strong>The question to ask when comparing</strong>
+      Don't compare gross numbers. Compare <em>total value to school</em> — cash kept plus materials and services received. That's the number that determines whether your PTO came out ahead.
+    </div>
+  </div>
+
+  <hr class="section-divider" />
+
+  <!-- SECTION 7 -->
+  <div class="section" id="diy-vs-managed">
+    <div class="section-label">Section 7</div>
+    <h2>DIY vs. Managed Program: An Honest Comparison</h2>
+    <p>There's no universal right answer here — it depends on your school's situation. Here's a framework for thinking through it honestly.</p>
+
+    <div style="overflow-x:auto;">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Factor</th>
+            <th>DIY Fun Run</th>
+            <th>Managed Program</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>School's % of gross</strong></td><td class="winner">~96% (processing only)</td><td>52–60% (sliding scale)</td></tr>
+          <tr><td><strong>Typical gross raised</strong></td><td>Lower (no built-in energy program)</td><td class="winner">Typically 2–3× higher gross</td></tr>
+          <tr><td><strong>Cash to school (absolute)</strong></td><td>Lower in most cases</td><td class="winner">Higher in most cases</td></tr>
+          <tr><td><strong>T-shirts, prizes, curriculum</strong></td><td>PTO pays separately</td><td class="winner">Included</td></tr>
+          <tr><td><strong>PTO volunteer hours</strong></td><td>40–80+ hours</td><td class="winner">~10–15 hours</td></tr>
+          <tr><td><strong>Student energy / experience</strong></td><td>Depends on volunteers</td><td class="winner">Consistent, professional</td></tr>
+          <tr><td><strong>Risk if PTO capacity is low</strong></td><td>High</td><td class="winner">Low</td></tr>
+          <tr><td><strong>Best for</strong></td><td>Large, experienced PTO with time</td><td class="winner">Most schools</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>The scenario where DIY wins on total value is narrow: a large school (500+ students) with an experienced, high-capacity PTO that can execute a full event-week program, source competitive pricing on prizes and shirts, and has done it successfully before. First-time schools, smaller schools, and PTOs with limited volunteer bandwidth almost always come out ahead with a managed program.</p>
+  </div>
+
+  <hr class="section-divider" />
+
+  <!-- SECTION 8: CALCULATOR CTA -->
+  <div class="section" id="calculator">
+    <div class="section-label">Section 8</div>
+    <h2>Estimate Your School's Potential</h2>
+    <p>The numbers in this guide are directional. What your school specifically could raise depends on your student count, community demographics, and fundraising model. The free calculator below lets you plug in your school's actual numbers and see a realistic estimate — including how your results would compare across different fundraiser types.</p>
+    <p>If you're considering a managed program, the calculator also shows the Apex sliding scale and program materials value so you can see the full picture before making any decisions.</p>
+  </div>
+
+  <!-- INLINE CALCULATOR EMBED -->
+  <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-bottom:40px;">
+    <div style="background:linear-gradient(135deg,var(--navy),var(--blue));padding:20px 24px;">
+      <div style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Free Tool</div>
+      <div style="font-family:'Fraunces',serif;font-size:22px;font-weight:700;color:var(--white);">School Fundraiser Profit Calculator</div>
+      <div style="font-size:14px;color:rgba(255,255,255,.7);margin-top:4px;">Estimate your net, compare fundraiser types, and see what your school could keep.</div>
+    </div>
+    <div style="padding:24px;text-align:center;">
+      <p style="font-size:15px;color:var(--muted);margin-bottom:20px;">Enter your school's numbers to get a personalized estimate — including the Apex sliding scale and program materials value.</p>
+      <a href="index.html" class="btn btn-gold" style="font-size:16px;height:54px;padding:0 32px;">
+        Open the Calculator →
+      </a>
+      <p style="font-size:12px;color:var(--muted);margin-top:14px;">Free · No signup · No spam</p>
+    </div>
+  </div>
+
+  <!-- FINAL CTA -->
+  <div class="cta-card">
+    <div style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">Ready to Talk?</div>
+    <h2>Get a Plan Built for Your School</h2>
+    <p>Dean Tielbur is Apex's Area Director for Illinois and Wisconsin. Send him your calculator numbers and he'll put together a no-obligation plan specific to your school — typically within one business day.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:8px;">
+      <a href="index.html" class="btn btn-white">Run the Calculator First</a>
+      <a href="mailto:Dean.Tielbur@ApexLeadershipCo.com" class="btn btn-gold">Email Dean Directly</a>
+    </div>
+    <p style="font-size:13px;color:rgba(255,255,255,.5);margin-top:20px;">Dean Tielbur · (847) 951-8532 · Dean.Tielbur@ApexLeadershipCo.com</p>
+  </div>
+
+</div><!-- /page-wrap -->
+
+<footer>
+  <div class="footer-inner">
+    <span>Built for PTO leaders by <strong style="color:rgba(255,255,255,.8)">The PTO Playbook</strong> · Content is for planning purposes.</span>
+    <div style="display:flex;gap:20px;font-size:13px;">
+      <a href="index.html">Calculator</a>
+      <a href="fun-run-guide.html">Fun Run Guide</a>
+      <a href="mailto:Dean.Tielbur@ApexLeadershipCo.com">Contact Dean</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
