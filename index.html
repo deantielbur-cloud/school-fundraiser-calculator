@@ -3,488 +3,1402 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>How to Run a School Fun Run | The PTO Playbook</title>
-  <meta name="description" content="The complete PTO guide to planning a school fun run — pledge-based vs. flat donation, grade-level tips, timeline, and what to expect from event day." />
-  <meta property="og:title" content="How to Run a School Fun Run | The PTO Playbook" />
-  <meta property="og:description" content="Everything a PTO leader needs to plan a successful school fun run — from pledge sheets to event day logistics." />
-  <meta property="og:type" content="article" />
+  <title>School Fundraiser Profit Calculator | The PTO Playbook</title>
+  <meta name="description" content="Free planning tool for PTO leaders. Estimate fundraising profit, set a goal, and compare popular school fundraisers side by side." />
+  <!-- Open Graph for social sharing -->
+  <meta property="og:title" content="School Fundraiser Profit Calculator | The PTO Playbook" />
+  <meta property="og:description" content="Free tool for PTO leaders to estimate fundraising profit and compare event types." />
+  <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
+    /* ── TOKENS ── */
     :root {
-      --navy:    #0d2545;
-      --blue:    #1a4d8f;
-      --sky:     #2e7dd1;
-      --gold:    #f5a623;
-      --gold-lt: #ffefc4;
-      --green:   #1a7a4a;
+      --navy:   #0d2545;
+      --blue:   #1a4d8f;
+      --sky:    #2e7dd1;
+      --gold:   #f5a623;
+      --gold-lt:#ffefc4;
+      --green:  #1a7a4a;
       --green-lt:#d4f0e0;
-      --white:   #ffffff;
-      --off:     #f7f8fc;
-      --border:  #dde3ef;
-      --muted:   #6b7a99;
-      --text:    #1a2540;
-      --radius:  14px;
-      --shadow:  0 4px 24px rgba(13,37,69,.10);
+      --red:    #c0392b;
+      --red-lt: #fdecea;
+      --white:  #ffffff;
+      --off:    #f7f8fc;
+      --border: #dde3ef;
+      --muted:  #6b7a99;
+      --text:   #1a2540;
+      --radius: 14px;
+      --shadow: 0 4px 24px rgba(13,37,69,.10);
+      --shadow-sm: 0 2px 8px rgba(13,37,69,.07);
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--off); color: var(--text); line-height: 1.7; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--off);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
 
-    /* Header */
-    .site-header { background: var(--navy); padding: 14px 24px; display: flex; align-items: center; gap: 12px; }
-    .logo-mark { width:36px; height:36px; border-radius:8px; background:var(--gold); display:flex; align-items:center; justify-content:center; font-family:'Fraunces',serif; font-weight:700; font-size:18px; color:var(--navy); flex-shrink:0; }
-    .brand { font-family:'Fraunces',serif; font-size:17px; font-weight:600; color:var(--white); letter-spacing:.01em; }
-    .header-nav { margin-left:auto; display:flex; gap:20px; }
-    .header-nav a { font-size:13px; color:rgba(255,255,255,.7); text-decoration:none; font-weight:500; }
-    .header-nav a:hover { color:var(--white); }
+    /* ── HEADER ── */
+    .site-header {
+      background: var(--navy);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .site-header .logo-mark {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Fraunces', serif;
+      font-weight: 700; font-size: 18px; color: var(--navy);
+      flex-shrink: 0;
+    }
+    .site-header .brand {
+      font-family: 'Fraunces', serif;
+      font-size: 17px; font-weight: 600;
+      color: var(--white); letter-spacing: .01em;
+    }
 
-    /* Hero */
-    .hero { background:linear-gradient(135deg,var(--navy) 0%,var(--blue) 100%); padding:56px 24px 48px; text-align:center; position:relative; overflow:hidden; }
-    .hero::before { content:''; position:absolute; inset:0; background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
-    .hero-eyebrow { font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--gold); margin-bottom:14px; position:relative; }
-    .hero h1 { font-family:'Fraunces',serif; font-size:clamp(28px,5vw,46px); font-weight:700; color:var(--white); line-height:1.15; margin-bottom:16px; position:relative; }
-    .hero h1 em { color:var(--gold); font-style:italic; }
-    .hero p { color:rgba(255,255,255,.75); font-size:17px; max-width:580px; margin:0 auto 24px; position:relative; }
-    .hero-meta { display:flex; gap:20px; justify-content:center; flex-wrap:wrap; position:relative; }
-    .hero-meta span { font-size:13px; color:rgba(255,255,255,.6); display:flex; align-items:center; gap:5px; }
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+      padding: 52px 24px 44px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 700; color: var(--white);
+      line-height: 1.2; margin-bottom: 14px;
+      position: relative;
+    }
+    .hero h1 em { color: var(--gold); font-style: italic; }
+    .hero p {
+      color: rgba(255,255,255,.75);
+      font-size: 17px; max-width: 560px; margin: 0 auto;
+      position: relative;
+    }
+    .trust-bar {
+      display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;
+      margin-top: 28px; position: relative;
+    }
+    .trust-pill {
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 13px; color: rgba(255,255,255,.85);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .trust-pill svg { width:14px; height:14px; flex-shrink:0; }
 
-    /* Layout */
-    .page-wrap { max-width:780px; margin:0 auto; padding:40px 20px 80px; }
+    /* ── LAYOUT ── */
+    .page-body {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 32px 20px 60px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+    @media(min-width:720px){
+      .page-body { grid-template-columns: 380px 1fr; }
+      .full-width { grid-column: 1 / -1; }
+    }
 
-    /* TOC */
-    .toc { background:var(--white); border:1px solid var(--border); border-radius:var(--radius); padding:22px 26px; margin-bottom:40px; box-shadow:var(--shadow); }
-    .toc h3 { font-family:'Fraunces',serif; font-size:16px; font-weight:600; color:var(--navy); margin-bottom:12px; }
-    .toc ol { padding-left:20px; }
-    .toc li { margin-bottom:6px; }
-    .toc a { color:var(--sky); font-size:14px; text-decoration:none; font-weight:500; }
-    .toc a:hover { text-decoration:underline; }
+    /* ── CARD ── */
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .card-header {
+      padding: 20px 24px 0;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .card-header .icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .card-header h2 {
+      font-family: 'Fraunces', serif;
+      font-size: 18px; font-weight: 600; color: var(--navy);
+    }
+    .card-body { padding: 20px 24px 24px; }
 
-    /* Article sections */
-    .section { margin-bottom:48px; }
-    .section-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:var(--sky); margin-bottom:8px; }
-    .section h2 { font-family:'Fraunces',serif; font-size:clamp(22px,4vw,30px); font-weight:700; color:var(--navy); margin-bottom:16px; line-height:1.2; }
-    .section h3 { font-family:'Fraunces',serif; font-size:20px; font-weight:600; color:var(--navy); margin:28px 0 10px; }
-    .section p { font-size:15px; color:var(--text); margin-bottom:16px; }
-    .section ul, .section ol { padding-left:22px; margin-bottom:16px; }
-    .section li { font-size:15px; color:var(--text); margin-bottom:8px; line-height:1.65; }
-    .section strong { color:var(--navy); }
-    hr.section-divider { border:none; border-top:2px solid var(--border); margin:48px 0; }
+    /* ── FORM ── */
+    .field { margin-bottom: 18px; }
+    label {
+      display: block;
+      font-size: 13px; font-weight: 600;
+      color: var(--muted); text-transform: uppercase;
+      letter-spacing: .05em; margin-bottom: 7px;
+    }
+    label .hint {
+      font-weight: 400; text-transform: none;
+      letter-spacing: 0; color: var(--muted);
+      font-size: 12px; margin-left: 4px;
+    }
+    input[type="number"], select {
+      width: 100%; height: 44px;
+      border: 1.5px solid var(--border); border-radius: 8px;
+      padding: 0 14px;
+      font-size: 15px; font-family: 'DM Sans', sans-serif;
+      color: var(--text); background: var(--white);
+      transition: border-color .15s, box-shadow .15s;
+      appearance: none; -webkit-appearance: none;
+    }
+    input[type="number"]:focus, select:focus {
+      outline: none;
+      border-color: var(--sky);
+      box-shadow: 0 0 0 3px rgba(46,125,209,.15);
+    }
+    .select-wrap { position: relative; }
+    .select-wrap::after {
+      content: '▾';
+      position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+      color: var(--muted); pointer-events: none; font-size: 12px;
+    }
+    .seg-group {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      border: 1.5px solid var(--border); border-radius: 8px; overflow: hidden;
+    }
+    .seg-group label {
+      text-transform: none; letter-spacing: 0; font-weight: 500; font-size: 13px;
+      cursor: pointer; padding: 10px 4px; text-align: center;
+      border-right: 1.5px solid var(--border);
+      transition: background .15s, color .15s;
+      color: var(--muted); margin: 0; display: block;
+    }
+    .seg-group label:last-child { border-right: none; }
+    .seg-group input[type="radio"] { display: none; }
+    .seg-group input[type="radio"]:checked + label {
+      background: var(--navy); color: var(--white);
+    }
 
-    /* Callout boxes */
-    .callout { border-radius:10px; padding:18px 20px; margin:20px 0; font-size:14px; line-height:1.65; }
-    .callout-gold { background:var(--gold-lt); border-left:4px solid var(--gold); color:#7a5500; }
-    .callout-blue { background:#eaf4ff; border-left:4px solid var(--sky); color:#1a4d8f; }
-    .callout-green { background:var(--green-lt); border-left:4px solid var(--green); color:#1a5c38; }
-    .callout strong { display:block; margin-bottom:4px; font-size:15px; }
+    /* Range slider */
+    input[type="range"] {
+      width: 100%; height: 6px;
+      border-radius: 3px; background: var(--border);
+      outline: none; cursor: pointer; border: none;
+      accent-color: var(--sky); padding: 0;
+      margin-top: 4px;
+    }
+    .range-row { display: flex; align-items: center; gap: 12px; }
+    .range-row input[type="range"] { flex: 1; }
+    .range-val {
+      font-weight: 600; font-size: 15px; color: var(--navy);
+      min-width: 40px; text-align: right;
+    }
 
-    /* Comparison table */
-    .compare-table { width:100%; border-collapse:collapse; font-size:14px; margin:20px 0; }
-    .compare-table th { background:var(--navy); color:var(--white); padding:11px 14px; text-align:left; font-size:12px; font-weight:600; letter-spacing:.04em; text-transform:uppercase; }
-    .compare-table td { padding:11px 14px; border-bottom:1px solid var(--border); vertical-align:top; }
-    .compare-table tr:last-child td { border-bottom:none; }
-    .compare-table tr:nth-child(even) td { background:var(--off); }
-    .winner { color:var(--green); font-weight:700; }
+    /* Toggle row */
+    .toggle-row {
+      display: flex; align-items: center;
+      justify-content: space-between;
+      padding: 12px 0; border-top: 1px solid var(--border);
+    }
+    .toggle-label { font-size: 14px; color: var(--text); }
+    .toggle-label small { display: block; font-size: 12px; color: var(--muted); }
+    .toggle {
+      position: relative; width: 44px; height: 24px;
+      flex-shrink: 0;
+    }
+    .toggle input { display: none; }
+    .toggle-track {
+      position: absolute; inset: 0; border-radius: 12px;
+      background: var(--border); cursor: pointer;
+      transition: background .2s;
+    }
+    .toggle-thumb {
+      position: absolute; top: 3px; left: 3px;
+      width: 18px; height: 18px; border-radius: 50%;
+      background: var(--white);
+      box-shadow: 0 1px 4px rgba(0,0,0,.2);
+      transition: left .2s;
+      pointer-events: none;
+    }
+    .toggle input:checked ~ .toggle-track { background: var(--sky); }
+    .toggle input:checked ~ .toggle-thumb { left: 23px; }
 
-    /* Grade cards */
-    .grade-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin:20px 0; }
-    .grade-card { background:var(--white); border:1px solid var(--border); border-radius:10px; padding:16px; box-shadow:0 2px 8px rgba(13,37,69,.06); }
-    .grade-card .grade-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.07em; color:var(--muted); margin-bottom:6px; }
-    .grade-card .grade-title { font-family:'Fraunces',serif; font-size:16px; font-weight:700; color:var(--navy); margin-bottom:8px; }
-    .grade-card p { font-size:13px; color:var(--muted); line-height:1.6; margin:0; }
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 7px; height: 48px; padding: 0 24px;
+      border-radius: 10px; border: none; cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px; font-weight: 600;
+      transition: transform .12s, box-shadow .12s, opacity .12s;
+      text-decoration: none;
+    }
+    .btn:active { transform: scale(.97); }
+    .btn-primary {
+      background: var(--sky); color: var(--white);
+      box-shadow: 0 4px 14px rgba(46,125,209,.35);
+    }
+    .btn-primary:hover { box-shadow: 0 6px 20px rgba(46,125,209,.45); }
+    .btn-secondary {
+      background: var(--off); color: var(--navy);
+      border: 1.5px solid var(--border);
+    }
+    .btn-secondary:hover { background: var(--border); }
+    .btn-gold {
+      background: var(--gold); color: var(--navy);
+      box-shadow: 0 4px 14px rgba(245,166,35,.35);
+    }
+    .btn-gold:hover { box-shadow: 0 6px 20px rgba(245,166,35,.45); }
+    .btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+    .btn svg { width:16px; height:16px; flex-shrink:0; }
 
-    /* Timeline */
-    .timeline { margin:24px 0; }
-    .timeline-item { display:flex; gap:16px; margin-bottom:20px; }
-    .timeline-day { flex-shrink:0; width:56px; height:56px; border-radius:10px; background:var(--navy); color:var(--white); display:flex; flex-direction:column; align-items:center; justify-content:center; font-family:'Fraunces',serif; }
-    .timeline-day .day-label { font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:.05em; color:rgba(255,255,255,.6); }
-    .timeline-day .day-num { font-size:20px; font-weight:700; line-height:1; color:var(--gold); }
-    .timeline-content { padding-top:4px; }
-    .timeline-content strong { display:block; font-size:15px; color:var(--navy); margin-bottom:4px; }
-    .timeline-content p { font-size:13px; color:var(--muted); margin:0; line-height:1.6; }
+    /* ── RESULTS ── */
+    .result-empty {
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      min-height: 200px; gap: 12px;
+      color: var(--muted); text-align: center; padding: 24px;
+    }
+    .result-empty .big-icon { font-size: 48px; opacity: .4; }
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px;
+    }
+    .stat-card {
+      background: var(--off); border-radius: 10px;
+      padding: 16px 18px; border: 1px solid var(--border);
+    }
+    .stat-card .stat-label {
+      font-size: 12px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: .05em; color: var(--muted); margin-bottom: 6px;
+    }
+    .stat-card .stat-value {
+      font-family: 'Fraunces', serif;
+      font-size: 28px; font-weight: 700; color: var(--navy);
+      line-height: 1;
+    }
+    .stat-card .stat-sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
+    .stat-card.highlight { background: var(--navy); border-color: var(--navy); }
+    .stat-card.highlight .stat-label { color: rgba(255,255,255,.6); }
+    .stat-card.highlight .stat-value { color: var(--gold); }
+    .stat-card.highlight .stat-sub { color: rgba(255,255,255,.5); }
 
-    /* CTA card */
-    .cta-card { background:linear-gradient(135deg,var(--navy),var(--blue)); border-radius:var(--radius); padding:36px 28px; color:var(--white); text-align:center; margin-top:48px; }
-    .cta-card h2 { font-family:'Fraunces',serif; font-size:clamp(22px,4vw,30px); font-weight:700; margin-bottom:12px; }
-    .cta-card p { color:rgba(255,255,255,.75); font-size:15px; max-width:500px; margin:0 auto 24px; }
-    .btn { display:inline-flex; align-items:center; justify-content:center; gap:7px; height:50px; padding:0 28px; border-radius:10px; border:none; cursor:pointer; font-family:'DM Sans',sans-serif; font-size:15px; font-weight:600; text-decoration:none; transition:box-shadow .15s; }
-    .btn-gold { background:var(--gold); color:var(--navy); box-shadow:0 4px 14px rgba(245,166,35,.35); }
-    .btn-gold:hover { box-shadow:0 6px 20px rgba(245,166,35,.5); }
-    .btn-white { background:rgba(255,255,255,.15); color:var(--white); border:1px solid rgba(255,255,255,.3); margin-left:10px; }
-    .btn-white:hover { background:rgba(255,255,255,.22); }
+    /* Goal confidence badge */
+    .confidence-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 12px; border-radius: 100px;
+      font-size: 13px; font-weight: 600; margin-top: 14px;
+    }
+    .conf-high { background: var(--green-lt); color: var(--green); }
+    .conf-med  { background: var(--gold-lt);  color: #9a6500; }
+    .conf-low  { background: var(--red-lt);   color: var(--red); }
 
-    /* Stat strip */
-    .stat-strip { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:14px; background:var(--navy); border-radius:var(--radius); padding:24px; margin:28px 0; }
-    .stat-item { text-align:center; }
-    .stat-item .val { font-family:'Fraunces',serif; font-size:28px; font-weight:700; color:var(--gold); line-height:1; }
-    .stat-item .lbl { font-size:12px; color:rgba(255,255,255,.6); margin-top:4px; }
+    /* Divider */
+    .divider {
+      border: none; border-top: 1px solid var(--border);
+      margin: 18px 0;
+    }
 
-    /* Footer */
-    footer { background:var(--navy); color:rgba(255,255,255,.5); padding:20px; font-size:13px; }
-    footer .footer-inner { max-width:780px; margin:0 auto; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px; }
-    footer a { color:rgba(255,255,255,.65); text-decoration:none; }
+    /* ── COMPARISON TABLE ── */
+    .compare-table {
+      width: 100%; border-collapse: collapse; font-size: 14px;
+    }
+    .compare-table th {
+      background: var(--navy); color: var(--white);
+      padding: 12px 14px; text-align: left;
+      font-size: 12px; font-weight: 600; letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .compare-table th:not(:first-child) { text-align: right; }
+    .compare-table td {
+      padding: 11px 14px; border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+    .compare-table td:not(:first-child) { text-align: right; }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table tr:hover td { background: var(--off); }
+    .compare-table .type-name { font-weight: 600; }
+    .compare-table .type-tag {
+      display: inline-block; padding: 2px 8px;
+      border-radius: 100px; font-size: 11px; font-weight: 600;
+      margin-left: 6px; vertical-align: middle;
+    }
+    .tag-apex { background: var(--gold-lt); color: #9a6500; }
+    .tag-diy  { background: #e8f0fe; color: #1a4d8f; }
+    .tag-other{ background: #f0f0f0; color: #666; }
+    .compare-table .best-row td { background: #fffbf0; }
+    .compare-table .best-row .type-name { color: var(--navy); }
+
+    /* ── DISCLOSURE ACCORDION ── */
+    .accordion { margin-top: 0; }
+    .accordion-item { border-bottom: 1px solid var(--border); }
+    .accordion-item:last-child { border-bottom: none; }
+    .accordion-btn {
+      width: 100%; background: none; border: none; cursor: pointer;
+      padding: 14px 0;
+      display: flex; align-items: center; justify-content: space-between;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px; font-weight: 600; color: var(--navy);
+      text-align: left;
+    }
+    .accordion-btn svg {
+      flex-shrink: 0; transition: transform .2s;
+      color: var(--muted);
+    }
+    .accordion-btn[aria-expanded="true"] svg { transform: rotate(180deg); }
+    .accordion-body {
+      display: none; padding-bottom: 14px;
+      font-size: 13px; color: var(--muted); line-height: 1.7;
+    }
+    .accordion-body.open { display: block; }
+    .accordion-body ul { padding-left: 18px; margin-top: 6px; }
+    .accordion-body li { margin-bottom: 4px; }
+    .assumption-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px; margin-top: 10px;
+    }
+    .assumption-block {
+      background: var(--off); border-radius: 8px;
+      padding: 12px 14px; border: 1px solid var(--border);
+    }
+    .assumption-block strong {
+      display: block; font-size: 12px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .04em;
+      color: var(--navy); margin-bottom: 6px;
+    }
+    .assumption-block span { display: block; font-size: 13px; color: var(--muted); }
+
+    /* ── LEAD FORM ── */
+    .lead-card {
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      border-radius: var(--radius);
+      padding: 28px; color: var(--white);
+      border: none; box-shadow: var(--shadow);
+    }
+    .lead-card h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 20px; font-weight: 700; margin-bottom: 8px;
+    }
+    .lead-card p { font-size: 14px; color: rgba(255,255,255,.75); margin-bottom: 20px; }
+    .lead-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media(max-width:540px){ .lead-form-grid { grid-template-columns: 1fr; } }
+    .lead-form-grid .full { grid-column: 1 / -1; }
+    .lead-card label { color: rgba(255,255,255,.7); }
+    .lead-card input, .lead-card select {
+      background: rgba(255,255,255,.1);
+      border-color: rgba(255,255,255,.2);
+      color: var(--white);
+    }
+    .lead-card input::placeholder { color: rgba(255,255,255,.4); }
+    .lead-card input:focus, .lead-card select:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(245,166,35,.2);
+    }
+    .lead-card select option { background: var(--navy); }
+    .no-spam { font-size: 12px; color: rgba(255,255,255,.5); margin-top: 10px; }
+    .no-spam a { color: rgba(255,255,255,.6); }
+
+    /* ── SHARE ── */
+    .share-row {
+      display: flex; gap: 10px; flex-wrap: wrap;
+      align-items: center; margin-top: 18px;
+    }
+    .share-row span { font-size: 13px; color: var(--muted); font-weight: 500; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy); color: rgba(255,255,255,.5);
+      text-align: center; padding: 20px;
+      font-size: 13px;
+    }
+    footer a { color: rgba(255,255,255,.65); }
+
+    /* ── TOAST ── */
+    .toast {
+      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(80px);
+      background: var(--navy); color: var(--white);
+      padding: 12px 24px; border-radius: 100px;
+      font-size: 14px; font-weight: 600;
+      box-shadow: 0 8px 24px rgba(0,0,0,.25);
+      transition: transform .3s cubic-bezier(.34,1.56,.64,1);
+      z-index: 999; white-space: nowrap;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+
+    /* ── SUCCESS STATE ── */
+    .success-banner {
+      display: none; background: var(--green-lt);
+      border: 1px solid var(--green);
+      border-radius: 10px; padding: 14px 18px;
+      font-size: 14px; color: var(--green);
+      font-weight: 600; margin-top: 14px;
+      align-items: center; gap: 8px;
+    }
+    .success-banner.show { display: flex; }
+
+    /* ── FRL BADGE ── */
+    .frl-badge {
+      display: flex; gap: 10px; align-items: flex-start;
+      padding: 10px 14px; border-radius: 9px;
+      font-size: 12px; line-height: 1.5;
+    }
+    .frl-badge .frl-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+    .frl-badge .frl-text strong { display: block; font-size: 13px; margin-bottom: 2px; }
+    .frl-none  { background: var(--green-lt); border: 1px solid #8ecfae; color: #1a5c38; }
+    .frl-low   { background: #eaf4ff; border: 1px solid #93c5e8; color: #1a4d8f; }
+    .frl-mid   { background: var(--gold-lt); border: 1px solid #e8c06a; color: #7a5500; }
+    .frl-high  { background: #fdecea; border: 1px solid #e8a09a; color: #8b1a1a; }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .animate-in { animation: fadeUp .35s ease both; }
   </style>
 </head>
 <body>
 
+<!-- HEADER -->
 <header class="site-header">
   <div class="logo-mark">P</div>
   <span class="brand">The PTO Playbook</span>
-  <nav class="header-nav">
-    <a href="index.html">← Calculator</a>
-    <a href="mailto:Dean.Tielbur@ApexLeadershipCo.com">Contact Dean</a>
-  </nav>
 </header>
 
+<!-- HERO -->
 <div class="hero">
-  <div class="hero-eyebrow">The Complete PTO Guide</div>
-  <h1>How to Run a <em>School Fun Run</em><br>That Actually Raises Money</h1>
-  <p>Pledge-based vs. flat donation, grade-level strategies, event-day logistics, and the honest math behind what schools really net.</p>
-  <div class="hero-meta">
-    <span>📖 12 min read</span>
-    <span>🎯 For PTO leaders planning their first or next fundraiser</span>
-    <span>📍 Illinois &amp; Wisconsin focus</span>
+  <h1>How Much Could Your School<br><em>Fundraiser</em> Really Raise?</h1>
+  <p>Free planning tool for PTO leaders — estimate profit, set a goal, and compare the most popular fundraiser types side by side.</p>
+  <div class="trust-bar">
+    <div class="trust-pill">
+      <svg viewBox="0 0 16 16" fill="none"><path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.4l-3.7 1.9.7-4.1-3-2.9 4.2-.7z" fill="#f5a623"/></svg>
+      Free &amp; no signup required
+    </div>
+    <div class="trust-pill">
+      <svg viewBox="0 0 16 16" fill="none"><path d="M8 2C4.7 2 2 4.7 2 8s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6zm-.5 8.7L4.8 8l1-.9 1.7 1.7 3.7-3.6 1 1-4.7 4.5z" fill="#f5a623"/></svg>
+      Built for PTO volunteers
+    </div>
+    <div class="trust-pill">
+      <svg viewBox="0 0 16 16" fill="none"><path d="M13 5H3a1 1 0 00-1 1v6a1 1 0 001 1h10a1 1 0 001-1V6a1 1 0 00-1-1zM3 4h10V3a1 1 0 00-1-1H4a1 1 0 00-1 1v1z" fill="#f5a623"/></svg>
+      No spam — ever
+    </div>
   </div>
 </div>
 
-<div class="page-wrap">
+<!-- MAIN -->
+<main class="page-body">
 
-  <!-- TOC -->
-  <nav class="toc">
-    <h3>In This Guide</h3>
-    <ol>
-      <li><a href="#what-is">What is a school fun run?</a></li>
-      <li><a href="#pledge-vs-flat">Pledge-based vs. flat donation — which raises more?</a></li>
-      <li><a href="#grade-tips">Grade-level strategies that actually work</a></li>
-      <li><a href="#timeline">A week-by-week planning timeline</a></li>
-      <li><a href="#event-day">Event day: what to expect</a></li>
-      <li><a href="#math">The math: what your school actually keeps</a></li>
-      <li><a href="#diy-vs-managed">DIY vs. managed program — an honest comparison</a></li>
-      <li><a href="#calculator">Estimate your school's potential</a></li>
-    </ol>
-  </nav>
-
-  <!-- SECTION 1 -->
-  <div class="section" id="what-is">
-    <div class="section-label">Section 1</div>
-    <h2>What Is a School Fun Run?</h2>
-    <p>A school fun run is a pledge-based or flat-donation fundraiser where students walk, jog, or run laps around a course — typically on school grounds — while families and community members sponsor them. Unlike product sales where families buy wrapping paper or cookie dough they may not need, a fun run asks for a straightforward financial contribution in exchange for something kids genuinely enjoy: physical activity, energy, and celebration.</p>
-    <p>Done well, a fun run can be the highest-grossing single fundraiser a school runs all year. Done poorly, it's an exhausting day of logistics that leaves your PTO burned out and underwhelmed by the results.</p>
-    <p>The difference almost always comes down to three things: the fundraising model you choose, how well you prime families before the event, and what's driving student motivation on event day.</p>
-
-    <div class="callout callout-blue">
-      <strong>Why fun runs outperform product sales for most schools</strong>
-      Product sales typically return 40–50 cents on the dollar to the school after product costs. A well-run fun run can return 52–97 cents per dollar raised, depending on your model and overhead. Families also consistently prefer giving directly over buying products they didn't ask for.
+  <!-- LEFT COLUMN: CALCULATOR INPUTS -->
+  <div class="card">
+    <div class="card-header">
+      <div class="icon" style="background:#e8f0fe">🎯</div>
+      <h2>Your Fundraiser</h2>
     </div>
-  </div>
+    <div class="card-body">
 
-  <hr class="section-divider" />
+      <div class="field">
+        <label>Fundraiser Type</label>
+        <div class="seg-group">
+          <input type="radio" name="ftype" id="ft-apex" value="apex" checked />
+          <label for="ft-apex">Apex-Managed</label>
+          <input type="radio" name="ftype" id="ft-diy" value="diy" />
+          <label for="ft-diy">DIY Event</label>
+          <input type="radio" name="ftype" id="ft-pto" value="pto" />
+          <label for="ft-pto">Typical PTO</label>
+        </div>
+        <p style="font-size:12px;color:var(--muted);margin-top:6px;" id="type-hint">Sets a realistic starting point. You can adjust below.</p>
+      </div>
 
-  <!-- SECTION 2 -->
-  <div class="section" id="pledge-vs-flat">
-    <div class="section-label">Section 2</div>
-    <h2>Pledge-Based vs. Flat Donation — Which Raises More?</h2>
-    <p>This is the most consequential decision your PTO will make before the event. Every other variable — participation rate, average donation, sharing behavior — flows downstream from this choice.</p>
+      <div class="field">
+        <label>Number of Students</label>
+        <input type="number" id="students" placeholder="e.g. 350" min="1" max="5000" />
+      </div>
 
-    <h3>Pledge-Based Fundraising</h3>
-    <p>In a pledge-based model, students collect sponsors who commit to donating a set amount <em>per lap</em> completed. A student who runs 30 laps with a $1/lap pledge raises $30 from that sponsor. Students typically collect 5–10 sponsors each — parents, grandparents, neighbors, and family friends — which turns one child into a fundraising network.</p>
-    <p>The viral mechanic is real: students are motivated to run more laps because more laps means more money and better prizes. Sponsors feel their donation is earned rather than asked for. And the sharing behavior — sending pledge links to out-of-town relatives — extends your fundraiser well beyond your immediate school community.</p>
+      <div class="field">
+        <label>Participation Rate <span class="hint">(% of students who fundraise)</span></label>
+        <div class="range-row">
+          <input type="range" id="participation" min="10" max="100" value="70" step="5" />
+          <span class="range-val" id="participation-val">70%</span>
+        </div>
+      </div>
 
-    <div class="callout callout-gold">
-      <strong>Real data: why pledge-based outperforms flat donation</strong>
-      At Millburn Elementary (711 students), the average student generated 4.09 pledges. At Racine Montessori (114 students), the average was 8.14 — meaning families reached well outside their immediate network. Flat-donation models typically see 1–2 donors per student because there's no ongoing story to tell and no reason to follow up.
+      <div class="field">
+        <label>Average Donation per Participant <span class="hint">($)</span></label>
+        <input type="number" id="avg-donation" placeholder="e.g. 75" min="1" />
+      </div>
+
+      <div class="field">
+        <label>Free &amp; Reduced Lunch % <span class="hint">(optional)</span></label>
+        <div class="range-row">
+          <input type="range" id="frl" min="0" max="100" value="0" step="1" />
+          <span class="range-val" id="frl-val">—</span>
+        </div>
+        <div id="frl-badge" style="display:none; margin-top:8px;"></div>
+      </div>
+
+      <div class="field">
+        <label>Fundraising Goal <span class="hint">(optional)</span></label>
+        <input type="number" id="goal" placeholder="e.g. 15000" min="0" />
+        <p style="font-size:12px;color:var(--muted);margin-top:5px;">We'll show goal confidence and the donation needed per student.</p>
+      </div>
+
+      <div class="toggle-row">
+        <div class="toggle-label">
+          On-campus team + incentives?
+          <small>Adds ~30% uplift to event gross in comparisons</small>
+        </div>
+        <label class="toggle">
+          <input type="checkbox" id="oncampus" />
+          <span class="toggle-track"></span>
+          <span class="toggle-thumb"></span>
+        </label>
+      </div>
+
+      <div class="toggle-row">
+        <div class="toggle-label">
+          Always compare vs. Apex baseline
+          <small>Off = use your selected type as baseline</small>
+        </div>
+        <label class="toggle">
+          <input type="checkbox" id="apex-baseline" checked />
+          <span class="toggle-track"></span>
+          <span class="toggle-thumb"></span>
+        </label>
+      </div>
+
+      <hr class="divider" />
+
+      <div class="btn-row">
+        <button class="btn btn-primary" id="calc-btn" onclick="calculate()">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M3 3h10v2H3V3zm0 4h4v6H3V7zm6 0h4v3h-4V7zm0 5h4v1h-4v-1z"/></svg>
+          Calculate
+        </button>
+        <button class="btn btn-secondary" onclick="resetForm()">Reset</button>
+      </div>
+
     </div>
+  </div><!-- /card -->
 
-    <h3>Flat Donation Model</h3>
-    <p>In a flat-donation model, families are asked to contribute a single set amount — often $20 or $25 per student — regardless of laps run. The appeal is simplicity: one ask, one payment, done. For very small schools or schools with highly time-constrained families, this can reduce friction.</p>
-    <p>The drawback is ceiling. Once a family gives their flat amount, there's no mechanism to go back for more. You also lose the viral sharing behavior because there's nothing dynamic to share. Average per-student donations in flat models typically run 20–35% lower than pledge-based events of comparable size.</p>
-
-    <div style="overflow-x:auto;">
-      <table class="compare-table">
-        <thead>
-          <tr>
-            <th>Factor</th>
-            <th>Pledge-Based</th>
-            <th>Flat Donation</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td><strong>Avg. donors per student</strong></td><td class="winner">4–8+</td><td>1–2</td></tr>
-          <tr><td><strong>Student motivation</strong></td><td class="winner">High — laps = money</td><td>Low — outcome fixed</td></tr>
-          <tr><td><strong>Out-of-family reach</strong></td><td class="winner">Strong (grandparents, neighbors)</td><td>Minimal</td></tr>
-          <tr><td><strong>Typical gross per student</strong></td><td class="winner">$75–$120+</td><td>$20–$35</td></tr>
-          <tr><td><strong>Admin complexity</strong></td><td>Moderate</td><td class="winner">Low</td></tr>
-          <tr><td><strong>Best for</strong></td><td class="winner">Most schools seeking maximum raise</td><td>Very small schools, tight timelines</td></tr>
-        </tbody>
-      </table>
+  <!-- RIGHT COLUMN: RESULTS -->
+  <div id="results-panel" class="card">
+    <div class="card-header">
+      <div class="icon" style="background:var(--green-lt)">📊</div>
+      <h2>Your Results</h2>
     </div>
-
-    <div class="callout callout-green">
-      <strong>Bottom line</strong>
-      For most schools, pledge-based fundraising will raise 2–4× more than a flat donation model. The added complexity — pledge sheets, per-lap tracking — is manageable and well worth the outcome. Only choose flat donation if your school has fewer than 150 students or your timeline is under two weeks.
-    </div>
-  </div>
-
-  <hr class="section-divider" />
-
-  <!-- SECTION 3 -->
-  <div class="section" id="grade-tips">
-    <div class="section-label">Section 3</div>
-    <h2>Grade-Level Strategies That Actually Work</h2>
-    <p>One of the most common PTO mistakes is treating all students the same. A kindergartner and a 5th grader have completely different motivations, different pledge collection capabilities, and different roles on event day. Here's how to approach each level.</p>
-
-    <div class="grade-grid">
-      <div class="grade-card">
-        <div class="grade-label">Kindergarten &amp; 1st Grade</div>
-        <div class="grade-title">The Excitement Engine</div>
-        <p>These students can't manage pledge collection independently — that's fully on parents. Focus entirely on their enthusiasm. Let them wear their event t-shirt all week. Give them a simple, visual prize chart. Their energy is contagious and sets the tone for the whole school.</p>
+    <div class="card-body">
+      <div id="result-empty" class="result-empty">
+        <div class="big-icon">💰</div>
+        <p><strong>Enter your numbers above</strong><br>and click Calculate to see your estimate.</p>
       </div>
-      <div class="grade-card">
-        <div class="grade-label">2nd &amp; 3rd Grade</div>
-        <div class="grade-title">The Core Raisers</div>
-        <p>Old enough to understand the goal, young enough to be genuinely motivated by prizes and recognition. These grades typically have the highest participation rates. Lean into class competition — post a leaderboard. Parents at this level are still highly engaged.</p>
-      </div>
-      <div class="grade-card">
-        <div class="grade-label">4th &amp; 5th Grade</div>
-        <div class="grade-title">The Leaders</div>
-        <p>Give them ownership. Assign older students as lap counters, course monitors, or "hype crew" for younger grades. Students who feel responsible for the event's success become your best ambassadors at home. Per-student raise is highest at this level when motivated correctly.</p>
-      </div>
-      <div class="grade-card">
-        <div class="grade-label">Middle School (6th–8th)</div>
-        <div class="grade-title">The Wild Card</div>
-        <p>Harder to motivate with typical prize structures. Focus on peer competition between classrooms and social recognition over individual prizes. A class that raises the most getting a pizza party or free period lands better than another plastic trophy.</p>
-      </div>
-    </div>
-
-    <h3>Class Competition: The Single Best Participation Driver</h3>
-    <p>Posting a visible, real-time classroom leaderboard — either physical in the hallway or digital on a screen — consistently increases both participation and per-student raise. Students talk about it at home. Parents who haven't given yet suddenly get a text from their child asking them to donate so their class can move up.</p>
-    <p>Keep the metric simple: total dollars raised per classroom, updated daily during pledge week. Don't use per-student averages — it disadvantages larger classrooms and creates friction. Absolute total keeps all classrooms in the race.</p>
-  </div>
-
-  <hr class="section-divider" />
-
-  <!-- SECTION 4 -->
-  <div class="section" id="timeline">
-    <div class="section-label">Section 4</div>
-    <h2>A Week-by-Week Planning Timeline</h2>
-    <p>The most successful fun runs follow a predictable arc: a build-up week that creates genuine anticipation, a pledge collection window that gives families enough time without losing urgency, and a single high-energy event day. Here's what that looks like in practice.</p>
-
-    <h3>3–4 Weeks Before Event Day</h3>
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-day"><div class="day-label">Week</div><div class="day-num">-4</div></div>
-        <div class="timeline-content">
-          <strong>Lock the date and communicate to families</strong>
-          <p>Send a save-the-date home and post in your school's app or Facebook group. Include the cause — what will the money fund? A specific, tangible goal ("new playground equipment" or "STEM lab supplies") raises more than a generic "school needs."</p>
+      <div id="result-data" style="display:none;">
+        <div class="result-grid animate-in" id="stat-grid">
+          <!-- populated by JS -->
         </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-day"><div class="day-label">Week</div><div class="day-num">-3</div></div>
-        <div class="timeline-content">
-          <strong>Distribute pledge materials and set up online giving</strong>
-          <p>Paper pledge sheets still work, but schools with online giving platforms consistently raise 30–40% more because they unlock out-of-area donors. Grandparents in Florida can sponsor a lap with three clicks. Physical sheets alone can't do that.</p>
+        <div id="goal-section" style="margin-top:14px; display:none;">
+          <!-- populated by JS -->
         </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-day"><div class="day-label">Week</div><div class="day-num">-2</div></div>
-        <div class="timeline-content">
-          <strong>First family reminder — include a specific ask</strong>
-          <p>Don't just say "don't forget to collect pledges." Say: "Ask 5 people this week — one family member, one neighbor, one coworker, one friend, and one anyone-else." A specific number is far more actionable than a vague reminder.</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-day"><div class="day-label">Week</div><div class="day-num">-1</div></div>
-        <div class="timeline-content">
-          <strong>Build-up week begins — daily energy in school</strong>
-          <p>This is when student excitement should peak. Daily theme days, classroom competitions, morning announcements with the running total. The goal is for every student to go home talking about the fundraiser.</p>
-        </div>
-      </div>
-    </div>
-
-    <h3>Event Week: The Daily Structure</h3>
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-day"><div class="day-label">Mon</div><div class="day-num">1</div></div>
-        <div class="timeline-content">
-          <strong>Kickoff — introduce the theme and goal</strong>
-          <p>Reveal the fundraising goal. Show students what it will fund. Make it visual. Post the classroom leaderboard. First-day energy sets the tone for the whole week.</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-day"><div class="day-label">Tue</div><div class="day-num">2</div></div>
-        <div class="timeline-content">
-          <strong>Leadership lesson + mid-week push</strong>
-          <p>Check in on pledges collected. Celebrate classrooms that are leading. Send a parent reminder — this is often when a second wave of donations comes in from families who were waiting to see if their child was serious.</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-day"><div class="day-label">Wed</div><div class="day-num">3</div></div>
-        <div class="timeline-content">
-          <strong>Halfway milestone celebration</strong>
-          <p>Announce the current total raised. If you're on track, celebrate loudly. If you're behind, use it as a rally — "we're $X away from our goal, one more ask each could get us there."</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-day"><div class="day-label">Thu</div><div class="day-num">4</div></div>
-        <div class="timeline-content">
-          <strong>Final push — last day to collect pledges</strong>
-          <p>Urgency communication to families. Any student who hasn't collected pledges yet gets a direct, personal nudge — not a group blast. Tomorrow is the event.</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-day" style="background:var(--gold);"><div class="day-label" style="color:var(--navy);opacity:.7;">Fri</div><div class="day-num" style="color:var(--navy);">5</div></div>
-        <div class="timeline-content">
-          <strong>Event Day 🎉</strong>
-          <p>The run itself. Each class runs as a group. Lap counters track progress. Music, energy, and celebration. This is the payoff for the week's buildup — make it feel like a party, not a PE class.</p>
+        <hr class="divider" />
+        <div class="share-row">
+          <span>Share this estimate:</span>
+          <button class="btn btn-secondary" onclick="copyResult()" style="height:36px;padding:0 14px;font-size:13px;">
+            📋 Copy
+          </button>
+          <button class="btn btn-secondary" onclick="shareOnFacebook()" style="height:36px;padding:0 14px;font-size:13px;">
+            📘 Facebook
+          </button>
         </div>
       </div>
     </div>
   </div>
 
-  <hr class="section-divider" />
+  <!-- COMPARISON TABLE -->
+  <div class="card full-width" id="compare-card" style="display:none;">
+    <div class="card-header">
+      <div class="icon" style="background:#fdecea">📈</div>
+      <h2>Fundraiser Comparison</h2>
+    </div>
+    <div class="card-body">
+      <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">
+        Estimates are directional — your school's execution and community can shift results. Anchored to your inputs above.
+      </p>
+      <div style="overflow-x:auto;">
+        <table class="compare-table" id="compare-table">
+          <thead>
+            <tr>
+              <th>Fundraiser Type</th>
+              <th>Est. Gross</th>
+              <th>Est. Cash (to school)</th>
+              <th>Program Value*</th>
+              <th>Total Value</th>
+              <th>Effort Level</th>
+            </tr>
+          </thead>
+          <tbody id="compare-body">
+          </tbody>
+        </table>
+      </div>
 
-  <!-- SECTION 5 -->
-  <div class="section" id="event-day">
-    <div class="section-label">Section 5</div>
-    <h2>Event Day: What to Expect</h2>
-    <p>Event day is where months of planning either pay off or fall flat. The most common failure mode is underestimating logistics. Here's what needs to be in place before the first class takes the course.</p>
+      <p style="font-size:12px;color:var(--muted);margin-top:10px;">
+        * <strong>Program Value</strong> = estimated retail value of materials &amp; services Apex provides to the school (prizes, event wearables, pledge kits, dedicated on-campus athlete, teacher materials, class awards, full event setup &amp; teardown). Estimated at ~30% of gross. Other fundraiser types provide $0 in included program materials.
+      </p>
 
-    <h3>Course Setup</h3>
-    <p>A standard fun run course is a simple loop on school grounds — typically a quarter-mile or less, depending on your space. Cones or chalk mark the path. The goal is a loop students can complete in 60–90 seconds at a light jog, allowing enough repetitions in a 20-minute period to feel meaningful. Longer loops reduce lap counts and can deflate the energy.</p>
-
-    <h3>Lap Counting</h3>
-    <p>Accuracy matters here because lap count directly determines pledge totals. Options include physical tally wristbands (one bead or ring per lap), volunteer counters at the finish line, or app-based tracking. Physical wristbands are the most reliable for K–5 — they're tangible, immediate, and kids love adding each bead.</p>
-
-    <h3>Class Scheduling</h3>
-    <p>Run classes in 20–30 minute windows, youngest grades first. This lets K–2 students have their moment before the day gets chaotic, and it means the older students — who typically run harder and create the most energy — are on the course when parent volunteers and spectators are most present.</p>
-
-    <h3>Volunteer Roles You Actually Need</h3>
-    <ul>
-      <li><strong>Course monitors (2–3 per straight):</strong> Keep students on path, count laps at the finish line.</li>
-      <li><strong>Water station (1–2 volunteers):</strong> Critical on warm days. Position at the halfway point.</li>
-      <li><strong>Photographer:</strong> Photos of students running are your single best social content for sharing results and building excitement for next year.</li>
-      <li><strong>Prize table:</strong> Have prizes organized and accessible. Nothing kills momentum like a 10-minute search for the right prize tier after a student finishes.</li>
-      <li><strong>Hype:</strong> At least one person whose entire job is energy — music, cheering, announcements. This role is underestimated and makes an enormous difference.</li>
-    </ul>
-
-    <div class="callout callout-gold">
-      <strong>The most common event-day mistake</strong>
-      Running all grades simultaneously. It feels efficient but creates chaos — course crowding, inaccurate lap counting, and diluted energy. Grade-by-grade scheduling takes longer but produces a better experience, better lap accuracy, and higher parent engagement because each class gets a dedicated window.
+      <!-- Assumptions Accordion -->
+      <div class="accordion" style="margin-top:20px;">
+        <div class="accordion-item">
+          <button class="accordion-btn" aria-expanded="false" onclick="toggleAccordion(this)">
+            How to use this calculator
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 4l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="accordion-body">
+            <ol style="padding-left:18px;line-height:1.9;">
+              <li>Choose a <strong>fundraiser type</strong> to set a realistic default baseline.</li>
+              <li>Enter your <strong>student count</strong>, participation rate, and average donation.</li>
+              <li>Optionally enter a <strong>goal</strong> to see confidence level and per-student donation needed.</li>
+              <li>Toggle <em>on-campus team + incentives</em> if your program includes that support.</li>
+              <li>Results and the comparison table update after clicking <strong>Calculate</strong>.</li>
+            </ol>
+            <p style="margin-top:8px;"><strong>Pro tip:</strong> Apex-managed events typically raise significantly more than DIY because of built-in incentives, logistics, and on-campus energy — so starting with the right baseline matters.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-btn" aria-expanded="false" onclick="toggleAccordion(this)">
+            Assumptions &amp; methodology
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 4l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="accordion-body">
+            <div class="assumption-grid">
+              <div class="assumption-block" style="grid-column:1/-1;">
+                <strong>Apex Price Scale (Official)</strong>
+                <div style="overflow-x:auto;margin-top:8px;">
+                  <table style="width:100%;border-collapse:collapse;font-size:12px;">
+                    <thead>
+                      <tr style="background:var(--navy);color:var(--white);">
+                        <th style="padding:6px 10px;text-align:left;font-weight:600;">Min Collected</th>
+                        <th style="padding:6px 10px;text-align:left;font-weight:600;">Max Collected</th>
+                        <th style="padding:6px 10px;text-align:left;font-weight:600;color:var(--gold);">School %</th>
+                        <th style="padding:6px 10px;text-align:left;font-weight:600;">Apex %</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr style="border-bottom:1px solid var(--border)"><td style="padding:5px 10px;">$100,001</td><td style="padding:5px 10px;">+</td><td style="padding:5px 10px;font-weight:700;color:var(--green);">60%</td><td style="padding:5px 10px;color:var(--muted);">40%</td></tr>
+                      <tr style="border-bottom:1px solid var(--border);background:var(--off)"><td style="padding:5px 10px;">$90,001</td><td style="padding:5px 10px;">$100,000</td><td style="padding:5px 10px;font-weight:700;color:var(--green);">59%</td><td style="padding:5px 10px;color:var(--muted);">41%</td></tr>
+                      <tr style="border-bottom:1px solid var(--border)"><td style="padding:5px 10px;">$80,001</td><td style="padding:5px 10px;">$90,000</td><td style="padding:5px 10px;font-weight:700;color:var(--green);">58%</td><td style="padding:5px 10px;color:var(--muted);">42%</td></tr>
+                      <tr style="border-bottom:1px solid var(--border);background:var(--off)"><td style="padding:5px 10px;">$70,001</td><td style="padding:5px 10px;">$80,000</td><td style="padding:5px 10px;font-weight:700;color:var(--green);">57%</td><td style="padding:5px 10px;color:var(--muted);">43%</td></tr>
+                      <tr style="border-bottom:1px solid var(--border)"><td style="padding:5px 10px;">$60,001</td><td style="padding:5px 10px;">$70,000</td><td style="padding:5px 10px;font-weight:700;color:var(--green);">56%</td><td style="padding:5px 10px;color:var(--muted);">44%</td></tr>
+                      <tr style="border-bottom:1px solid var(--border);background:var(--off)"><td style="padding:5px 10px;">$50,001</td><td style="padding:5px 10px;">$60,000</td><td style="padding:5px 10px;font-weight:700;color:var(--green);">55%</td><td style="padding:5px 10px;color:var(--muted);">45%</td></tr>
+                      <tr style="border-bottom:1px solid var(--border)"><td style="padding:5px 10px;">$45,001</td><td style="padding:5px 10px;">$50,000</td><td style="padding:5px 10px;font-weight:700;color:var(--green);">54%</td><td style="padding:5px 10px;color:var(--muted);">46%</td></tr>
+                      <tr style="border-bottom:1px solid var(--border);background:var(--off)"><td style="padding:5px 10px;">$40,001</td><td style="padding:5px 10px;">$45,000</td><td style="padding:5px 10px;font-weight:700;color:var(--green);">53%</td><td style="padding:5px 10px;color:var(--muted);">47%</td></tr>
+                      <tr><td style="padding:5px 10px;">$0</td><td style="padding:5px 10px;">$40,000</td><td style="padding:5px 10px;font-weight:700;color:var(--green);">52%</td><td style="padding:5px 10px;color:var(--muted);">48%</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <span style="margin-top:8px;display:block;">+ ~30% of gross in program materials (prizes, wearables, pledge kits, on-campus athlete, teacher materials, class awards, setup &amp; teardown) — included at no extra cost</span>
+              </div>
+              <div class="assumption-block">
+                <strong>DIY Event</strong>
+                <span>~0.33× of Apex gross</span>
+                <span>3.5% processing only</span>
+              </div>
+              <div class="assumption-block">
+                <strong>Read-a-Thon</strong>
+                <span>~0.45× of Apex gross</span>
+                <span>3.5% processing + 10% platform fee + $0.50/student + $100 fixed</span>
+              </div>
+              <div class="assumption-block">
+                <strong>Product Sale</strong>
+                <span>~0.35× of Apex gross</span>
+                <span>2% processing + 55% product cost</span>
+              </div>
+              <div class="assumption-block">
+                <strong>Restaurant Night</strong>
+                <span>25% family attendance</span>
+                <span>$18 avg spend, 20% giveback, $50 promo cost</span>
+              </div>
+              <div class="assumption-block">
+                <strong>On-Campus Uplift</strong>
+                <span>+30% gross lift applied when "on-campus team + incentives" toggle is enabled. Separate from program materials value, which is always included for Apex events.</span>
+              </div>
+            </div>
+            <p style="margin-top:12px;font-style:italic;">These are directional planning estimates — not guarantees. Actual outcomes depend on school size, community engagement, and execution.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <hr class="section-divider" />
-
-  <!-- SECTION 6 -->
-  <div class="section" id="math">
-    <div class="section-label">Section 6</div>
-    <h2>The Math: What Your School Actually Keeps</h2>
-    <p>This is where PTOs are most often misled — by gross figures that don't account for real costs. Here's an honest breakdown of what different models actually return to the school.</p>
-
-    <div class="stat-strip">
-      <div class="stat-item"><div class="val">52–60%</div><div class="lbl">School keeps (managed program)</div></div>
-      <div class="stat-item"><div class="val">~96%</div><div class="lbl">School keeps (DIY, no prizes)</div></div>
-      <div class="stat-item"><div class="val">30%</div><div class="lbl">Added value in managed program materials</div></div>
-      <div class="stat-item"><div class="val">3×</div><div class="lbl">Typical gross advantage of managed vs. DIY</div></div>
+  <!-- REAL SCHOOLS, REAL RESULTS -->
+  <div class="full-width" style="margin-top:0;">
+    <div style="text-align:center;margin-bottom:24px;">
+      <div style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--sky);margin-bottom:8px;">Real Schools · Real Numbers</div>
+      <h2 style="font-family:'Fraunces',serif;font-size:clamp(22px,4vw,32px);font-weight:700;color:var(--navy);">What Schools Like Yours Actually Raised</h2>
+      <p style="color:var(--muted);font-size:15px;max-width:520px;margin:10px auto 0;">These are real Apex events in Illinois and Wisconsin — not projections.</p>
     </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;">
 
-    <h3>DIY Fun Run: The Real Cost Picture</h3>
-    <p>A DIY fun run keeps a higher percentage of gross on paper — you're not paying a program fee. But the true cost picture includes: t-shirts ($5–12/student), prizes ($3–8/student across tiers), online platform fees (3–4% of gross), volunteer time (40–80 hours of PTO labor), and often a lower gross because there's no dedicated energy-building program driving participation.</p>
-    <p>A school that raises $20,000 DIY and keeps 90% nets $18,000. A school that raises $60,000 with a managed program and keeps 55% nets $33,000 — plus receives approximately $18,000 in program materials (t-shirts, prizes, classroom curriculum, on-campus staff). The managed school is ahead by $33,000 in cash plus $18,000 in value, against the DIY school's $18,000.</p>
+      <div class="card" style="border-top:4px solid var(--gold);">
+        <div class="card-body" style="padding:20px;">
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:4px;">Cotton Creek School · Island Lake, IL</div>
+          <div style="font-family:'Fraunces',serif;font-size:36px;font-weight:700;color:var(--navy);line-height:1;">$47,513</div>
+          <div style="font-size:13px;color:var(--muted);margin:6px 0 14px;">gross raised</div>
+          <div style="display:flex;flex-direction:column;gap:7px;font-size:13px;">
+            <div style="display:flex;justify-content:space-between;padding:7px 10px;background:var(--off);border-radius:7px;">
+              <span style="color:var(--muted);">Students</span><strong>580</strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:7px 10px;background:var(--off);border-radius:7px;">
+              <span style="color:var(--muted);">Participation</span><strong>49%</strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:7px 10px;background:var(--off);border-radius:7px;">
+              <span style="color:var(--muted);">Shares/student</span><strong>3.10</strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:7px 10px;background:var(--green-lt);border-radius:7px;">
+              <span style="color:var(--green);">School keeps</span><strong style="color:var(--green);">~$25,700</strong>
+            </div>
+          </div>
+          <div style="margin-top:12px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--sky);">🔁 Repeat Apex School</div>
+        </div>
+      </div>
 
-    <h3>What "Program Materials" Are Actually Worth</h3>
-    <p>When a managed program includes event wearables, student prizes across multiple tiers, classroom leadership curriculum, a dedicated on-campus team for the full week, class awards, and complete setup and teardown, that's not a soft benefit — it has real dollar value. At scale, those materials and labor represent roughly 30% of gross that would otherwise come out of the school's net if sourced independently.</p>
+      <div class="card" style="border-top:4px solid var(--sky);">
+        <div class="card-body" style="padding:20px;">
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:4px;">Millburn Elementary · Old Mill Creek, IL</div>
+          <div style="font-family:'Fraunces',serif;font-size:36px;font-weight:700;color:var(--navy);line-height:1;">$87,594</div>
+          <div style="font-size:13px;color:var(--muted);margin:6px 0 14px;">gross raised</div>
+          <div style="display:flex;flex-direction:column;gap:7px;font-size:13px;">
+            <div style="display:flex;justify-content:space-between;padding:7px 10px;background:var(--off);border-radius:7px;">
+              <span style="color:var(--muted);">Students</span><strong>711</strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:7px 10px;background:var(--off);border-radius:7px;">
+              <span style="color:var(--muted);">Participation</span><strong>66%</strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:7px 10px;background:var(--off);border-radius:7px;">
+              <span style="color:var(--muted);">Shares/student</span><strong>4.09</strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:7px 10px;background:var(--green-lt);border-radius:7px;">
+              <span style="color:var(--green);">School keeps</span><strong style="color:var(--green);">~$50,800</strong>
+            </div>
+          </div>
+          <div style="margin-top:12px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--sky);">🔁 Repeat Apex School</div>
+        </div>
+      </div>
 
-    <div class="callout callout-green">
-      <strong>The question to ask when comparing</strong>
-      Don't compare gross numbers. Compare <em>total value to school</em> — cash kept plus materials and services received. That's the number that determines whether your PTO came out ahead.
+      <div class="card" style="border-top:4px solid var(--green);">
+        <div class="card-body" style="padding:20px;">
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:4px;">Kaneland John Shields · Sugar Grove, IL</div>
+          <div style="font-family:'Fraunces',serif;font-size:36px;font-weight:700;color:var(--navy);line-height:1;">$87,594</div>
+          <div style="font-size:13px;color:var(--muted);margin:6px 0 14px;">gross raised</div>
+          <div style="display:flex;flex-direction:column;gap:7px;font-size:13px;">
+            <div style="display:flex;justify-content:space-between;padding:7px 10px;background:var(--off);border-radius:7px;">
+              <span style="color:var(--muted);">Students</span><strong>421</strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:7px 10px;background:var(--off);border-radius:7px;">
+              <span style="color:var(--muted);">Participation</span><strong>63%</strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:7px 10px;background:var(--off);border-radius:7px;">
+              <span style="color:var(--muted);">Shares/student</span><strong>2.44</strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:7px 10px;background:var(--green-lt);border-radius:7px;">
+              <span style="color:var(--green);">School keeps</span><strong style="color:var(--green);">~$50,800</strong>
+            </div>
+          </div>
+          <div style="margin-top:12px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--green);">⭐ First-Time Apex School</div>
+        </div>
+      </div>
+
+      <div class="card" style="border-top:4px solid var(--gold);">
+        <div class="card-body" style="padding:20px;">
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:4px;">Racine Montessori · Racine, WI</div>
+          <div style="font-family:'Fraunces',serif;font-size:36px;font-weight:700;color:var(--navy);line-height:1;">$21,871</div>
+          <div style="font-size:13px;color:var(--muted);margin:6px 0 14px;">gross raised</div>
+          <div style="display:flex;flex-direction:column;gap:7px;font-size:13px;">
+            <div style="display:flex;justify-content:space-between;padding:7px 10px;background:var(--off);border-radius:7px;">
+              <span style="color:var(--muted);">Students</span><strong>114</strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:7px 10px;background:var(--off);border-radius:7px;">
+              <span style="color:var(--muted);">Participation</span><strong>68%</strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:7px 10px;background:var(--off);border-radius:7px;">
+              <span style="color:var(--muted);">Shares/student</span><strong>8.14</strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:7px 10px;background:var(--green-lt);border-radius:7px;">
+              <span style="color:var(--green);">School keeps</span><strong style="color:var(--green);">~$11,400</strong>
+            </div>
+          </div>
+          <div style="margin-top:12px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--green);">⭐ First-Time Apex School</div>
+        </div>
+      </div>
+
+    </div>
+    <p style="text-align:center;font-size:12px;color:var(--muted);margin-top:14px;">School net estimates based on Apex sliding scale (52–60%). Actual results vary by school and community.</p>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <div class="full-width">
+    <div style="text-align:center;margin-bottom:28px;">
+      <div style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--sky);margin-bottom:8px;">From the People Who Know Best</div>
+      <h2 style="font-family:'Fraunces',serif;font-size:clamp(22px,4vw,32px);font-weight:700;color:var(--navy);">What Educators Are Saying</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;">
+
+      <div class="card" style="padding:0;">
+        <div class="card-body" style="padding:24px;position:relative;">
+          <div style="font-size:48px;line-height:1;color:var(--gold);font-family:'Fraunces',serif;position:absolute;top:16px;left:22px;opacity:.4;">"</div>
+          <p style="font-size:14px;line-height:1.7;color:var(--text);padding-top:20px;font-style:italic;">We love the Apex program. Our staff is so excited when you walk in in the morning and our students even more excited. They've learned so much — lessons, the high fives in the hallway. They're just so pumped and ready to show the community that they are so proud of what they raised for the school library.</p>
+          <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--border);">
+            <div style="font-weight:700;font-size:14px;color:var(--navy);">PTO President</div>
+            <div style="font-size:13px;color:var(--muted);">Wauconda Grade School</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="padding:0;">
+        <div class="card-body" style="padding:24px;position:relative;">
+          <div style="font-size:48px;line-height:1;color:var(--gold);font-family:'Fraunces',serif;position:absolute;top:16px;left:22px;opacity:.4;">"</div>
+          <p style="font-size:14px;line-height:1.7;color:var(--text);padding-top:20px;font-style:italic;">This is hands down the best fundraiser I have ever been a part of. They definitely put the FUN in fundraiser. Wonderful team of individuals full of personality. Looking forward to many years working with them.</p>
+          <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--border);">
+            <div style="font-weight:700;font-size:14px;color:var(--navy);">PTO Fundraising Chair</div>
+            <div style="font-size:13px;color:var(--muted);">Marion Jordan Elementary</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="padding:0;">
+        <div class="card-body" style="padding:24px;position:relative;">
+          <div style="font-size:48px;line-height:1;color:var(--gold);font-family:'Fraunces',serif;position:absolute;top:16px;left:22px;opacity:.4;">"</div>
+          <p style="font-size:14px;line-height:1.7;color:var(--text);padding-top:20px;font-style:italic;">We do a lot of fundraisers but I like the energy the Apex crew brings in. They get the kids fired up and have fun with it. It's my favorite thing we do. I do a lot of fundraisers not just with this school but with other groups in the area but none of them bring the energy that Apex brings.</p>
+          <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--border);">
+            <div style="font-weight:700;font-size:14px;color:var(--navy);">PE Teacher</div>
+            <div style="font-size:13px;color:var(--muted);">Genoa Elementary</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="padding:0;">
+        <div class="card-body" style="padding:24px;position:relative;">
+          <div style="font-size:48px;line-height:1;color:var(--gold);font-family:'Fraunces',serif;position:absolute;top:16px;left:22px;opacity:.4;">"</div>
+          <p style="font-size:14px;line-height:1.7;color:var(--text);padding-top:20px;font-style:italic;">As we've been learning about being good leaders throughout the week, I've seen our older kids step up to the plate and show leadership values and characteristics to our younger kiddos. Helping out in the hallways, walking with kids, throwing trash out — it's just a really nice way to begin the year and talk about those things that really matter.</p>
+          <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--border);">
+            <div style="font-weight:700;font-size:14px;color:var(--navy);">Principal</div>
+            <div style="font-size:13px;color:var(--muted);">Juliette Low Elementary</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="padding:0;">
+        <div class="card-body" style="padding:24px;position:relative;">
+          <div style="font-size:48px;line-height:1;color:var(--gold);font-family:'Fraunces',serif;position:absolute;top:16px;left:22px;opacity:.4;">"</div>
+          <p style="font-size:14px;line-height:1.7;color:var(--text);padding-top:20px;font-style:italic;">I enjoyed how involved the leaders were with the students outside of the classroom lessons — recess, class parties, arrival times. Will definitely have Apex back to our school.</p>
+          <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--border);">
+            <div style="font-weight:700;font-size:14px;color:var(--navy);">Principal</div>
+            <div style="font-size:13px;color:var(--muted);">North Elementary</div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
-  <hr class="section-divider" />
-
-  <!-- SECTION 7 -->
-  <div class="section" id="diy-vs-managed">
-    <div class="section-label">Section 7</div>
-    <h2>DIY vs. Managed Program: An Honest Comparison</h2>
-    <p>There's no universal right answer here — it depends on your school's situation. Here's a framework for thinking through it honestly.</p>
-
-    <div style="overflow-x:auto;">
-      <table class="compare-table">
-        <thead>
-          <tr>
-            <th>Factor</th>
-            <th>DIY Fun Run</th>
-            <th>Managed Program</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td><strong>School's % of gross</strong></td><td class="winner">~96% (processing only)</td><td>52–60% (sliding scale)</td></tr>
-          <tr><td><strong>Typical gross raised</strong></td><td>Lower (no built-in energy program)</td><td class="winner">Typically 2–3× higher gross</td></tr>
-          <tr><td><strong>Cash to school (absolute)</strong></td><td>Lower in most cases</td><td class="winner">Higher in most cases</td></tr>
-          <tr><td><strong>T-shirts, prizes, curriculum</strong></td><td>PTO pays separately</td><td class="winner">Included</td></tr>
-          <tr><td><strong>PTO volunteer hours</strong></td><td>40–80+ hours</td><td class="winner">~10–15 hours</td></tr>
-          <tr><td><strong>Student energy / experience</strong></td><td>Depends on volunteers</td><td class="winner">Consistent, professional</td></tr>
-          <tr><td><strong>Risk if PTO capacity is low</strong></td><td>High</td><td class="winner">Low</td></tr>
-          <tr><td><strong>Best for</strong></td><td>Large, experienced PTO with time</td><td class="winner">Most schools</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <p>The scenario where DIY wins on total value is narrow: a large school (500+ students) with an experienced, high-capacity PTO that can execute a full event-week program, source competitive pricing on prizes and shirts, and has done it successfully before. First-time schools, smaller schools, and PTOs with limited volunteer bandwidth almost always come out ahead with a managed program.</p>
-  </div>
-
-  <hr class="section-divider" />
-
-  <!-- SECTION 8: CALCULATOR CTA -->
-  <div class="section" id="calculator">
-    <div class="section-label">Section 8</div>
-    <h2>Estimate Your School's Potential</h2>
-    <p>The numbers in this guide are directional. What your school specifically could raise depends on your student count, community demographics, and fundraising model. The free calculator below lets you plug in your school's actual numbers and see a realistic estimate — including how your results would compare across different fundraiser types.</p>
-    <p>If you're considering a managed program, the calculator also shows the Apex sliding scale and program materials value so you can see the full picture before making any decisions.</p>
-  </div>
-
-  <!-- INLINE CALCULATOR EMBED -->
-  <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-bottom:40px;">
-    <div style="background:linear-gradient(135deg,var(--navy),var(--blue));padding:20px 24px;">
-      <div style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Free Tool</div>
-      <div style="font-family:'Fraunces',serif;font-size:22px;font-weight:700;color:var(--white);">School Fundraiser Profit Calculator</div>
-      <div style="font-size:14px;color:rgba(255,255,255,.7);margin-top:4px;">Estimate your net, compare fundraiser types, and see what your school could keep.</div>
-    </div>
-    <div style="padding:24px;text-align:center;">
-      <p style="font-size:15px;color:var(--muted);margin-bottom:20px;">Enter your school's numbers to get a personalized estimate — including the Apex sliding scale and program materials value.</p>
-      <a href="index.html" class="btn btn-gold" style="font-size:16px;height:54px;padding:0 32px;">
-        Open the Calculator →
-      </a>
-      <p style="font-size:12px;color:var(--muted);margin-top:14px;">Free · No signup · No spam</p>
+  <!-- WHAT HAPPENS NEXT -->
+  <div class="card full-width" style="background:linear-gradient(135deg,var(--navy),var(--blue));border:none;">
+    <div class="card-body" style="padding:36px 28px;text-align:center;">
+      <div style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">No Pressure. No Obligation.</div>
+      <h2 style="font-family:'Fraunces',serif;font-size:clamp(22px,4vw,30px);font-weight:700;color:var(--white);margin-bottom:10px;">What Happens After You Reach Out?</h2>
+      <p style="color:rgba(255,255,255,.7);font-size:15px;max-width:500px;margin:0 auto 32px;">Here's exactly what to expect — no surprise sales calls, no pressure to sign anything.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;max-width:720px;margin:0 auto;">
+        <div style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:22px 18px;">
+          <div style="font-family:'Fraunces',serif;font-size:32px;font-weight:700;color:var(--gold);margin-bottom:8px;">1</div>
+          <div style="font-weight:700;font-size:15px;color:var(--white);margin-bottom:6px;">Dean Reviews Your Numbers</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.6);line-height:1.6;">Your calculator estimate is included automatically. Dean reviews your school size, goal, and FRL context before responding.</div>
+        </div>
+        <div style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:22px 18px;">
+          <div style="font-family:'Fraunces',serif;font-size:32px;font-weight:700;color:var(--gold);margin-bottom:8px;">2</div>
+          <div style="font-weight:700;font-size:15px;color:var(--white);margin-bottom:6px;">You Get a Personalized Plan</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.6);line-height:1.6;">A simple, no-obligation plan tailored to your school — realistic goal, suggested donation per student, and timeline.</div>
+        </div>
+        <div style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:22px 18px;">
+          <div style="font-family:'Fraunces',serif;font-size:32px;font-weight:700;color:var(--gold);margin-bottom:8px;">3</div>
+          <div style="font-weight:700;font-size:15px;color:var(--white);margin-bottom:6px;">Your PTO Decides Together</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.6);line-height:1.6;">Bring the plan to your board. No signature required until your group is fully on board. Most PTOs decide in one meeting.</div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- FINAL CTA -->
-  <div class="cta-card">
-    <div style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">Ready to Talk?</div>
-    <h2>Get a Plan Built for Your School</h2>
-    <p>Dean Tielbur is Apex's Area Director for Illinois and Wisconsin. Send him your calculator numbers and he'll put together a no-obligation plan specific to your school — typically within one business day.</p>
-    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:8px;">
-      <a href="index.html" class="btn btn-white">Run the Calculator First</a>
-      <a href="mailto:Dean.Tielbur@ApexLeadershipCo.com" class="btn btn-gold">Email Dean Directly</a>
+  <!-- FAQ -->
+  <div class="card full-width">
+    <div class="card-header">
+      <div class="icon" style="background:var(--gold-lt);">❓</div>
+      <h2>Questions PTOs Always Ask</h2>
     </div>
-    <p style="font-size:13px;color:rgba(255,255,255,.5);margin-top:20px;">Dean Tielbur · (847) 951-8532 · Dean.Tielbur@ApexLeadershipCo.com</p>
+    <div class="card-body">
+      <div class="accordion">
+
+        <div class="accordion-item">
+          <button class="accordion-btn" aria-expanded="false" onclick="toggleAccordion(this)">
+            How does Apex make money — and is there a conflict of interest?
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 4l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="accordion-body">
+            Apex earns its share of the gross raised — between 40% and 48% depending on how much your school raises, per the official price scale shown in the comparison table above. There's no hidden fee, no per-student charge, and no markup on materials. The more your school raises, the smaller Apex's percentage becomes. That alignment — Apex only earns more when your school earns more — is intentional.
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn" aria-expanded="false" onclick="toggleAccordion(this)">
+            Do we have to sign a long-term contract?
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 4l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="accordion-body">
+            No long-term contract is required. Each event is a single engagement. Many schools do choose to bring Apex back year after year — you saw several repeat schools in the results above — but that's always their choice, not a contractual obligation. You're never locked in.
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn" aria-expanded="false" onclick="toggleAccordion(this)">
+            What if our school has never done a fun run before?
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 4l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="accordion-body">
+            First-time schools are a specialty. Racine Montessori (114 students, first-time Apex school) raised $21,871 — a 68% participation rate with 8.14 shares per student. Kaneland John Shields ran their first Apex event and raised $87,594 with 421 students. The Apex on-campus team handles all setup, student energy, and event-day logistics — your PTO's job is simply to say yes and communicate with families.
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn" aria-expanded="false" onclick="toggleAccordion(this)">
+            How much work does this put on our PTO volunteers?
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 4l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="accordion-body">
+            Significantly less than a DIY event. Apex provides a dedicated on-campus team that handles classroom lessons, morning arrival energy, event-day setup, the run itself, and full teardown. Your PTO's primary responsibilities are communicating the fundraiser to families (Apex provides templates), distributing pledge kits, and collecting donations — all of which Apex walks you through step by step.
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn" aria-expanded="false" onclick="toggleAccordion(this)">
+            Can we see a sample timeline for how the week works?
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 4l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="accordion-body">
+            A typical Apex event runs across one school week. Monday through Thursday, the Apex team visits classrooms to deliver leadership lessons and build excitement — each day has a theme. Friday is event day: the fun run itself, with Apex handling all logistics from setup through teardown. Prizes are distributed to students in the days following based on pledges collected. Dean can walk you through a school-specific timeline when you reach out.
+          </div>
+        </div>
+
+      </div>
+      <div style="margin-top:20px;padding:16px 18px;background:var(--off);border-radius:10px;border:1px solid var(--border);font-size:14px;color:var(--muted);">
+        Have a question that's not answered here? <a href="mailto:Dean.Tielbur@ApexLeadershipCo.com" style="color:var(--sky);font-weight:600;">Email Dean directly</a> — he typically responds within one business day.
+      </div>
+    </div>
   </div>
 
-</div><!-- /page-wrap -->
+  <!-- LEAD FORM -->
+  <div class="lead-card full-width">
+    <h3>Want a Simple Plan to Hit Your Goal?</h3>
+    <p>Fill this out and we'll draft a personalized email with your calculator numbers included. No pressure, no spam.</p>
+    <div class="lead-form-grid" id="lead-form-grid">
+      <div class="field">
+        <label>Your Name</label>
+        <input type="text" id="lead-name" placeholder="Jane Smith" />
+      </div>
+      <div class="field">
+        <label>School Name</label>
+        <input type="text" id="lead-school" placeholder="Lincoln Elementary" />
+      </div>
+      <div class="field">
+        <label>Your Role</label>
+        <div class="select-wrap">
+          <select id="lead-role">
+            <option value="">Select one…</option>
+            <option>PTO President</option>
+            <option>PTO Treasurer</option>
+            <option>PTO Secretary</option>
+            <option>PTO Volunteer</option>
+            <option>Principal</option>
+            <option>Teacher</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label>Email Address</label>
+        <input type="email" id="lead-email" placeholder="jane@school.org" />
+      </div>
+    </div>
+    <button class="btn btn-gold" onclick="submitLead()" style="margin-top:16px;">
+      <svg viewBox="0 0 16 16" fill="currentColor"><path d="M14 2L2 7l5 2 2 5 5-12z"/></svg>
+      Yes — send me a simple plan
+    </button>
+    <div class="success-banner" id="lead-success">
+      ✅ Thanks! Check your email shortly. Dean at Apex will follow up with a personalized plan.
+    </div>
+    <p class="no-spam">
+      Prefer to email directly? <a href="mailto:Dean.Tielbur@ApexLeadershipCo.com" style="color:rgba(255,255,255,.6);">Dean.Tielbur@ApexLeadershipCo.com</a>
+    </p>
+  </div>
+
+</main>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
 
 <footer>
-  <div class="footer-inner">
-    <span>Built for PTO leaders by <strong style="color:rgba(255,255,255,.8)">The PTO Playbook</strong> · Content is for planning purposes.</span>
+  <div style="max-width:960px;margin:0 auto;padding:20px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;">
+    <span>Built for PTO leaders by <strong style="color:rgba(255,255,255,.8)">The PTO Playbook</strong> · Results are planning estimates.</span>
     <div style="display:flex;gap:20px;font-size:13px;">
-      <a href="index.html">Calculator</a>
-      <a href="fun-run-guide.html">Fun Run Guide</a>
-      <a href="mailto:Dean.Tielbur@ApexLeadershipCo.com">Contact Dean</a>
+      <a href="index.html" style="color:rgba(255,255,255,.65);">Calculator</a>
+      <a href="fun-run-guide.html" style="color:rgba(255,255,255,.65);">Fun Run Guide</a>
+      <a href="mailto:Dean.Tielbur@ApexLeadershipCo.com" style="color:rgba(255,255,255,.65);">Contact Dean</a>
     </div>
   </div>
 </footer>
 
+
+<script>
+(function() {
+
+  /* ── Participation slider ── */
+  var participationSlider = document.getElementById('participation');
+  var participationVal    = document.getElementById('participation-val');
+  function updateParticipationDisplay() {
+    participationVal.textContent = participationSlider.value + '%';
+  }
+  participationSlider.addEventListener('input', updateParticipationDisplay);
+  updateParticipationDisplay();
+
+  /* ── FRL slider ── */
+  var frlSlider = document.getElementById('frl');
+  var frlVal    = document.getElementById('frl-val');
+  var frlBadge  = document.getElementById('frl-badge');
+
+  function getFrlTier(pct) {
+    if (pct <= 0)  return null;
+    if (pct <= 20) return { cls:'frl-none', icon:'🟢', label:'Low economic need (1–20%)',         adj:'No adjustment applied — baseline numbers stand.' };
+    if (pct <= 40) return { cls:'frl-low',  icon:'🔵', label:'Mild economic need (21–40%)',        adj:'Participation -5%, avg donation -10%.' };
+    if (pct <= 60) return { cls:'frl-mid',  icon:'🟡', label:'Moderate economic need (41–60%)',    adj:'Participation -10%, avg donation -18%.' };
+    if (pct <= 80) return { cls:'frl-high', icon:'🟠', label:'Significant economic need (61–80%)', adj:'Participation -15%, avg donation -25%.' };
+    return                { cls:'frl-high', icon:'🔴', label:'High economic need (81–100%)',        adj:'Participation -18%, avg donation -30%.' };
+  }
+
+  function getFrlMultipliers(pct) {
+    if (!pct || pct <= 0) return { partMult:1.00, donMult:1.00 };
+    if (pct <= 20)        return { partMult:1.00, donMult:1.00 };
+    if (pct <= 40)        return { partMult:0.95, donMult:0.90 };
+    if (pct <= 60)        return { partMult:0.90, donMult:0.82 };
+    if (pct <= 80)        return { partMult:0.85, donMult:0.75 };
+    return                       { partMult:0.82, donMult:0.70 };
+  }
+
+  function updateFrlDisplay() {
+    var pct = parseInt(frlSlider.value, 10);
+    frlVal.textContent = pct + '%';
+    var tier = getFrlTier(pct);
+    if (!tier) {
+      frlBadge.style.display = 'none';
+      frlBadge.innerHTML = '';
+    } else {
+      var apexNote = pct > 40
+        ? '<span style="display:block;margin-top:4px;font-style:italic;">Apex\'s on-campus team and incentives are specifically designed to drive participation at schools like yours — these are conservative estimates.</span>'
+        : '';
+      frlBadge.style.display = 'block';
+      frlBadge.innerHTML = '<div class="frl-badge ' + tier.cls + '"><span class="frl-icon">' + tier.icon + '</span><div class="frl-text"><strong>' + tier.label + '</strong> ' + tier.adj + apexNote + '</div></div>';
+    }
+  }
+  frlSlider.addEventListener('input', updateFrlDisplay);
+  updateFrlDisplay();
+
+  /* ── Fundraiser type hints ── */
+  var typeHints = {
+    apex: 'Apex-managed events provide on-campus staff, leadership curriculum, shirts, prizes, and full event-day logistics.',
+    diy:  'DIY events keep more of gross but require your team to manage everything — setup, prizes, and promotion.',
+    pto:  'A typical PTO fundraiser (product sale or light event) is low-effort but generally raises less per student.'
+  };
+  document.querySelectorAll('input[name="ftype"]').forEach(function(r) {
+    r.addEventListener('change', function() {
+      document.getElementById('type-hint').textContent = typeHints[r.value] || '';
+      var don = document.getElementById('avg-donation');
+      if (!don.value) {
+        if (r.value === 'apex') don.value = 90;
+        else if (r.value === 'diy') don.value = 50;
+        else don.value = 40;
+      }
+    });
+  });
+
+  /* ── Enter key shortcut ── */
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && ['students','avg-donation','goal'].includes(e.target.id)) calculate();
+  });
+
+  /* ── Helpers ── */
+  function fmt(n) { return '$' + Math.round(n).toLocaleString(); }
+  function fmtPct(n) { return n.toFixed(1) + '%'; }
+
+  function apexSlidingScale(gross) {
+    if (gross > 100000) return 0.60;
+    if (gross > 90000)  return 0.59;
+    if (gross > 80000)  return 0.58;
+    if (gross > 70000)  return 0.57;
+    if (gross > 60000)  return 0.56;
+    if (gross > 50000)  return 0.55;
+    if (gross > 45000)  return 0.54;
+    if (gross > 40000)  return 0.53;
+    return 0.52;
+  }
+
+  /* ── CALCULATE ── */
+  function calculate() {
+    var students = parseFloat(document.getElementById('students').value);
+    var partRate = parseFloat(document.getElementById('participation').value) / 100;
+    var avgDon   = parseFloat(document.getElementById('avg-donation').value);
+    var goal     = parseFloat(document.getElementById('goal').value) || null;
+    var onCampus = document.getElementById('oncampus').checked;
+    var apexBase = document.getElementById('apex-baseline').checked;
+    var ftype    = document.querySelector('input[name="ftype"]:checked').value;
+    var frlPct   = parseInt(document.getElementById('frl').value, 10) || 0;
+
+    if (!students || !avgDon || isNaN(students) || isNaN(avgDon)) {
+      showToast('Please enter student count and average donation.');
+      return;
+    }
+
+    var mults       = getFrlMultipliers(frlPct);
+    var adjPartRate = partRate * mults.partMult;
+    var adjAvgDon   = avgDon   * mults.donMult;
+    var frlAdjusted = frlPct > 20 && (mults.partMult < 1 || mults.donMult < 1);
+
+    var participants = students * adjPartRate;
+    var baseGross    = participants * adjAvgDon;
+    var uplift       = onCampus ? 1.30 : 1.00;
+    var gross        = baseGross * uplift;
+
+    var net, fees, feesLabel, programValue = 0, schoolPct = 0.52;
+
+    if (ftype === 'apex') {
+      schoolPct    = apexSlidingScale(gross);
+      var proc     = gross * 0.035;
+      net          = gross * schoolPct - proc;
+      fees         = gross - net;
+      programValue = gross * 0.30;
+      feesLabel    = Math.round((1 - schoolPct) * 100) + '% Apex share + 3.5% processing — school keeps ' + Math.round(schoolPct * 100) + '%';
+    } else if (ftype === 'diy') {
+      fees      = gross * 0.035;
+      net       = gross - fees;
+      feesLabel = '3.5% processing';
+    } else {
+      fees      = gross * 0.135 + 100 + participants * 0.50;
+      net       = gross - fees;
+      feesLabel = '3.5% + 10% platform + $100 + $0.50/student';
+    }
+
+    var totalValue = net + programValue;
+
+    /* FRL note */
+    var frlNote = '';
+    if (frlAdjusted) {
+      var apexWarn = frlPct > 40
+        ? '<span style="display:block;margin-top:3px;font-style:italic;">Apex\'s on-campus team is specifically designed to drive participation at schools like yours — these are conservative estimates.</span>'
+        : '';
+      frlNote = '<div class="stat-card" style="grid-column:1/-1;background:#eaf4ff;border-color:#93c5e8;">'
+        + '<div class="stat-label" style="color:#1a4d8f;">FRL Adjustment Applied (' + frlPct + '% free &amp; reduced lunch)</div>'
+        + '<div class="stat-sub" style="font-size:13px;color:#1a4d8f;">Participation adjusted to ' + Math.round(adjPartRate * 100) + '% (from ' + Math.round(partRate * 100) + '%) &nbsp;·&nbsp; Avg donation adjusted to ' + fmt(adjAvgDon) + ' (from ' + fmt(avgDon) + ')' + apexWarn + '</div>'
+        + '</div>';
+    }
+
+    /* Apex materials note */
+    var apexNote = '';
+    if (ftype === 'apex') {
+      apexNote = '<div class="stat-card" style="grid-column:1/-1;background:var(--gold-lt);border-color:#e8c06a;">'
+        + '<div class="stat-label" style="color:#7a5500;">Apex Program Materials Included</div>'
+        + '<div class="stat-value" style="color:var(--navy);font-size:22px;">+' + fmt(programValue) + ' in program value</div>'
+        + '<div class="stat-sub" style="color:#7a5500;">Prizes · Event wearables · Pledge kits · Dedicated on-campus athlete · Teacher materials · Class awards · Full setup &amp; teardown — included at no extra cost</div>'
+        + '</div>'
+        + '<div class="stat-card" style="background:var(--green-lt);border-color:#8ecfae;">'
+        + '<div class="stat-label" style="color:var(--green);">Total Value to School</div>'
+        + '<div class="stat-value" style="color:var(--green);">' + fmt(totalValue) + '</div>'
+        + '<div class="stat-sub" style="color:var(--green);">Cash + program materials</div>'
+        + '</div>';
+    }
+
+    var subLabel = ftype === 'apex'
+      ? Math.round(schoolPct * 100) + '% of gross (sliding scale)'
+      : fmtPct((net / gross) * 100) + ' of gross';
+
+    document.getElementById('stat-grid').innerHTML = frlNote
+      + '<div class="stat-card highlight">'
+        + '<div class="stat-label">Est. Cash to School</div>'
+        + '<div class="stat-value">' + fmt(net) + '</div>'
+        + '<div class="stat-sub">' + subLabel + '</div>'
+      + '</div>'
+      + '<div class="stat-card">'
+        + '<div class="stat-label">Est. Gross Raised</div>'
+        + '<div class="stat-value">' + fmt(gross) + '</div>'
+        + '<div class="stat-sub">' + Math.round(participants) + ' participants</div>'
+      + '</div>'
+      + '<div class="stat-card">'
+        + '<div class="stat-label">' + (ftype === 'apex' ? 'Apex Share + Processing' : 'Fees / Costs') + '</div>'
+        + '<div class="stat-value">' + fmt(fees) + '</div>'
+        + '<div class="stat-sub" style="font-size:11px">' + feesLabel + '</div>'
+      + '</div>'
+      + apexNote;
+
+    /* Goal */
+    var goalSec = document.getElementById('goal-section');
+    if (goal) {
+      var ratio = net / goal;
+      var confClass, confIcon, confLabel;
+      if (ratio >= 1.0)    { confClass='conf-high'; confIcon='✅'; confLabel="On track — you're projected to meet your goal"; }
+      else if (ratio>=0.75){ confClass='conf-med';  confIcon='⚠️'; confLabel='Close — you\'re ~' + Math.round((1-ratio)*100) + '% short'; }
+      else                 { confClass='conf-low';  confIcon='❌'; confLabel='Gap — you\'d need ' + fmt(goal - net) + ' more to hit your goal'; }
+      goalSec.innerHTML = '<div class="stat-card" style="margin-bottom:10px;">'
+        + '<div class="stat-label">Needed per Participating Student</div>'
+        + '<div class="stat-value">' + fmt(goal / participants) + '</div>'
+        + '<div class="stat-sub">to hit your ' + fmt(goal) + ' goal</div>'
+        + '</div>'
+        + '<div class="confidence-badge ' + confClass + '">' + confIcon + ' ' + confLabel + '</div>';
+      goalSec.style.display = 'block';
+    } else {
+      goalSec.style.display = 'none';
+    }
+
+    document.getElementById('result-empty').style.display = 'none';
+    document.getElementById('result-data').style.display  = 'block';
+    buildComparison(gross, uplift, apexBase, ftype, students, adjPartRate);
+    document.getElementById('compare-card').style.display = 'block';
+
+    if (window.innerWidth < 720) {
+      document.getElementById('results-panel').scrollIntoView({ behavior:'smooth', block:'start' });
+    }
+  }
+  window.calculate = calculate;
+
+  /* ── COMPARISON TABLE ── */
+  function buildComparison(myGross, uplift, alwaysApex, myType, students, partRate) {
+    var baseGross = myGross;
+    if (alwaysApex && myType !== 'apex') {
+      baseGross = myType === 'diy' ? myGross / 0.33 : myGross / 0.45;
+    }
+    var apexGross = baseGross;
+    var diyGross  = apexGross * 0.33;
+    var readGross = apexGross * 0.45;
+    var prodGross = apexGross * 0.35;
+    var restGross = students * 0.4 * 0.25 * 18;
+
+    var apexPct     = apexSlidingScale(apexGross);
+    var apexCash    = apexGross * apexPct - apexGross * 0.035;
+    var apexProgVal = apexGross * 0.30;
+    var apexTotal   = apexCash + apexProgVal;
+    var diyNet      = diyGross * 0.965;
+    var readNet     = readGross * 0.865 - 100 - students * partRate * 0.50;
+    var prodNet     = prodGross * 0.43;
+    var restNet     = restGross * 0.20 - 50;
+
+    var rows = [
+      { name:'Apex-Managed Event', tag:'apex',  gross:apexGross, cash:apexCash, progVal:apexProgVal, total:apexTotal, effort:'Low (managed)',  scalePct:Math.round(apexPct*100) },
+      { name:'Read-a-Thon',        tag:'other', gross:readGross, cash:readNet,  progVal:0,           total:readNet,  effort:'Medium',          scalePct:0 },
+      { name:'Product Sale',       tag:'other', gross:prodGross, cash:prodNet,  progVal:0,           total:prodNet,  effort:'Medium',          scalePct:0 },
+      { name:'DIY Event',          tag:'diy',   gross:diyGross,  cash:diyNet,   progVal:0,           total:diyNet,   effort:'High (self-run)', scalePct:0 },
+      { name:'Restaurant Night',   tag:'other', gross:restGross, cash:restNet,  progVal:0,           total:restNet,  effort:'Low',             scalePct:0 }
+    ].sort(function(a,b){ return b.total - a.total; });
+
+    document.getElementById('compare-body').innerHTML = rows.map(function(r, i) {
+      var progCell = r.progVal > 0
+        ? '<span style="color:var(--green);font-weight:600">' + fmt(r.progVal) + '</span><br><span style="font-size:11px;color:var(--muted)">prizes, wearables &amp; more</span>'
+        : '<span style="color:var(--muted)">—</span>';
+      var cashCell = '<strong>' + fmt(r.cash) + '</strong>' + (r.scalePct ? '<br><span style="font-size:11px;color:var(--muted)">' + r.scalePct + '% of gross</span>' : '');
+      return '<tr class="' + (i===0 ? 'best-row' : '') + '">'
+        + '<td><span class="type-name">' + r.name + '</span> <span class="type-tag tag-' + r.tag + '">' + (r.tag==='apex'?'Managed':r.tag==='diy'?'DIY':'Other') + '</span>' + (i===0 ? ' 🏆' : '') + '</td>'
+        + '<td>' + fmt(r.gross) + '</td>'
+        + '<td>' + cashCell + '</td>'
+        + '<td>' + progCell + '</td>'
+        + '<td><strong style="color:' + (i===0 ? 'var(--navy)' : 'inherit') + '">' + fmt(r.total) + '</strong></td>'
+        + '<td>' + r.effort + '</td>'
+        + '</tr>';
+    }).join('');
+  }
+
+  /* ── RESET ── */
+  function resetForm() {
+    document.getElementById('students').value = '';
+    document.getElementById('avg-donation').value = '';
+    document.getElementById('goal').value = '';
+    document.getElementById('participation').value = 70;
+    updateParticipationDisplay();
+    document.getElementById('frl').value = 0;
+    updateFrlDisplay();
+    document.getElementById('oncampus').checked = false;
+    document.getElementById('apex-baseline').checked = true;
+    document.querySelector('input[name="ftype"][value="apex"]').checked = true;
+    document.getElementById('type-hint').textContent = typeHints['apex'];
+    document.getElementById('result-empty').style.display = 'flex';
+    document.getElementById('result-data').style.display  = 'none';
+    document.getElementById('compare-card').style.display = 'none';
+  }
+  window.resetForm = resetForm;
+
+  /* ── SHARE ── */
+  function copyResult() {
+    var el = document.querySelector('.stat-card.highlight .stat-value');
+    if (!el) { showToast('Calculate first!'); return; }
+    navigator.clipboard.writeText('My school fundraiser estimate: ' + el.textContent + ' net — The PTO Playbook Calculator: ' + location.href)
+      .then(function(){ showToast('Copied to clipboard!'); });
+  }
+  window.copyResult = copyResult;
+
+  function shareOnFacebook() {
+    window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(location.href), '_blank', 'width=600,height=400');
+  }
+  window.shareOnFacebook = shareOnFacebook;
+
+  /* ── LEAD FORM ── */
+  function submitLead() {
+    var name   = document.getElementById('lead-name').value.trim();
+    var school = document.getElementById('lead-school').value.trim();
+    var role   = document.getElementById('lead-role').value;
+    var email  = document.getElementById('lead-email').value.trim();
+    if (!name || !school || !email) { showToast('Please fill in name, school, and email.'); return; }
+    var netEl  = document.querySelector('.stat-card.highlight .stat-value');
+    var netTxt = netEl ? netEl.textContent : '(not yet calculated)';
+    var subj   = encodeURIComponent('Fundraiser Plan Request – ' + school);
+    var body   = encodeURIComponent('Hi Dean,\n\nI used The PTO Playbook calculator and would love a simple plan.\n\nName: ' + name + '\nSchool: ' + school + '\nRole: ' + (role || 'not specified') + '\nCalculated Net: ' + netTxt + '\n\nThanks!');
+    window.location.href = 'mailto:Dean.Tielbur@ApexLeadershipCo.com?subject=' + subj + '&body=' + body;
+    document.getElementById('lead-success').classList.add('show');
+  }
+  window.submitLead = submitLead;
+
+  /* ── ACCORDION ── */
+  function toggleAccordion(btn) {
+    var expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!expanded));
+    btn.nextElementSibling.classList.toggle('open', !expanded);
+  }
+  window.toggleAccordion = toggleAccordion;
+
+  /* ── TOAST ── */
+  function showToast(msg) {
+    var t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(function(){ t.classList.remove('show'); }, 3000);
+  }
+
+})();
+</script>
 </body>
 </html>
