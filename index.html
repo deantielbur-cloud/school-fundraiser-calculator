@@ -1052,7 +1052,7 @@
       ✅ Thanks! Check your email shortly. Dean at Apex will follow up with a personalized plan.
     </div>
     <p class="no-spam">
-      Prefer to email directly? <a href="#" onclick="window.location.href='mai'+'lto:Dean.Tielbur@ApexLeadershipCo.com'; return false;" style="color:rgba(255,255,255,.6);"><span class="__cf_email__" data-cfemail="7d39181c1353291418111f080f3d3c0d180531181c19180f0e15140d3e12531e1210">[email&#160;protected]</span></a>
+      Prefer to email directly? <a href="#" onclick="window.location.href='mai'+'lto:Dean.Tielbur@ApexLeadershipCo.com'; return false;" style="color:rgba(255,255,255,.6);">Dean.Tielbur@ApexLeadershipCo.com</a>
     </p>
   </div>
 
@@ -1073,7 +1073,7 @@
 </footer>
 
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 (function() {
 
   /* ── Participation slider ── */
@@ -1382,3 +1382,24 @@
     var body   = encodeURIComponent('Hi Dean,\n\nI used The PTO Playbook calculator and would love a simple plan.\n\nName: ' + name + '\nSchool: ' + school + '\nRole: ' + (role || 'not specified') + '\nCalculated Net: ' + netTxt + '\n\nThanks!');
     window.location.href = 'mailto:Dean.Tielbur@ApexLeadershipCo.com?subject=' + subj + '&body=' + body;
     document.getElementById('lead-success').classList.add('show');
+  }
+  window.submitLead = submitLead;
+
+  /* ── ACCORDION ── */
+  function toggleAccordion(btn) {
+    var expanded = btn.getAttribute('aria-expanded') === 'true';
+    var body = btn.nextElementSibling;
+    if (expanded) {
+      btn.setAttribute('aria-expanded', 'false');
+      body.style.maxHeight = null;
+    } else {
+      btn.setAttribute('aria-expanded', 'true');
+      body.style.maxHeight = body.scrollHeight + 'px';
+    }
+  }
+  window.toggleAccordion = toggleAccordion;
+
+})();
+</script>
+</body>
+</html>
