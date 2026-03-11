@@ -1006,7 +1006,7 @@
 
       </div>
       <div style="margin-top:20px;padding:16px 18px;background:var(--off);border-radius:10px;border:1px solid var(--border);font-size:14px;color:var(--muted);">
-        Have a question that's not answered here? <a href="#" onclick="window.location.href='mai'+'lto:Dean.Tielbur@ApexLeadershipCo.com'; return false;" style="color:var(--sky);font-weight:600;">Email Dean directly</a> — he typically responds within one business day.
+        Have a question that's not answered here? <a href="#" data-dean-email="true" style="color:var(--sky);font-weight:600;">Email Dean directly</a> — he typically responds within one business day.
       </div>
     </div>
   </div>
@@ -1052,7 +1052,7 @@
       ✅ Thanks! Check your email shortly. Dean at Apex will follow up with a personalized plan.
     </div>
     <p class="no-spam">
-      Prefer to email directly? <a href="#" onclick="window.location.href='mai'+'lto:Dean.Tielbur@ApexLeadershipCo.com'; return false;" style="color:rgba(255,255,255,.6);">Dean.Tielbur@ApexLeadershipCo.com</a>
+      Prefer to email directly? <a href="#" data-dean-email="show" style="color:rgba(255,255,255,.6);"></a>
     </p>
   </div>
 
@@ -1067,7 +1067,7 @@
     <div style="display:flex;gap:20px;font-size:13px;">
       <a href="index.html" style="color:rgba(255,255,255,.65);">Calculator</a>
       <a href="fun-run-guide.html" style="color:rgba(255,255,255,.65);">Fun Run Guide</a>
-      <a href="#" onclick="window.location.href='mai'+'lto:Dean.Tielbur@ApexLeadershipCo.com'; return false;" style="color:rgba(255,255,255,.65);">Contact Dean</a>
+      <a href="#" data-dean-email="true" style="color:rgba(255,255,255,.65);">Contact Dean</a>
     </div>
   </div>
 </footer>
@@ -1387,17 +1387,27 @@
 
   /* ── ACCORDION ── */
   function toggleAccordion(btn) {
-    var expanded = btn.getAttribute('aria-expanded') === 'true';
     var body = btn.nextElementSibling;
-    if (expanded) {
-      btn.setAttribute('aria-expanded', 'false');
-      body.style.maxHeight = null;
-    } else {
+    var isOpen = body.classList.contains('open');
+    document.querySelectorAll('.accordion-body').forEach(function(b) {
+      b.classList.remove('open');
+    });
+    document.querySelectorAll('.accordion-btn').forEach(function(b) {
+      b.setAttribute('aria-expanded', 'false');
+    });
+    if (!isOpen) {
+      body.classList.add('open');
       btn.setAttribute('aria-expanded', 'true');
-      body.style.maxHeight = body.scrollHeight + 'px';
     }
   }
   window.toggleAccordion = toggleAccordion;
+
+  /* ── EMAIL LINKS ── */
+  var deanEmail = 'Dean.Tielbur' + '@' + 'ApexLeadershipCo.com';
+  document.querySelectorAll('a[data-dean-email]').forEach(function(a) {
+    a.href = 'mailto:' + deanEmail;
+    if (a.dataset.deanEmail === 'show') { a.textContent = deanEmail; }
+  });
 
 })();
 </script>
