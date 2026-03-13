@@ -471,13 +471,34 @@
     <p>Dean Tielbur is Apex's Area Director for Illinois and Wisconsin. Send him your calculator numbers and he'll put together a no-obligation plan specific to your school — typically within one business day.</p>
     <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:8px;">
       <a href="index.html" class="btn btn-white">Run the Calculator First</a>
-      <a href="#" onclick="window.location.href='mai'+'lto:Dean.Tielbur@ApexLeadershipCo.com'; return false;" class="btn btn-gold">Email Dean Directly</a>
+      <a href="#" data-dean-email="true" class="btn btn-gold">Email Dean Directly</a>
+      <a href="tel:+18479518532" class="btn btn-white">📞 (847) 951-8532</a>
     </div>
-    <p style="font-size:13px;color:rgba(255,255,255,.5);margin-top:20px;">Dean Tielbur · (847) 951-8532 · <a href="#" onclick="window.location.href='mai'+'lto:Dean.Tielbur@ApexLeadershipCo.com'; return false;" style="color:rgba(255,255,255,.5);"><span class="__cf_email__" data-cfemail="fbbf9e9a95d5af929e97998e89bbba8b9e83b79e9a9f9e898893928bb894d5989496">[email&#160;protected]</span></a></p>
+    <p style="font-size:13px;color:rgba(255,255,255,.5);margin-top:20px;">Dean Tielbur · <a href="tel:+18479518532" style="color:rgba(255,255,255,.5);">(847) 951-8532</a> · <a href="#" data-dean-email="show" style="color:rgba(255,255,255,.5);"></a></p>
   </div>
 
 </div><!-- /page-wrap -->
 
 <footer>
   <div class="footer-inner">
-    <span>Built for PTO leaders by <strong style="color:rgba(255,
+    <span>Built for PTO leaders by <strong style="color:rgba(255,255,255,.8)">The PTO Playbook</strong> · Content is for planning purposes.</span>
+    <div style="display:flex;gap:20px;font-size:13px;flex-wrap:wrap;">
+      <a href="index.html">Calculator</a>
+      <a href="fun-run-guide.html">Fun Run Guide</a>
+      <a href="#" data-dean-email="true">Contact Dean</a>
+      <a href="tel:+18479518532">(847) 951-8532</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  var deanEmail = 'Dean.Tielbur' + '@' + 'ApexLeadershipCo.com';
+  document.querySelectorAll('a[data-dean-email]').forEach(function(a) {
+    a.href = 'mailto:' + deanEmail;
+    if (a.dataset.deanEmail === 'show') { a.textContent = deanEmail; }
+  });
+})();
+</script>
+</body>
+</html>
